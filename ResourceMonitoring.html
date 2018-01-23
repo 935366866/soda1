@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>资源监控</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="public/css/reset.css" rel="stylesheet" type="text/css"  media="all" />
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/long_common.css" rel="stylesheet"  media="all">
+    <link href="css/indexStyle.css" rel="stylesheet" type="text/css"  media="all" />
+    <!--<link rel="stylesheet" href="public/draw/style/app.css"/>-->
+</head>
+
+<body style="background-color:#f8f8f8;min-width: 1300px;overflow: hidden;">
+<!--前台公共头部-->
+<div class="top">
+    <div class="main_nav1">
+        <div class="container">
+            <a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+            <ul class="main_nav1_left">
+                <li id="main"><a href="main.html">首页</a></li>
+                <li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+                <li id="frontierResearch"><a href="frontierResearch.html" >前沿方案</a></li>
+                <li id="marketActive"><a href="marketActive.html">市场活动</a></li>
+            </ul>
+            <div class="form-group searchNews" id="search_news">
+                <span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="search_news_input">
+                </div>
+            </div>
+            <ul class="main_nav1_right">
+                <li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索" /></a></li>
+                <li><a href="#"><img src="public/image/navEmail.svg" alt="通知" /></a></li>
+                <li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户" /></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main_nav2">
+        <div class="container">
+            <ul class="main_nav2_left">
+                <li class="nav2_list1" style="width: 90px;">
+                    <a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">DNA流程方案</a></li>
+                        <li><a href="">RNA流程方案</a></li>
+                        <li><a href="">医学流程方案</a></li>
+                    </ul>
+                </li>
+                <li class="nav2_list2" style="width: 73px;">
+                    <a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">基本绘图</a></li>
+                        <li><a href="">流程绘图</a></li>
+                        <li><a href="">高级绘图</a></li>
+                        <li><a href="">表格处理</a></li>
+                        <li><a href="">计算统计</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="myProject.html">我的项目</a></li>
+                <li class=""><a href="#">我的目录</a></li>
+                <li class=""><a href="recycle.html">回收站</a></li>
+                <li>资源监控</li>
+            </ul>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+                </div>
+                <button class="col-sm-2 btn btn_blue" id="search_button">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/前台公共头部-->
+
+
+<!-- 搜索相应的流程和小工具 -->
+
+<div class="change_box" style="margin-top: 130px;width: 1170px;margin-bottom:25px">
+    <div style="text-align: center;font-size: 24px;font-weight: bold;margin-bottom: 10px">最近60分钟资源监控图</div>
+    <div class="container" style="padding: 0;text-align: center;width: 1175px;">
+        <div id="cpu" style="height: 300px;width: 400px;float: left;" ></div>
+        <div id="Memory" style="height: 300px;width: 400px;float: left" ></div>
+        <div style="width:300px;float: right;margin:0 50px 0 0; ">
+            <div class="tab-pane" id="direction">
+                <div class="panel panel-default" style="height:650px">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            使用说明
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                    <p style="text-align: left">
+                        为了避免因本机任务过多导致任务运行速度变慢以及可能因此带来的宕机等影响使用的风险，用户务必确认有足够的计算资源可供使用时，方可进行新任务作业。
+
+                        <br/><br/> “CPU”监控波形图展示的是过去60分钟内本机使用的CPU核心数的实时动态波形图，数据间隔时间为1min。纵轴的最大值即为本机物理最大CPU核心数。
+
+                        <br/><br/>“内存”监控波形图展示的是过去60分钟内本机使用内存（GB）的实时动态波形图，数据间隔时间为1min。纵轴的最大值即为本机最大物理内存。
+
+                        <br/> <br/>“存储”监控波形图展示的是过去60分钟内本机使用存储（GB）的实时动态波形图，数据间隔时间为1min。纵轴的最大值即为本机最大物理存储。
+
+                        <br/> <br/>“作业情况”图实时显示的是过去60分钟内在本机中正在运行，排队以及出错的作业程序数。
+
+                        <br/><br/>“终止我的所有程序”按钮能够将本机中您所有正在运行的程序清除，包括流程任务以及小工具任务，该功能请您谨慎使用！
+                    </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        <div id="storage" style="height: 300px;width: 400px;float: left;" ></div>
+        <div id="info" style="height: 300px ;width: 400px;float: left"></div>
+        <div style=" text-align: center">
+            <button class="btn btn-danger" style="margin-top: 15px" >终止我的所有程序</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!--页脚-->
+<div id="footer_style">
+    <footer class="footerstyle">
+        <p>版权所有 © 2016 京ICP备15033925号</p>
+        <p>北京拓美科基因科技有限公司</p>
+    </footer>
+</div>
+<script src="public/js/jquery-1.11.2.min.js"></script>
+<script src="public/js/echarts.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/long_common.js"></script>
+<script src="js/resourceMonitor.js"></script>
+<script>
+    $(function(){
+        $("#sodaIndex").addClass("active")
+    });
+</script>
+</body>
+</html>

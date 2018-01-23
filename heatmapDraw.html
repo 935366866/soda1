@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>新建APP任务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8">
+    <link href="public/css/reset.css" rel="stylesheet" />
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap-table.css" rel="stylesheet">
+    <link href="public/css/jquery.fileupload.css" rel="stylesheet"> 
+    <link href="public/css/bootstrap-select.css" rel="stylesheet">
+    <link href="public/css/long_common.css" rel="stylesheet" />
+    <link href="public/draw/style/app.css" rel="stylesheet" >
+    <link href="css/soda_common.css" rel="stylesheet">
+    <link href="public/draw/style/spectrum.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/user.css"/>
+</head>
+
+<body style="background-color:#fff;">
+	<div class="top" style="float:left;width:100%;">
+		<div class="main_nav1">
+			<div class="container">
+			<a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+				<ul class="main_nav1_left">
+					<li id="mainIndex"><a href="main.html">首页</a></li>
+					<li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+					<li id="frontierResearch"><a href="frontierResearch.html" >前沿方案</a></li>
+					<li id="marketActive"><a href="marketActive.html">市场活动</a></li>	
+				</ul>
+				<div class="form-group searchNews" id="search_news">
+					<span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="search_news_input">
+					</div>
+				</div>
+				<ul class="main_nav1_right">
+					<li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索" /></a></li>
+					<li><a href="#"><img src="public/image/navEmail.svg" alt="通知" /></a></li>
+					<li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户" /></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="main_nav2">
+			<div class="container">
+				<ul class="main_nav2_left">
+					<li class="nav2_list1" style="width: 90px;">
+						<a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+						<ul class="">
+							<li><a href="">DNA流程方案</a></li>
+							<li><a href="">RNA流程方案</a></li>
+							<li><a href="">医学流程方案</a></li>
+						</ul>				
+					</li>
+					<li class="nav2_list2" style="width: 73px;">
+						<a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+						<ul class="">
+							<li><a href="">基本绘图</a></li>
+							<li><a href="">流程绘图</a></li>
+							<li><a href="">高级绘图</a></li>
+							<li><a href="">表格处理</a></li>
+							<li><a href="">计算统计</a></li>
+						</ul>
+					</li>
+					<li class=""><a href="myProject.html">我的项目</a></li>
+					<li class=""><a href="#">我的目录</a></li>
+					<li class=""><a href="recycle.html">回收站</a></li>
+				</ul>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+					</div>
+					<button class="col-sm-2 btn btn_blue" id="search_button">搜索</button>				
+				</div>
+			</div>
+		</div>	
+	</div>
+
+    <div class="center_box" style="float:left;width:100%;">
+		<div class="app_title">
+			<p>热图绘制工具</p>
+		</div>
+        <div class="change_box" style="padding-left: 0px; padding-right:0px;padding-bottom:50px;" id='taskPanel'> </div>       
+        <div class="myTab">
+        	<div style="width: 1200px;margin: 0 auto;height: 100%;">
+				<div class="tabs" style="margin-left: 10px;">
+					<ul class="nav" id="appTabLeft">
+						<li><a href="#file" data-toggle="tab">上传文件内容</a></li>
+						<li class="active" ><a href="#set" data-toggle="tab">参数设置</a></li>	
+					</ul>
+				</div>	
+				<div class="tabs" style="margin-left: 20px;">
+					<ul class="nav" id="appTabRight">
+						<li  ><a href="#direction" data-toggle="tab">使用说明</a></li>	
+						<li class="active"><a href="#show" data-toggle="tab">绘图展示</a></li>
+					</ul>
+				</div>	
+			</div>	
+		</div>
+        <div id="myTabContent" class="change_box">
+			<div class="tab-content input_l">
+				<div class="tab-pane in active" id="set">		
+					<div class="panel  panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">文件参数</h3>
+							<a id="use_default">使用示例文件</a>
+						</div>				
+						<div class="panel-body" style="height: 439px;">
+							<form id="parameter">
+								<!--输入文件-->
+								<div class="part">
+									<div class="input_a_l titleNameLeft">输入文件:</div>
+									<div class="input_a_m inputLeft">
+										<input v-model="input" type="text" class="form-control" id="input" name="input" placeholder="">
+									</div>
+									<div class="input_a_r">
+										<a onclick="openUrl('#input','file')">
+											<span class="glyphicon glyphicon-folder-open" style="font-size:20px; top: 5px; cursor:pointer;"></span>
+										</a>
+										<span class="fileinput-button btn " style="padding: 0 10px;" >
+											<img src="public/draw/imgs/app_02.png" alt=""  style="width: 29px;">
+											<input id="upload_input" name="upload_input" onclick="uploadFile('json/upload.json','upload_input','#input')" type="file">
+										</span>
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">标题名称:</div>
+									<div class="input_b_2 inputLeft">
+										<input v-model="title" type="text" class="form-control" id="title" name="title" placeholder=""/>
+									</div>
+									<div class="right">
+										<div class="input_b_t1">字体:</div>
+										<div class="input_b_3">
+											<select v-model="title_font" id="title_font" name="title_font" class="selectpicker select_width" autocomplete="off" >
+												<option value="normal">常规</option>
+												<option value="bold">加粗</option>
+												<option value="italic">斜体</option>
+											</select>
+										</div>	
+										<div class="input_b_t1">大小:</div>	
+										<div class="input_b_3">
+											<select v-model="title_size"  id="title_size" name="title_size" class="selectpicker select_width" autocomplete="off" >
+												<option value="10">10</option>
+												<option value="18">18</option>
+												<option value="30">30</option>
+											</select>
+										</div>	
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l">标题位置:</div>
+									<div class="inputLeft">
+										<div class="input_b_t1 titleA">水平:</div>	
+										<div class="input_b_3 inputA">
+											<select v-model="titleX" id="titleX"  name="titleX" class="selectpicker select_width" autocomplete="off" >
+												<option value="center">Center</option>
+												<option value="left">Left</option>
+												<option value="right">Right</option>
+											</select>
+										</div>
+									</div>
+									<div class="right">
+										<div class="input_b_t1">垂直:</div>
+										<div class="input_b_3" style="width: 108px;">
+											<select v-model="titleY" id="titleY" name="titleY" class="selectpicker select_width" autocomplete="off" >
+												<option value="top">Top</option>
+												<option value="center">Center</option>
+												<option value="bottom">Bottom</option>
+											</select>
+										</div>	
+									</div>
+								</div>						
+								<div class="line"></div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">颜色方案:</div>
+									<div class="input_b_3 inputLeft">
+										<select id="colorProject"  name="colorProject" class="selectpicker select_width" autocomplete="off" >
+											<option value="project1">NPG</option>
+											<option value="project2">AAAS</option>
+											<option value="project3">IGV</option>
+										</select>
+									</div>									
+								</div>
+								<div class="part">
+									<div class="input_e_1 titleNameLeft">						
+											最小值:
+									</div>
+									<div class="input_a_m inputLeft">
+										<input v-model="minValue" type="text" class="form-control" />
+									</div>									
+								</div>
+								<div class="part">
+									<div class="input_e_1 titleNameLeft">						
+											最大值:
+									</div>
+									<div class="input_a_m inputLeft">
+										<input v-model="maxValue" type="text" class="form-control" />
+									</div>									
+								</div>
+								<div class="part">
+									<div class="input_e_2 colorInput">
+										最小值颜色:
+									</div>
+									<div class="input_c_4">
+										<input v-model="color[0]" type="text" class="form-control spectrum">
+									</div>
+									<div class="input_e_2 colorInput" style="margin-left: 10px;">
+										中间颜色:
+									</div>
+									<div class="input_c_4">
+										<input v-model="color[1]" type="text" class="form-control spectrum">
+									</div>
+									<div class="input_e_2 colorInput" style="margin-left: 10px;">
+										最大值颜色:
+									</div>
+									<div class="input_c_4">
+										<input v-model="color[2]" type="text" class="form-control spectrum">
+									</div>
+								</div>
+								<div class="line"></div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">图例宽度:</div>
+									<div class="input_b_2 inputLeft">
+										<input v-model="legendWidth" type="text" class="form-control inputLeft" id="legendWidth" name="legendWidth" placeholder="">
+									</div>
+									<div class="right">
+										<div class="input_a_l">图例高度:</div>
+										<div class="input_b_2">
+											<input v-model="legendHeight" type="text" class="form-control" style="width: 153px;" id="legendHeight" name="legendHeight" placeholder="">
+										</div>
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">图例位置:</div>
+									<div class="inputLeft">
+										<div class="input_b_t1 titleA">水平:</div>	
+										<div class="input_b_3 inputA">
+											<select v-model="legendX" id="legendX"  name="legendX" class="selectpicker select_width" autocomplete="off" >
+												<option value="left">Left</option>
+												<option value="center">Center</option>
+												<option value="right">Right</option>
+											</select>
+										</div>	
+									</div>	
+									<div class="right">
+										<div class="input_b_t1">垂直:</div>
+										<div class="input_b_3" style="width: 108px;">
+											<select v-model="legendY" id="legendY" name="legendY" class="selectpicker select_width" autocomplete="off" >
+												<option value="top">Top</option>
+												<option value="center">Center</option>
+												<option value="bottom">Bottom</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">图例布局:</div>
+									<div class="input_b_3 inputLeft">
+										<select v-model="legendLayout" id="legendLayout"  name="legendLayout" class="selectpicker select_width" autocomplete="off" >
+											<option value="horizontal">Horizontal</option>
+											<option value="vertical">Vertical</option>
+										</select>
+									</div>	
+								</div>
+	
+							</form>
+						</div>
+						<div class="panel-footer" style="height: 51px;">
+							<button id="submit_paras" type="button" class="btn btn-success">开始绘图</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="file">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">文件标题</h3>
+						</div>
+						<div class="panel-body" style="padding: 0;">
+							<table class="table table-bordered">
+                                <thead>
+                                    <tr style="display: none;">
+                                        <th v-for="item in fileData.content[0]">{{item}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item,index) in fileData.content" >
+                                        <td v-for="item1 in item">{{item1 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+			<!-- 绘图展示 -->
+			<div class="tab-content input_r">
+				<div class="tab-pane in active" id="show">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">绘图展示</h3>
+							<div class="download_button">
+								<button  id="btnPng" class="btn btn-success">PNG</button>
+								<button id="btnPdf" onclick="convertCanvasToImage()" class="btn btn-primary">PDF</button>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div id="main" style="width: 560px;height: 420px;margin-left: 0;padding-left: 0;"></div>
+						</div>
+					</div>
+				</div>
+	
+			<!-- 使用说明 -->
+				<div class="tab-pane" id="direction">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								使用说明
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="one">
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">概述</h2>
+								</div>
+								<p class="indent">
+									热图，即heatmap，根据数值的大小用不同的颜色进行填充，直观的体现数值的分布规律。可用来绘制相关性热图、不同位点的基因型、不同位点的表达量大小等一切的矩阵数据。
+								</p>
+								<div class="tCenter">
+									<img src="img/hotMap.jpg" alt="" />
+									<p class="font2">相关性热图示例</p>
+								</div>
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">参数设置</h2>
+								</div>
+								<p class="indent">
+									先将空白处，填写相应的内容，主要是输入文件的上传，其他可以先采用默认值进行图的绘制，生成图片后，根据效果进行具体的调整。
+								</p>
+
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">输入文件上传方式</h2>
+								</div>
+								<p class="indent">
+									可以通过 <img src="img/user1.png" alt="" style="width: 22px"/>按钮，选择服务器上相应的目标文件，
+									也可以通过 <img src="img/user2.png" alt="" style="width: 22px"/>按钮选择本地电脑上的目标文件进行上传：
+								</p>
+
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">输入文件格式</h2>
+								</div>
+								<p class="indent">
+									文件是以制表符进行分隔的文本文件，含有表头信息（第一行是X轴信息，第一列是Y轴信息，一般是字符表示，建议都不要超过10个字符），其他都为数值信息。至少含有两行两列。
+									<br/>第一列：样本名称、基因名称或者其他分类信息。
+									<br/>第一行：如果和第一列的信息一样，那这个表格中的数据即为相关性矩阵，也可以是和第一列不同的其他样本名称、基因名称或者其他分类信息。
+									<br/>其他行，其他列：为横坐标和纵坐标对应位置的数值信息，必须是数字。
+									示例如下：
+								<table border="1" align="center">
+									<tr>
+										<td>R^2</td>
+										<td>LH01_1</td>
+										<td>LH01_2</td>
+										<td>LH01_3</td>
+										<td>LH02_1</td>
+										<td>LH02_2</td>
+										<td>LH02_3</td>
+										<td>LH03_1</td>
+										<td>LH03_2</td>
+										<td>LH03_3</td>
+									</tr>
+									<tr>
+										<td>LH01_1</td>
+										<td>1</td>
+										<td>0.984</td>
+										<td>0.979</td>
+										<td>0.706</td>
+										<td>0.715</td>
+										<td>0.748</td>
+										<td>0.702</td>
+										<td>0.688</td>
+										<td>0.69</td>
+									</tr>
+									<tr>
+										<td>LH01_2</td>
+										<td>0.984</td>
+										<td>1</td>
+										<td>0.987</td>
+										<td>0.731</td>
+										<td>0.739</td>
+										<td>0.777</td>
+										<td>0.728</td>
+										<td>0.715</td>
+										<td>0.716</td>
+									</tr>
+									<tr>
+										<td>LH01_3</td>
+										<td>0.979</td>
+										<td>0.987</td>
+										<td>1</td>
+										<td>0.728</td>
+										<td>0.738</td>
+										<td>0.775</td>
+										<td>0.732</td>
+										<td>0.718</td>
+										<td>0.718</td>
+									</tr>
+									<tr>
+										<td>LH02_1</td>
+										<td>0.706</td>
+										<td>0.731</td>
+										<td>0.728</td>
+										<td>1</td>
+										<td>0.984</td>
+										<td>0.94</td>
+										<td>0.83</td>
+										<td>0.843</td>
+										<td>0.846</td>
+									</tr>
+									<tr>
+										<td>LH02_2</td>
+										<td>0.715</td>
+										<td>0.739</td>
+										<td>0.738</td>
+										<td>0.984</td>
+										<td>1</td>
+										<td>0.937</td>
+										<td>0.842</td>
+										<td>0.86</td>
+										<td>0.861</td>
+									</tr>
+									<tr>
+										<td>LH02_3</td>
+										<td>0.748</td>
+										<td>0.777</td>
+										<td>0.775</td>
+										<td>0.94</td>
+										<td>0.937</td>
+										<td>1</td>
+										<td>0.825</td>
+										<td>0.848</td>
+										<td>0.852</td>
+									</tr>
+									<tr>
+										<td>LH03_1</td>
+										<td>0.702</td>
+										<td>0.728</td>
+										<td>0.732</td>
+										<td>0.83</td>
+										<td>0.842</td>
+										<td>0.825</td>
+										<td>1</td>
+										<td>0.961</td>
+										<td>0.966</td>
+									</tr>
+									<tr>
+										<td>LH03_2</td>
+										<td>0.688</td>
+										<td>0.715</td>
+										<td>0.718</td>
+										<td>0.843</td>
+										<td>0.86</td>
+										<td>0.848</td>
+										<td>0.961</td>
+										<td>1</td>
+										<td>0.986</td>
+									</tr>
+									<tr>
+										<td>LH03_3</td>
+										<td>0.69</td>
+										<td>0.716</td>
+										<td>0.718</td>
+										<td>0.846</td>
+										<td>0.861</td>
+										<td>0.852</td>
+										<td>0.966</td>
+										<td>0.986</td>
+										<td>1</td>
+									</tr>
+								</table>
+								</p>
+							</div>
+							<div class="two">
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">参数设置</h2>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">标题</h2>
+								</div>
+								<p class="indent">
+								<ul class="titleInfo">
+									<li>1.标题的名称可以进行自定义，空白也可以，中英文都可以，建议长度不要超过10个字符，以免影响展示效果。默认是热图。</li>
+									<li>2.图片中文字默认是高影响因子期刊规定的Arial字体。字体可以选择加粗、斜体、常规三种效果，文字大小也可以根据需求进行调整，默认字体是加粗18号。</li>
+									<li>3.标题的位置是由水平和垂直两个按钮组合决定的，每个按钮有三种类型，总计有9种位置的调整，默认水平居中，垂直在顶端。</li>
+								</ul>
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">颜色方案</h2>
+								</div>
+								<p class="indent">
+								<ul class="colorInfo">
+									<li>1.有三种搭配好的颜色方案，分别是根据Nature系列期刊（NPG）、Science（AAAS）、IGV软件（IGV）配置的，每种方案包含十种颜色单元。</li>
+									<li>
+										2.色度条值的范围：最小值，色度条的最小值，可以是任意数值，建议与所选组数据的最小值比较接近；最大值，色度条的最大值，可以是大于最小值的任意数值，建议与所选组数据的最大值比较接近。
+									</li>
+									<li>
+										3.色度条颜色设定：色度条是一个三色渐变的色度条，三个颜色可以分别通过鼠标进行选择。点击颜色框按钮，会产生下拉颜色框，可以通过右边色度条选择颜色，左边的大方框选择颜色的饱和度，选择按钮或者直接选定，取消按钮可以取消选择的自定义颜色
+									</li>
+								</ul>
+								</p>
+								<div class="tCenter">
+									<img src="img/user3.png" alt=""/>
+
+									<p class="tCenter font2">颜色选择框</p>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">图例</h2>
+								</div>
+								<p class="indent">
+								<ul class="tuLi">
+									<li>1.图例的宽度和高度，输入具体的数值即可设置图例的大小，默认宽度20，高度140。</li>
+									<li>2.图例位置，由水平和垂直两个按钮组合决定的，每个按钮有三种类型，总计有9种位置的调整，默认水平居右，垂直底端。</li>
+									<li>3.图例布局，可以进行垂直和水平的设置，默认是水平。</li>
+								</ul>
+								</p>
+								<p class="indent font1">
+									以上所有参数选择好后，点击“开始绘图”按钮，绘制展示部分按照调整后的参数展示重新绘制的图片。
+								</p>
+								<br/>
+								<div class="first_title">
+									<h2 ><img src="img/report_01.svg" alt="">上传文件内容</h2>
+								</div>
+								<p class="indent">
+									可通过查看此部分，实时查看上传文件的内容。
+								</p>
+								<br/>
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">绘图展示</h2>
+								</div>
+
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">显示内容选择</h2>
+								</div>
+								<p class="indent">
+									可以通过鼠标点击图例色度条两端的三角符号，选择显示的数值范围，显示即为自定义的彩色，不显示即为灰色，绘图结果中不会显示数值在这个范围内的数值，但是图例中扔会保留相应的范围。
+								</p>
+								<div class="tCenter">
+									<img src="img/hotMap1.jpg" alt=""/>
+									<p class="tCenter font2">不显示数值小于0.75的数值</p>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">查看具体数值</h2>
+								</div>
+								<p class="indent">
+									鼠标放在色度条中，与鼠标所在位置数值相近的方框会在热图上突出显示，即可以一次性查看数值相近的方框。
+								</p>
+								<div class="tCenter">
+									<img src="img/hotMap2.jpg" alt=""/>
+									<p class="tCenter font2">鼠标放在色度条的~0.84所在的位置</p>
+								</div>
+								<br/>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">图片下载</h2>
+								</div>
+								<p class="indent">
+								<ul class="downLoad_img">
+									<li>1.图片提供两种格式的下载，分别是png和pdf格式。</li>
+									<li>2.点击需要的图片类型按钮，生成预览页面，点击放大、缩小按钮，查看图片的整体及细节效果，点击下载按钮，进行图片的下载。</li>
+								</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+    	</div>
+        
+	<!-- 标签切换 -->
+	
+	
+	<!-- 添加选择目录的模态框 -->
+	<div class="modal fade" id="selectUrl" tabindex="-1" aria-labelledby="选择路径" aria-hidden="true">
+
+		<div class="modal-dialog" style="top:50px; width:800px;">
+			<div class="modal-content ">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title">路径</h4>
+					<div class="input-group">
+						<input type="text" class="form-control" id="inputUrl">
+						<span class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-arrow-left" id="back" type="button" style="top: 0px;"></button>
+							<button class="btn btn-default glyphicon glyphicon-arrow-right" id="search" type="button" style="top: 0px;"></button>
+						</span>
+					</div>
+				</div>
+				<!-- -----------------------------------------------------------data-single-select="true"------------------------ -->
+				<div class="modal-body" style="text-align:center; ">
+					<table data-toggle="table" data-url="json/jobUrl.json" data-minimum-count-columns="2" data-id-field="id" data-show-footer="false"
+						data-height="300" data-sort-name="id" data-click-to-select="true"  id="urlTable"
+						style="bottom:20px;">
+
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+								<th data-field="icon" data-formatter="addIcon"></th>
+								<th data-field="name" data-align="left" data-sortable="true">name</th>
+								<th data-field="type" data-align="center" data-sortable="true">attribute</th>
+								<th data-field="inodeNum" data-align="center" data-visible="false" data-sortable="true">inodeNum</th>
+								<th data-field="size" data-align="center" data-sortable="true">size</th>
+								<th data-field="owner" data-align="center" data-sortable="true">owner</th>
+								<th data-field="group" data-align="center">group</th>
+								<th data-field="mtime" data-align="center" data-sortable="true">time</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<!-- ----------------------------------------------------------------------------------- -->
+				<div class="modal-footer">
+					<button type="button" id="selected" class="btn btn-primary">
+					选择
+					</button>
+					<button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">
+					关闭
+					</button>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+    <!--页脚-->
+    <div id="footer_style">
+        <footer class="footerstyle">
+            <p>版权所有 © 2016 京ICP备15033925号</p>
+            <p>北京拓美科基因科技有限公司</p>
+        </footer>
+    </div>
+    <script src="public/js/jquery-1.11.2.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <!--添加本页面的js-->
+    <script>
+		module = "__MODULE__";
+		tool_id = "{$tool_id}";
+	</script>
+    <script src="public/js/bootstrap-table.js"></script>
+    <script src="public/js/jquery.ui.widget.js"></script>
+    <script src="public/js/jquery.fileupload.js"></script>
+    <script src="public/js/jquery.iframe-transport.js"></script>
+    <script src="public/js/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="public/js/bootstrap-select.js"></script>
+    <script src="public/js/defaults-zh_CN.js"></script>
+    <script src="public/draw/script/html2canvas.min.js"></script>
+    <script src="public/draw/script/jspdf.min.js"></script>
+    <script src="public/js/echarts.min.js"></script>
+    <script src="public/js/long_common.js"></script>
+    <script src="public/js/vue.js"></script>
+    <script src="public/draw/script/spectrum.js"></script>
+    <script src="public/draw/script/jquery.spectrum-zh-cn.js"></script>
+    <script src="js/common.js"></script>
+    <script src="public/draw/script/heatmapDraw.js"></script>   
+</body>
+
+</html>

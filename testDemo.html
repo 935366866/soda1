@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap-table.css" rel="stylesheet" >
+    <link href="public/css/bootstrap-editable.css" rel="stylesheet" >
+</head>
+<body>
+
+<table data-toggle="table"
+       data-url="json/myProject2.json"
+       data-toolbar="#toolbar"
+       data-search="true"
+       data-click-to-select="true"
+       data-show-refresh="true"
+       data-show-columns="true"
+
+
+
+       data-height="480"
+       data-show-pagination-switch="true"
+
+       data-side-pagination="server"
+       data-sort-order="desc" id="maintable">
+    <thead>
+    <tr>
+        <th data-field="state3" data-checkbox="true"></th>
+        <th data-field="id" data-visible="false"></th>
+        <th data-field="project_name" data-align="center"  data-sortable="true">模块名称</th>
+        <th data-field="create_man" data-align="center" data-sortable="true">模块简介</th>
+        <th data-field="create_man" data-align="center" data-sortable="true">模块坐标</th>
+        <th data-field="create_time"  data-align="center" data-sortable="true">程序标识</th>
+        <th data-field="project_remark" data-align="center" data-sortable="true" >是否必选</th>
+    </tr>
+    </thead>
+</table>
+<table data-toggle="table"
+       data-url="json/myProject2.json"
+       data-toolbar="#toolbar"
+       data-search="true"
+       data-click-to-select="true"
+       data-show-refresh="true"
+       data-show-columns="true"
+
+
+
+       data-height="480"
+       data-show-pagination-switch="true"
+
+       data-side-pagination="server"
+       data-sort-order="desc" id="maintable1">
+    <thead>
+    <tr>
+        <th data-field="state3" data-checkbox="true"></th>
+        <th data-field="id" data-visible="false"></th>
+        <th data-field="project_name" data-align="center"  data-sortable="true">模块名称</th>
+        <th data-field="create_man" data-align="center" data-sortable="true">模块简介</th>
+        <th data-field="create_man" data-align="center" data-sortable="true">模块坐标</th>
+        <th data-field="create_time"  data-align="center" data-sortable="true">程序标识</th>
+        <th data-field="project_remark" data-align="center" data-sortable="true" >是否必选</th>
+    </tr>
+    </thead>
+</table>
+<script src="public/js/jquery-1.11.2.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/bootstrap-table.js"></script>
+<script src="public/js/bootstrap-editable.js"></script>
+
+</body>
+</html>

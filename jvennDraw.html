@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>新建APP任务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8">
+    <link href="public/css/reset.css" rel="stylesheet" />
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/draw/style/prettify.css" rel="stylesheet"/>
+    <link href="public/draw/style/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="public/css/bootstrap-table.css" rel="stylesheet">
+    <link href="public/css/jquery.fileupload.css" rel="stylesheet"> 
+    <link href="public/css/bootstrap-select.css" rel="stylesheet">
+    <link href="public/css/long_common.css" rel="stylesheet" />
+    <link href="public/draw/style/app.css" rel="stylesheet" >
+    <link href="css/soda_common.css" rel="stylesheet">
+    <link href="public/draw/style/spectrum.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/user.css"/>
+    <style>
+    	#parameter .input_a_m{
+			width: 58%;
+		}
+    </style>
+</head>
+
+<body style="background-color:#fff;">
+	<div class="top" style="float:left;width:100%;">
+		<div class="main_nav1">
+			<div class="container">
+			<a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+				<ul class="main_nav1_left">
+					<li id="mainIndex"><a href="main.html">首页</a></li>
+					<li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+					<li id="frontierResearch"><a href="frontierResearch.html" >前沿方案</a></li>
+					<li id="marketActive"><a href="marketActive.html">市场活动</a></li>	
+				</ul>
+				<div class="form-group searchNews" id="search_news">
+					<span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="search_news_input">
+					</div>
+				</div>
+				<ul class="main_nav1_right">
+					<li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索" /></a></li>
+					<li><a href="#"><img src="public/image/navEmail.svg" alt="通知" /></a></li>
+					<li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户" /></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="main_nav2">
+			<div class="container">
+				<ul class="main_nav2_left">
+					<li class="nav2_list1" style="width: 90px;">
+						<a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+						<ul class="">
+							<li><a href="">DNA流程方案</a></li>
+							<li><a href="">RNA流程方案</a></li>
+							<li><a href="">医学流程方案</a></li>
+						</ul>				
+					</li>
+					<li class="nav2_list2" style="width: 73px;">
+						<a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+						<ul class="">
+							<li><a href="">基本绘图</a></li>
+							<li><a href="">流程绘图</a></li>
+							<li><a href="">高级绘图</a></li>
+							<li><a href="">表格处理</a></li>
+							<li><a href="">计算统计</a></li>
+						</ul>
+					</li>
+					<li class=""><a href="myProject.html">我的项目</a></li>
+					<li class=""><a href="#">我的目录</a></li>
+					<li class=""><a href="recycle.html">回收站</a></li>
+				</ul>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+					</div>
+					<button class="col-sm-2 btn btn_blue" id="search_button">搜索</button>				
+				</div>
+			</div>
+		</div>	
+	</div>
+
+    <div class="center_box" style="float:left;width:100%;">
+		<div class="app_title">
+			<p>维恩图绘制工具</p>
+		</div>
+        <div class="change_box" id='taskPanel'> </div>       
+        <div class="myTab">
+        	<div style="width: 1200px;margin: 0 auto;height: 100%;">
+				<div class="tabs" style="margin-left: 10px;">
+					<ul class="nav" id="appTabLeft">
+						<li><a href="#file" data-toggle="tab">上传文件内容</a></li>
+						<li class="active" ><a href="#set" data-toggle="tab">参数设置</a></li>	
+					</ul>
+				</div>	
+				<div class="tabs" style="margin-left: 20px;">
+					<ul class="nav" id="appTabRight">
+						<li  ><a href="#direction" data-toggle="tab">使用说明</a></li>	
+						<li class="active"><a href="#show" data-toggle="tab">绘图展示</a></li>
+					</ul>
+				</div>	
+			</div>	
+		</div>
+        <div id="myTabContent" class="change_box">
+			<div class="tab-content input_l">
+				<div class="tab-pane in active" id="set">		
+					<div class="panel  panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">文件参数</h3>
+							<a id="use_default">使用示例文件</a>
+						</div>				
+						<div class="panel-body" style="height: 439px;">
+							<div id="parameter" class="venn">
+								<!--输入文件-->
+								<div class="wrap">
+									<div class="part" style="padding-top: 10px;">绘图参数：</div>
+									<div class="line"></div>
+									<div class="part" style="display: inline-block;">
+										<div class="left">
+											展示类型：
+										</div>
+										<div class="radio">
+											  <label for="vennType1">
+											    <input v-model="vennType"  type="radio" name="vennType1" id="vennType1" value="classic" >经典型
+											  </label>
+										</div>
+										<div class="radio" style="margin-left: 10px;">
+											  <label for="vennType2">
+											    <input v-model="vennType" type="radio" name="vennType2" id="vennType2" value="edwards">齿轮型
+											  </label>
+										</div>
+									</div>
+									<div class="part">
+										<div class="left">
+											统计面板：
+										</div>
+										<div class="radio">
+											  <label for="statistics1">
+											    <input v-model="statisticsPanel" type="radio" name="statistics1" id="statistics1" value="show" >显示
+											  </label>
+										</div>
+										<div class="radio" style="margin-left: 10px;">
+											  <label for="statistics2">
+											    <input v-model="statisticsPanel" type="radio" name="statistics2" id="statistics2" value="hide">隐藏
+											  </label>
+										</div>
+									</div>
+									<div class="part">
+										<div class="left">
+											样本名称：
+										</div>
+										<div class="right" style="margin-left: 0;width: 250px;">
+											<div class="input_b_t1">字体:</div>
+											<div class="input_b_3">
+												<select v-model="sample_font" id="sample_font" name="sample_font" class="selectpicker select_width" autocomplete="off" >
+													<option value="normal">常规</option>
+													<option value="bold">加粗</option>
+													<option value="italic">斜体</option>
+												</select>
+											</div>	
+											<div class="input_b_t1" style="margin-left: 8px;">大小:</div>	
+											<div class="input_b_3">
+												<select v-model="sample_size"  id="sample_size" name="sample_size" class="selectpicker select_width" autocomplete="off" >
+													<option value="12">12</option>
+													<option value="14">14</option>
+													<option value="16">16</option>
+													<option value="18">18</option>
+												</select>
+											</div>	
+										</div>
+									</div>
+									<div class="part">
+										<div class="left" style="letter-spacing: 5px;">
+											数&nbsp;&nbsp;字：
+										</div>
+										<div class="right" style="margin-left: 0;width: 250px;">
+											<div class="input_b_t1">字体:</div>
+											<div class="input_b_3">
+												<select v-model="num_font" id="num_font" name="num_font" class="selectpicker select_width" autocomplete="off" >
+													<option value="normal">常规</option>
+													<option value="bold">加粗</option>
+													<option value="italic">斜体</option>
+												</select>
+											</div>	
+											<div class="input_b_t1" style="margin-left: 8px;">大小:</div>	
+											<div class="input_b_3">
+												<select v-model="num_size"  id="num_size" name="num_size" class="selectpicker select_width" autocomplete="off" >
+													<option value="12">12</option>
+													<option value="14">14</option>
+													<option value="16">16</option>
+													<option value="18">18</option>
+												</select>
+											</div>	
+										</div>
+									</div>
+									<div class="part">
+										<div class="left" style="width: 200px;">
+											<span style="letter-spacing: 5px;">透明度</span>：
+											<input  v-model="opacityVal" type="text" class="form-control" id="opacityVal" name="opacityVal" style="width: 70px;display: inline-block;">
+											<span style="margin-left: 3px;">%</span>
+										</div>
+										<div class="right" id="borderWrap" style="width: 50px;height: 34px;">
+											<div class="checkbox">
+											    <input v-model="setBorder" type="checkbox" class="checks"  id="setBorder" name="setBorder" value=""><span>框线</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="samples">
+									<div class="part" v-for="(item,index) in sampleList" >
+										<div style="margin-bottom: 10px;">样本{{index+1}}
+											<button type="button" class="close" v-on:click="delSample(index)">&times;</button>
+										</div>
+										<div class="input_a_m">
+											<input type="text" v-model="item.file" class="form-control" id="input" name="input" placeholder="输入文件">
+										</div>
+										<div class="input_a_r">
+											<a onclick="openUrl('#input','file')">
+												<span class="glyphicon glyphicon-folder-open"></span>
+											</a>
+											<span class="fileinput-button btn " style="padding: 0 10px;" >
+												<img src="public/draw/imgs/app_02.png" alt=""  style="width: 29px;">
+												<input id="upload_input"  name="upload_input" onclick="uploadFile('json/upload.json','upload_input','#input')" type="file">
+											</span>
+										</div>
+										<div class="part">
+											<div class="input_a_m" style="margin-left: -15px;width: 267px;">
+												<input v-model="item.sampleName" type="text" class="form-control"  name="input" placeholder="设置样本名">
+											</div>
+										</div>
+										<div class="part">
+											<div class="left" style="float: left;width: 166px;">
+												<span style="margin-left: -13px;">自定义颜色：</span>
+												<input  type="text" class="form-control spectrum" :value="colorDefault[index]" >
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<button v-on:click.stop="addSample" class="btn btn-primary" style="margin-top: 10px;">添加样本</button>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer" style="height: 51px;">
+							<button id="submit_paras" type="button" class="btn btn-success">开始绘图</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="file">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">文件标题</h3>
+						</div>
+						<div class="panel-body" style="padding: 0;">
+							<textarea readonly id="names" style="width: 100%;overflow: hidden;" wrap="off" rows="50"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+			<!-- 绘图展示 -->
+			<div class="tab-content input_r">
+				<div class="tab-pane in active" id="show">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">绘图展示</h3>
+							<div class="download_button">
+								<button  id="btnPng" class="btn btn-success">PNG</button>
+								<button id="btnSvg" class="btn btn-primary">SVG</button>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div id="main" style="width: 450px;height: 450px;">	</div>
+						</div>
+					</div>
+				</div>
+			<!-- 使用说明 -->
+				<div class="tab-pane" id="direction">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								使用说明
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="one">
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">概述</h2>
+								</div>
+								<p class="indent">
+									维恩图，Venn Diagram，也称韦恩图或者文氏图，用于显示不同组元素的共有和差异情况。
+								</p>
+								<div class="tCenter">
+									<img src="img/jvennImage.jpg" alt="" />
+									<img src="img/jvennImage1.jpg" alt="" />
+									<p class="font2">维恩图示例</p>
+								</div>
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">参数设置</h2>
+								</div>
+								<p class="indent">
+									根据数据的组数点击文件参数最下方的“添加样本”按钮添加组或者点击样本框右上角的叉号删除组，确定样本数后，上传每个样本的列表文件，并设置样本名称。可以点击“使用示例文件”预先查看维恩图的绘制效果。
+								</p>
+
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">输入文件上传方式</h2>
+								</div>
+								<p class="indent">
+									可以通过 <img src="img/user1.png" alt="" style="width: 22px"/>按钮，选择服务器上相应的目标文件，
+									也可以通过 <img src="img/user2.png" alt="" style="width: 22px"/>按钮选择本地电脑上的目标文件进行上传：
+								</p>
+
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">输入文件格式</h2>
+								</div>
+								<p class="indent">
+									每个文件包含一列列表，不含有表头信息。列表的内容可以是数值，也可以是字母，也可以是两者的组合，多个文件之间的列表进行比较。
+									示例如下：
+								<table border="1" align="center">
+									<tr>
+										<td>样本1</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>样本2</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>样本3</td>
+									</tr>
+									<tr>
+										<td>107403138</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403715</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403340</td>
+									</tr>
+									<tr>
+										<td>107403249</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403686</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403333</td>
+									</tr>
+									<tr>
+										<td>107403272</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403530</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403325</td>
+									</tr>
+									<tr>
+										<td>107403276</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403470</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403323</td>
+									</tr>
+									<tr>
+										<td>107403288</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403440</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403319</td>
+									</tr>
+									<tr>
+										<td>107403294</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403432</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403305</td>
+									</tr>
+									<tr>
+										<td>107403295</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403429</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403304</td>
+									</tr>
+									<tr>
+										<td>107403311</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403427</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403294</td>
+									</tr>
+									<tr>
+										<td>107403316</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403418</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403291</td>
+									</tr>
+									<tr>
+										<td>107403393</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403397</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403288</td>
+									</tr>
+									<tr>
+										<td>107403429</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403393</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403285</td>
+									</tr>
+									<tr>
+										<td>107403440</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403315</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403279</td>
+									</tr>
+									<tr>
+										<td>107403470</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403310</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403274</td>
+									</tr>
+									<tr>
+										<td>107403530</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403294</td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td>107403272</td>
+									</tr>
+
+								</table>
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">样本名称</h2>
+								</div>
+								<p class="indent">
+									样本名称自定义输入，可以是中英文，为了展示效果良好，不建议过长。
+								</p>
+							</div>
+							<div class="two">
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">参数设置</h2>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">样本量的调整</h2>
+								</div>
+								<p class="indent">
+									<ul class="tuLi">
+								<li>可以随时选择样本的添加和删除，选择相应的文件上传；</li>
+								<li>根据样本量进行各个样本的名称设置；</li>
+								<li>自定义颜色：可以通过每个样本的自定义颜色框进行样本对应的圆或者椭圆填充色的改变。点击颜色框按钮，会产生下拉颜色框，可以通过右边色度条选择颜色，左边的大方框选择颜色的饱和度，选择按钮或者直接选定，取消按钮可以取消选择的自定义颜色。</li>
+									</ul>
+								</p>
+								<div class="tCenter">
+									<img src="img/user3.png" alt=""/>
+
+									<p class="tCenter font2">颜色选择框</p>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">展示类型</h2>
+								</div>
+								<p class="indent">维恩图有两种类型，经典型和齿轮型。可以选择其中的任何一个类型进行图片的展示。</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">统计面板</h2>
+								</div>
+								<p class="indent">
+								<ul class="tuLi">
+									<li>统计面板上面是每个样本元素数量的柱状图。例如以下的统计面板图显示，样本1的元素数量是99个，样本4的元素数量是119个。</li>
+									<li>统计面板下面是不同样本特有元素数量、两个样本共有元素数量及多个样本共有元素数量，横坐标是共有样本的数量，柱条内部是元素数量。例如以下的统计面板图从左到右显示，对应维恩图的四个圈，内向外依次是四个样本共有元素总计2个，三个样本共有的元素加起来总共17个（0+7+3+7），两个样本共有的元素加起来总共80个（15+3+45+6+8+3），每个样本特有的元素加起来总共有197个（61+63+32+41），两个样本共有的元素加起来总共有80个</li>
+								</ul>
+								</p>
+								<div class="tCenter">
+									<img src="img/jvennImage2.jpg" alt=""/>
+								</div>
+								<div class="tCenter">
+									<p class="font2" style="display: inline;margin-right: 100px">四个样本的维恩图 </p>
+									<p class="font2" style="display: inline;margin-left: 100px">统计面板</p>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">样本名称和数字</h2>
+								</div>
+								<p class="indent">
+								<ul class="tuLi">
+									<li>图片中文字默认是高影响因子期刊规定的Arial字体。</li>
+									<li>字体可以选择加粗、斜体、常规三种效果</li>
+									<li>文字大小也可以根据需求进行调整，默认字体是常规12号。</li>
+								</ul>
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">透明度和框线</h2>
+								</div>
+								<p class="indent">
+								<ul class="tuLi">
+									<li>由于不同的圆叠在一起显示，需要设置一定的透明度，默认是50%。</li>
+									<li>如果选择展示的类型是“经典型”，可以设置是否有边框线，边框线是黑色线条</li>
+								</ul>
+								</p>
+								<p class="indent font1">
+									以上所有参数选择好后，点击“开始绘图”按钮，绘制展示部分按照调整后的参数展示重新绘制的图片。
+								</p>
+								<div class="first_title">
+									<h2 ><img src="img/report_01.svg" alt="">上传文件内容</h2>
+								</div>
+								<p class="indent">
+									默认此页面为空。
+								</p>
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">绘图展示</h2>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">显示区域调整</h2>
+								</div>
+								<p class="indent">
+									通过鼠标的滚轮上下，可以查看面板信息。
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">查看具体元素</h2>
+								</div>
+								<p class="indent">
+									鼠标点击维恩图中的具体数字，可以在“上传文件内容”的面板中查看这个共有区域对应的元素列表，并且在第一行显示这些元素是在几个样本中存在。例如，鼠标点击维恩图中四个样本共有的区域数字2，左侧第一行显示四个样本的名称，其他行为这两个元素的列表。
+								</p>
+								<div class="tCenter">
+									<img src="img/jvennImage3.jpg" alt=""/>
+									<p class="tCenter font2">点击维恩图最中间的数字2的效果</p>
+								</div>
+								<br/>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">图片下载</h2>
+								</div>
+								<p class="indent">
+								<ul class="downLoad_img">
+									<li>1.图片提供两种格式的下载，分别是png和pdf格式。</li>
+									<li>2.点击需要的图片类型按钮，生成预览页面，点击放大、缩小按钮，查看图片的整体及细节效果，点击下载按钮，进行图片的下载。</li>
+								</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+   </div>
+	<!-- 标签切换 -->
+	
+	
+	<!-- 添加选择目录的模态框 -->
+	<div class="modal fade" id="selectUrl" tabindex="-1" aria-labelledby="选择路径" aria-hidden="true">
+
+		<div class="modal-dialog" style="top:50px; width:800px;">
+			<div class="modal-content ">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title">路径</h4>
+					<div class="input-group">
+						<input type="text" class="form-control" id="inputUrl">
+						<span class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-arrow-left" id="back" type="button" style="top: 0px;"></button>
+							<button class="btn btn-default glyphicon glyphicon-arrow-right" id="search" type="button" style="top: 0px;"></button>
+						</span>
+					</div>
+				</div>
+				<!-- -----------------------------------------------------------data-single-select="true"------------------------ -->
+				<div class="modal-body" style="text-align:center; ">
+					<table data-toggle="table" data-url="json/jobUrl.json" data-minimum-count-columns="2" data-id-field="id" data-show-footer="false"
+						data-height="300" data-sort-name="id" data-click-to-select="true"  id="urlTable"
+						style="bottom:20px;">
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+								<th data-field="icon" data-world="addIcon"></th>
+								<th data-field="name" data-align="left" data-sortable="true">name</th>
+								<th data-field="type" data-align="center" data-sortable="true">attribute</th>
+								<th data-field="inodeNum" data-align="center" data-visible="false" data-sortable="true">inodeNum</th>
+								<th data-field="size" data-align="center" data-sortable="true">size</th>
+								<th data-field="owner" data-align="center" data-sortable="true">owner</th>
+								<th data-field="group" data-align="center">group</th>
+								<th data-field="mtime" data-align="center" data-sortable="true">time</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<!-- ----------------------------------------------------------------------------------- -->
+				<div class="modal-footer">
+					<button type="button" id="selected" class="btn btn-primary">
+					选择
+					</button>
+					<button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">
+					关闭
+					</button>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+    <!--页脚-->
+    <div id="footer_style">
+        <footer class="footerstyle">
+            <p>版权所有 © 2016 京ICP备15033925号</p>
+            <p>北京拓美科基因科技有限公司</p>
+        </footer>
+    </div>
+    <script src="public/js/jquery-1.11.2.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <!--添加本页面的js-->
+    <script>
+		module = "__MODULE__";
+		tool_id = "{$tool_id}";
+	</script>
+    <script src="public/js/bootstrap-table.js"></script>
+    <script src="public/js/jquery.ui.widget.js"></script>
+    <script src="public/js/jquery.fileupload.js"></script>
+    <script src="public/js/jquery.iframe-transport.js"></script>
+    <script src="public/js/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="public/js/bootstrap-select.js"></script>
+    <script src="public/draw/script/canvas2svg.js"></script>
+    <script src="public/draw/script/jvenn.js"></script>
+    <script src="public/js/long_common.js"></script>
+    <script src="public/js/vue.js"></script>
+    <script src="public/draw/script/spectrum.js"></script>
+    <script src="public/draw/script/jquery.spectrum-zh-cn.js"></script>
+    <script src="js/common.js"></script>
+    <script src="public/draw/script/jvennDraw.js"></script> 
+</body>
+</html>

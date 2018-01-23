@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <title>变异检测方案</title>
+    <link href="public/css/reset.css" rel="stylesheet"/>
+    <link href="public/css/long_common.css" rel="stylesheet" media="all">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/new_common.css">
+</head>
+<body>
+<!--导航条-->
+<body>
+<body style="background-color: rgb(248,248,248);">
+
+<!--前台公共头部-->
+<div class="top">
+    <div class="main_nav1">
+        <div class="container">
+            <a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+            <ul class="main_nav1_left">
+                <li id="main"><a href="main.html">首页</a></li>
+                <li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+                <li id="frontierResearch"><a href="frontierResearch.html">前沿方案</a></li>
+                <li id="marketActive"><a href="marketActive.html">市场活动</a></li>
+            </ul>
+            <div id="search_news" class="main_nav1_left searchNews">
+                <span class="searchIcon"></span>
+                <input type="text" id="search_news_input" class="form-control">
+            </div>
+            <ul class="main_nav1_right">
+                <li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索"/></a></li>
+                <li><a href="#"><img src="public/image/navEmail.svg" alt="通知"/></a></li>
+                <li><a href="#"><img src="public/image/navUser.svg" alt="用户"/></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main_nav2">
+        <div class="container">
+            <ul class="main_nav2_left">
+                <li class="nav2_list1" style="width: 90px;">
+                    <a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">DNA流程方案</a></li>
+                        <li><a href="">RNA流程方案</a></li>
+                        <li><a href="">医学流程方案</a></li>
+                    </ul>
+                </li>
+                <li class="nav2_list2" style="width: 73px;">
+                    <a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">基本绘图</a></li>
+                        <li><a href="">流程绘图</a></li>
+                        <li><a href="">高级绘图</a></li>
+                        <li><a href="">表格处理</a></li>
+                        <li><a href="">计算统计</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="myProject.html">我的项目</a></li>
+                <li class=""><a href="#">我的目录</a></li>
+                <li class=""><a href="#">回收站</a></li>
+            </ul>
+            <div class="search_right">
+                <input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+                <button class="btn btn-blue" id="search_button">搜索</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav_line"></div>
+
+    <div class="main_nav3">
+        <div class="change_box" style="width: 1200px;">
+            <ul class="main_nav3_left">
+                <li onClick="location.href='1.html'" class="nav3_title"><a>变异检测</a></li>
+                <li onClick="location.href='2.html'"><span><a href="#">基础实验</a></span></li>
+                <li onClick="location.href='3.html'"><span><a href="#">建库测序</a></span></li>
+                <li onClick="location.href='4.html'"><span><a href="#">数据分析</a></span></li>
+                <li onClick="location.href='5.html'"><span><a href="#">结果解读</a></span></li>
+                <li onClick="location.href='6.html'"><span><a href="#">科研产出</a></span></li>
+
+            </ul>
+            <ul class="main_nav3_right">
+                <li class=""><span><a style="color:#fff;" href="#">使用流程</a></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<!--页面主体-->
+<div id="main_box">
+    <div class="change_box" style="width: 1170px;">
+        <!--左边导航-->
+        <div class="b_left" style="position: fixed;top:170px;">
+            <div id="left_list">
+                <div class="selectable active"><a class="#part1"><span class="a_line">|</span>整体方案</a></div>
+                <div class="selectable"><a class="#part2"><span class="a_line">|</span>文献解读</a></div>
+            </div>
+        </div>
+        <div class="b_right">
+            <div id="part1" class="r_part_box">
+                <div class="first_title">
+                    <h2><img src="img/report_01.svg" alt="">整体方案</h2>
+                </div>
+                <p class="indent">
+                    变异检测是指利用高通量测序技术，对已知基因组序列的物种进行不同个体的基因组测序，并在此基础上对个体或群体进行差异性分析。全基因组重测序的个体，通过序列比对，可以在全基因组范围内（或者酶切位点附近序列，即RAD等简化基因组）检测到大量的单核苷酸多态性位点（SNP），插入缺失位点（InDel，Insertion/Deletion）和结构变异位点（SV，Structure
+                    Variation），同时完成注释，并利用这些多态标记进行性状关联、群体进化等相关的研究，广泛用于动植物（已经公布了基因组序列的物种）的分子育种、致病基因检测、产前筛查、个性化医疗等众多领域。变异检测是基因组研究的基础，高质量的变异检测结果是后续研究的重要保障。</p>
+
+                <p class="indent">本平台从最开始的样本选取到最终的科研成果产出，涵盖了各个环节的参考资料。</p>
+
+            </div>
+
+            <div id="part2" class="r_part_box">
+                <div class="first_title">
+                    <h2><img src="img/report_01.svg" alt="">文献解读</h2>
+                </div>
+                <p>为了方便读者大致了解快速了解变异检测，我们选取了两篇代表型性文献进行详解。</p>
+
+                <h2 class="literature"
+                    onclick="javascript:window.open('https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4740429/')">
+                    Genome-Wide Detection of SNP and SV Variations to Reveal Early Ripening-Related Genes in
+                    Grape（2016年）</h2>
+
+                <p class="h4_inline"><span>杂志名称：</span>Plos One，影响因子2.806</p>
+                <h4>研究背景：</h4>
+
+                <p class="indent">
+                    葡萄的早熟性状是一个非常重要的农艺性状。为了研究早熟品种与正常品种该性状差异的分子机制，研究人员对两个品种分别进行了全基因组重测序，检测并注释差异性分子标记（SNP/SV）。结果显示，NCED6和SEP以及ERF等基因与葡萄的早熟性状相关。</p>
+                <h4>基础实验：</h4>
+
+                <p>样本获得:</p>
+
+                <p class="indent">
+                    在一个葡萄园里种植了两种不同的葡萄品系，发现葡萄品系SBBM比葡萄品系SBC要早熟一周左右，故选取这两种葡萄品系作为研究对象。</p>
+
+                <p>组织获得:</p>
+
+                <p class="indent">
+                    采取葡萄的新鲜叶片</p>
+
+                <p>DNA获得：</p>
+
+                <p class="indent">
+                    使用 QIA quick PCR kit提取DNA</p>
+                <h4>高通量测序及分子标记：</h4>
+
+                <p class="indent">Illumina HiSeq2000平台进行全基因组重测序。使用SAMtools/Pindel/BreakDancer分别检测SNP/SV，开发标记个数如下：</p>
+
+                <div class="img_box">
+                    <img class="img-style" src="img/variation1.png"/>
+                </div>
+                <h4>结果解读：</h4>
+
+                <p>1、差异分子标记统计</p>
+
+                <p class="indent">首先，研究人员对SNP/InDel/SV等分子标记及其相关的基因数量进行了统计。</p>
+
+                <div class="img_box">
+                    <img class="img-style" src="img/variation2.png" style="width: 65%"/>
+                </div>
+                <p class="indent">
+                    随后，他们定义了高密度SNP区域，并将测序数据与基因组比对后，在各条染色体上都找到了高密度SNP区域。其中，SBBM品系中找到了10个高密度SNP区域和14个低密度SNP区域。SBC品系中找到了12个高密度SNP区域和15个低密度SNP区域。
+                </p>
+
+                <p class="indent">
+                    因此SBC拥有SBBM所没有的2个高密度SNP区域和1个低密度SNP区域，具体如下图：
+                </p>
+
+                <div class="img_box">
+                    <img src="img/variation3.png"/>
+                </div>
+                <p>2、确定目标基因</p>
+
+                <p class="indent">分别获得两种品系SNP/InDel/SV相关基因后，进行GO富集分析和同源性分析。结果如下：</p>
+
+                <div class="img_box">
+                    <img src="img/variation4.jpg"/>
+
+                    <p>富集分析结果图</p>
+                </div>
+                <div class="img_box">
+                    <img class="img-style" src="img/variation5.jpg"/>
+                    <p>同源性分析结果图</p>
+                </div>
+                <p class="indent">最后，共筛选出13个与早熟相关联的基因，后续通过qRT-PCR证实其中有8个影响了葡萄的早熟。</p>
+
+                <div class="img_box">
+                    <img class="img-style" src="img/variation6.jpg"/>
+                    <img class="img-style" src="img/variation7.jpg" style="margin-top: 50px"/>
+
+                    <p>影响葡萄早熟的8个基因表达量（qRT-PCR）</p>
+                </div>
+                <p class="indent">其中，NCED6 参与脱落酸的生物合成， 脱落酸可能促进了花青素的积累； SEP相关基因可能作用于乙烯通路影响早熟性状；ERF相关基因可能对SBBM
+                    品系葡萄的早熟起到调节作用；花青素含量以及CHS 基因的表达量与早熟相关。</p>
+
+                <br/><br/><br/>
+
+                <h2 class="literature"
+                    onclick="javascript:window.open('https://bmcgenomics.biomedcentral.com/articles/10.1186/1471-2164-15-962#MOESM6')">
+                    Genome-wide patterns of copy number variation in the diversified chicken genomes using
+                    next-generation sequencing (2014年)</h2>
+                <p class="h4_inline"><span>杂志名称：</span>Bmc Genomics，影响因子3.729</p>
+                <h4>研究背景：</h4>
+                <p class="indent">
+                    拷贝数的变异在基因组中的分布非常广泛，它是很多疾病以及表型差异的主要原因。本研究利用全基因组重测序数据检测了鸡基因组中CNVs,构建了分辨率更高的鸡全基因组拷贝数变异图谱,并估计了拷贝数变异和部分基因的拷贝数。为深入了解鸡基因组变异和进行CNVs与重要经济性状的全基因组关联分析提供了一定的理论基础。</p>
+                <h4>基础实验：</h4>
+
+                <p>样本获得:</p>
+                <p class="indent">
+                    不同品种的母鸡12只
+                </p>
+                <p>组织获得:</p>
+                <p class="indent">
+                    血液样本</p>
+                <p>DNA获得：</p>
+                <p class="indent">
+                    酚/氯仿法抽提</p>
+                <h4>高通量测序：</h4>
+                <p class="indent">测序平台为Illumina HiSeq2000，各样本高通量测序参数如下：</p>
+                <div class="img_box">
+                    <img   src="img/variationImg1.png"/>
+                </div>
+                <h4>结果解读：</h4>
+                <p>1、基因组CNV分布情况</p>
+                <p class="indent">将重合的CNVs记作一个CNVR，统计后发现：
+                    共计8,840个CNV区域 （CNVRs） ， 总区域全长98.2 Mb， 占基因组大小的9.4%。
+                    69.4%的CNV区短于 10 kb, 比50 kb长的CNVRs数量仅占3.3%；
+                    68.8%的 CNVR仅存在于一个个体中 ，其余 31.2%CNVRs 可能存在于两个或者两个以上的个体。 </p>
+                <div class="img_box">
+                    <img class="img-style" src="img/variationImg2.png"/>
+                    <p>CNVR分布情况</p>
+                </div>
+                <div class="img_box">
+                    <img   src="img/variationImg3.png"/>
+                    <p>本研究与其他研究获得的CNVR统计比较</p>
+                </div>
+                <p>2、CNV质量评估</p>
+                <p class="indent">分别使用CNVnator, aCGH and qPCR评估CNV的质量。</p>
+                <div class="img_box">
+                    <img  class="img-style" src="img/variationImg4.png"/>
+                    <p>CNVR质量统计表</p>
+                </div>
+                <p>3、CNV相关的多态性基因</p>
+                <p class="indent">研究人员找到2216个基因与2214个CNVR相重叠，其中有537个基因被CNVR区域完全覆盖。除了之前已报道的两个有拷贝数变异的基因 EDN3 和PRLR （黑色素过度沉积性状和快慢羽性状相关），还发现了一些可能与鸡重要经济性状相关的新候选基因,如FZD6和LIMS1可能与一些疾病的抗性有关。下表是部分概况。</p>
+                <div class="img_box">
+                    <img class="img-style" src="img/variationImg5.png"/>
+                    <p>部分样本CNVR及相关基因概况</p>
+                </div>
+                <p>4、可视化分布热图</p>
+                <p class="indent">为获得12个个体中选择性表达基因的关系，绘制热图。</p>
+                <div class="img_box">
+                    <img  class="img-style" src="img/variationImg6.jpg"/>
+                </div>
+                <p>5、统计CNVR中的基因和QTL分布</p>
+                <div class="img_box">
+                    <img  class="img-style" src="img/variationImg7.png"/>
+                    <p>CNVR相关的QTL统计（部分）</p>
+                </div>
+                <p class="indent">同时，一些基因的部分拷贝或者全部拷贝具有重要的生物学意义。比如， POPDC3 的拷贝数差异可影响家鸡的繁殖能力 , 对家禽的养殖具有重要的经济价值。</p>
+                <h4>总结:</h4>
+                <p class="indent">本文中使用高通量测序检测了CNV的分布以及频率，同时识别了CNVR，用于后续的QTL标注。总共有688个CNVR覆盖了286个QTL（与产量性状有关），丰富了家牛的CNV图谱，并且把家牛性状与变异基因型相互关联，尤其是与产量性状相关的QTL 区域的变异情况的确认，为性状与CNV的关系的进一步探讨提供了佐证。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<!--页脚-->
+<div id="footer_style" style="margin-top: 50px">
+    <footer class="footerstyle">
+        <p>版权所有 © 2016 京ICP备15033925号</p>
+
+        <p>北京拓美科基因科技有限公司</p>
+    </footer>
+</div>
+<script src="public/js/jquery-1.11.2.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/long_common.js"></script>
+<script src="js/FI_common.js"></script>
+</body>
+</html>

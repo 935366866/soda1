@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<title>数据分析</title>
+	<link rel="stylesheet" type="text/css" href="css/new_common1.css">
+	<link rel="stylesheet" href="public/css/bootstrap.min.css" >
+
+    <script src="public/js/jquery-1.11.2.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+	<script src="js/FI_common.js"></script>
+
+</head>
+<body>
+
+
+
+<!--导航条-->
+<div class="top" style="float:left;width:100%;">	
+	<div class="main_nav1">
+		<div class="change_box">
+			<ul class="main_nav1_left">
+				<li class="dodo"><a  href="#">DodoGene</a></li>
+				<li class="nav_b1"><a href="#">云中漫步</a></li>
+				<li class=""><a href="#">前沿研究</a></li>
+				<li class=""><a href="#">市场活动</a></li>
+
+			</ul>
+			
+			<ul class="main_nav1_right">
+				<li><a href="#"><img src="img/分析报告_03.png" alt="通知" /></a></li>
+				<li><a href="#"><img src="img/分析报告_05.png" alt="帮助" /></a></li>
+				<li><a href="#"><img src="img/分析报告_07.png" alt="个人中心" /></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main_nav2">
+		<div class="change_box">
+			<ul class="main_nav2_left">
+				<li style="width:110px;text-align:center;"><img style="height:35px;" src="img/logo_black.png" alt="" /></li>
+				<li class="nav2_list1" style="margin-right:0px;" >
+					<a href="#" style="padding-left:15px;padding-right:15px;color:#000;">解决方案<img src="img/02.png" alt=""></a>
+					<ul class="">
+						<li><a href="">DNA</a></li>
+						<li><a href="">RNA</a></li>
+						<li><a href="">健康医学</a></li>
+					</ul>				
+				</li>
+				<li class="nav2_list2" style="margin-right:0px;">
+					<a href="#" style="padding-left:15px;padding-right:15px;">小工具<img src="img/02.png" alt=""></a>
+					<ul class="">
+						<li><a href="">计算统计</a></li>
+						<li><a href="">绘图软件</a></li>
+					</ul>
+				</li>
+				<li class=""><a href="#">我的项目</a></li>
+				<li class=""><a href="#">我的目录</a></li>
+				<li class=""><a href="#">回收站</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="nav_line"></div>
+
+	<div class="main_nav3">
+		<div class="change_box">
+			<ul class="main_nav3_left">
+				<li onClick="location.href='1.html'" class="nav3_title"><a>变异检测</a></li>
+				<li onClick="location.href='2.html'"><span><a href="#">基础实验</a></span></li>
+				<li onClick="location.href='3.html'"><span><a href="#">建库测序</a></span></li>
+				<li onClick="location.href='4.html'" class="li_active"><span style="background-color:#0379e7;border:1px solid #0379e7;"><a style="color:#fff;" href="#">数据分析</a></span></li>
+				<li onClick="location.href='5.html'"><span><a href="#">结果解读</a></span></li>
+				<li onClick="location.href='6.html'"><span><a href="#">科研产出</a></span></li>
+			</ul>
+			<ul class="main_nav3_right">
+				<li class=""><span style="background-color:#0379e7;border:1px solid #0379e7;"><a style="color:#fff;" href="#">使用流程</a></span></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--页面主体-->
+<div id="main_box">
+	
+	<div class="change_box">
+		<!--左边导航-->
+		<div class="b_left" style="position: fixed;top:170px;">
+			<div id="left_list">
+				<div class="selectable active"><a class="#part1"><span class="a_line">|</span>分析内容</a></div>
+				<div class="selectable"><a class="#part2"><span class="a_line">|</span>流程使用</a></div>			
+			</div>
+		</div>	
+		<div class="b_right">
+			<div id="part1" class="r_part_box">
+				<p>数据下机后，对数据进行特定的生物信息学分析。</p>
+                <div class="first_title">
+                    <h2><img  src="img/report_01.png" alt="">分析内容</h2>
+                </div>
+                <h3>基本数据质控</h3>
+				<p class="indent">为了去除低质量数据对后续分析的影响，我们对下机数据（Raw data）进行过滤以得到高质量的Clean data，过滤标准如下：</p>
+				<p class="indent2">1) 过滤带有测序接头(adapter)的Reads;</p>
+				<p class="indent2">2) 过滤N(不确定碱基)含量比例大于10%的Reads;</p>
+				<p class="indent2">3) 过滤低质量碱基（Q<20）含量大于50％的Reads。</p>
+				<p class="indent">通过数据量、碱基含量分布、碱基质量分布、Q20、Q30、GC含量等指标，对测序数据的基本特征进行全方面的描述。</p>
+				
+
+				<h3>序列比对</h3>
+				<p class="indent">我们使用BWA(版本：0.7.8，参数：-t 4 -k 32，Li H, et al. 2009)将Clean data与参考基因组进行比对，并用SAMtools(版本：1.3，参数：rmdup，Li H, et al. 2009)去除PCR或光学重复。</p>
+
+
+				<h3>SNP检测</h3>
+				<p class="indent">SNP(Single Nucleotide Polymorphisms)，指基因组水平上由单个核苷酸变异引起的DNA序列多态性。因为其广泛存在于基因组上，现在成为了遗传研究的主要标记。我们使用GATK(版本：3.5，参数：默认，McKenna, et al. 2010)来检测SNP，并对低质量的SNP进行了过滤，过滤标准如下：</p>
+				<p class="indent">1) 过滤reads支持小于5的SNP。</p>
+				<p class="indent">2) 过滤质量值小于20的SNP。</p>
+				<p class="indent">我们使用主流软ANNOVAR(版本：2013-06-21，参数：-geneanno，Wang K, et al. 2010)进行SNP变异注释，并对注释结果进行统计。</p>
+				
+				<h3>InDel检测</h3>
+				<p class="indent">InDel(Insertion and Deletion)指基因组上小片段(这里定义为<50 bp的片段)的插入和缺失，我们使用GATK(版本：3.5，参数：默认，McKenna, et al. 2010)对InDel进行检测，并过滤掉reads支持数小于5且质量值小于20的InDel，使用ANNOVAR对检测结果进行注释。</p>
+
+
+				<h3>SV检测</h3>
+				<p class="indent">SV（Structure Variation）指基因组上大片段的插入（INS）、缺失（DEL）、倒置（INV）、染色体内部迁移（ITX）、染色体间的迁移（CTX）等变异。我们使用BreakDancer(版本：1.4.5，参数：默认，Chen, et al. 2009)对SV进行检测，过滤支持的reads数小于2的变异，并使用ANNOVAR进行注释。</p>
+				<h3>CNV检测</h3>
+				<p class="indent">
+					CNV（Copy Number Variation）指基因组上片段的拷贝数变化。我们使用FREEC(版本：v11.0，参数：默认，Boeva, et al. 2010)进行CNV的检测，并用ANNOVAR进行注释。
+				</p>
+
+				<h3>变异检测结果可视化</h3>
+				<p class="indent">
+					我们提供比对的bam格 式结果文件以及变异检测的vcf格式结果文件， 并推荐使用Savant浏览器(Fiume M, et al. 2010, Fiume M, et al. 2012)对变异检测结果进行可视化浏览。 Savant浏览器可以实现对SNP的可视化，小巧灵活，展示美观，而且开源。
+				</p>
+
+			</div>
+
+			<div id="part2" class="r_part_box">
+                <div class="first_title">
+                	<h2><img  src="img/report_01.png" alt="">流程使用</h2>
+                </div>
+			</div>			
+		</div>
+	</div>
+
+</div>
+<!--页脚-->
+<div id="footer_style">
+	<footer class="footerstyle">
+		<p>版权所有 © 2016 京ICP备15033925号</p>
+		<p>北京拓美科基因科技有限公司</p>
+	</footer>
+</div>
+
+</body>
+</html>

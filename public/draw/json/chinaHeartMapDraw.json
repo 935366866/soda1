@@ -1,0 +1,17 @@
+{
+    "input": "/whx/abc/1.txt",
+    "title": "中国-热图",
+    "title_size": "18",
+    "title_font": "bold",
+    "titleX":"center",
+    "titleY":"top",
+    "minValue":0,
+    "middleValue":15,
+    "maxValue":30,
+    "legendWidth":20,  
+    "legendHeight":140,
+    "legendX":"left",
+    "legendY":"bottom",
+    "legendLayout":"vertical",
+    "dataCol":"亚群1"
+}

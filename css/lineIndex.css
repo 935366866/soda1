@@ -1,0 +1,146 @@
+body { font-size:12px; font-family:Microsoft YaHei, tahoma, arial, Hiragino Sans GB,\\5b8b\4f53,sans-serif;background-color:#fff;}
+ul,li{list-style:none; }
+img{ border:0 none;}
+div{margin: 0 auto;}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.marketActivities{
+    width: 100%;
+    background-color: #eeeff1;
+}
+.leftLine{
+    display: inline-block;
+    width: 2px;
+    height: 22px;
+    background-color: blue;
+}
+.titleLeft{
+    float: left;
+    clear: both;
+    font-size: 16px;
+    font-weight: bold;
+}
+.left{
+    display: inline-block;
+}
+.more{
+    font-size: 14px;
+    float: right;
+    color: #808080;
+}
+.time{
+    float: right;
+    font-size: 12px;
+    color: #b7b7b7;
+}
+ul li{
+    font-size: 14px;
+    color: #808080;
+    margin-bottom: 23px;
+}
+
+.newText{
+    margin-bottom: 45px;
+    text-align: center;
+    font-size:36px;
+    font-weight: bold;
+    margin: 45px;
+}
+.leftImage{
+   width: 180px;
+   height: 100px;
+   clear:left;
+   float: left;
+   margin-top: 34px;
+    margin-bottom: 38px;
+}
+ul li:hover{
+    color: blue;
+    cursor: pointer;
+}
+ul li p:first-child{
+    clear: both;
+    float: left;
+    margin-bottom:  25px;
+}
+ul li p:last-child{
+    float: right;
+}
+a{
+    text-decoration: none;
+    color: #666;
+}
+a:hover{
+    text-decoration: none;
+    color: #666;
+}
+.market{
+    margin: 45px 0px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+img{
+    border-radius: 5px;
+}
+.infoRight{
+    float: left;
+    width: 355px;
+    margin-top: 34px;
+    margin-left: 20px;
+}
+.info p:first-child{
+    font-size: 16px;
+    color: #808080;
+    letter-spacing: 1px;
+}
+.info p:last-child{
+    font-size: 14px;
+    color: #808080;
+    letter-spacing: 1px;
+}
+
+.infoText p{
+    margin-bottom: 18px;
+}
+.title{
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.lineLeft{
+   width: 100px;
+    height: 3px;
+    background-color: #19448d;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    right: 15px
+}
+.lineRight{
+    width: 100px;
+    height: 3px;
+    background-color: #19448d;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.box{
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+   margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #0f4086;
+    color: #FFFFFF;
+}
+.container{
+    padding: 0px;
+}

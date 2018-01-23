@@ -1,0 +1,206 @@
+/*body,p,a,div,span{
+	font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}*/
+a:hover{
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+
+.content{
+	width: 1170px;
+	margin: 0 auto;
+}
+
+.top{
+	background-color: #13438b;
+	height: 52px;
+	padding: 0px;
+	width: 100%;
+}
+.logo{
+	float: left;
+	line-height: 52px;
+	margin-right: 73px;
+}
+.main_box{
+	line-height: 52px;
+	padding: 0px;
+	margin: 0px;
+}
+.main_box li{
+	float: left;
+	list-style: none;
+	width: 180px;
+	text-align: center;
+}
+.main_box a{
+	font-size: 14px;
+	display: inline-block;
+	height: 52px;
+	width: 100%;
+	text-decoration: none;
+	color: #fff;
+	font-weight: bolder;
+	letter-spacing: 5px;
+	cursor: pointer;
+}
+.phone{
+	float: right;;
+	color:#fff;
+	letter-spacing: 1px;
+	line-height: 52px;
+	font-size: 15px;
+}
+.phone>span{
+	font-size: 14px;
+}
+.active{
+	background: #d3d5e4 !important;
+}
+.active a{
+	color: #13438b!important;
+}
+.tilteFont{
+	width: 100%;
+	/*background: #1E79BC;*/
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	/*color: #fff;*/
+	color: #333;
+	font-weight: 700;
+	font-size: 18px;
+	/*margin-top: 50px;*/
+	margin-top: 10px;
+	letter-spacing: 3px;
+}
+.meritList{
+	width: 900px;
+	margin: 0 auto;
+}
+.meritList li{
+	font-family: "微软雅黑";
+	list-style: none;
+	float: left;
+	text-align: center;
+	width: 300px;
+	color:#333;
+	font-weight: 700;
+	font-size:16px;
+	margin-bottom: 80px;
+
+}
+.meritList li span:nth-child(2){
+	display: block;
+	margin: 80px 0px 0px  0px;
+}
+.meritList li span:nth-child(3){
+	display: block;
+	margin: 30px 0px 0px  0px;
+}
+.meritList li p{
+	font-size: 14px;
+	color: #858585;
+	font-weight: 700;
+	font-family: arial;
+	
+}
+.listBox{
+	/*margin-top: 100px;*/
+	margin-top: 35px;
+	height: 445px;
+}
+.titleText{
+	text-align: center;
+	padding-top: 50px;
+}
+.titleOne{
+	font-size:35px;
+	font-weight: bold;
+	color: #0566C0;
+}
+.titleTwo{
+	font-size: 26px;
+	color:#52A8F9;
+}
+.imgBox{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	/*margin-bottom: 165px;*/
+	margin-bottom: 0px;
+}
+.imgBox img{
+	margin-right: 40px;
+	width: 600px;
+}
+.videoBtn{
+	width: 150px;
+	height: 50px;
+	border-radius: 30px;
+	background-color:#0566C0;
+	text-align: center;
+	line-height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	margin-bottom: 50px;
+	box-shadow: 2px 2px 2px #888888;
+}
+.videoBtn a{
+	color:#FFF;
+}
+.fileBtn{
+	width: 150px;
+	height: 50px;
+	border-radius: 30px;
+	background-color:#FFF;
+	border:1px solid #0566C0 ;
+	text-align: center;
+	line-height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	box-shadow: 2px 2px 2px #AECDEA;
+}
+.fileBtn a{
+	color:#0566C0;
+}
+.rightBox{
+	display: inline-block;
+	margin-top: 50px;
+	position: relative;
+	top:50px;
+}
+
+.infoBox{
+	width: 1170px;
+	margin: 0 auto;
+	margin-top: 35px;
+}
+.active-black{
+	color:#fff!important;
+	/*background-color: #3C4043!important;*/
+	background-color: #13438b!important;
+}
+.footerstyle{
+	font-size: 12px;
+	line-height: 10px;
+	text-align: center;
+	color: #999;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+
+.btn-black:hover,.btn-black:focus,.btn-black:active:focus,.btn-black.active:focus,.btn-black.focus,.btn-black:active.focus,.btn-black.active.focus { 
+	color:#fff;
+}
+
+.tableTip{
+	
+	float: left;
+	left: 72px;
+	top: 10px;
+	z-index: 999;
+}
+

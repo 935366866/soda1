@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>查看任务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8">
+    <link href="public/css/reset.css" rel="stylesheet"/>
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap-table.css" rel="stylesheet">
+    <link href="public/css/bootstrap-select.css" rel="stylesheet">
+    <link href="public/css/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="public/css/long_common.css" rel="stylesheet" media="all">
+
+    <!--弹出层样式-->
+    <link href="css/jquery.fancybox.css" rel="stylesheet"/>
+    <link href="css/deepExcavation.css" rel="stylesheet">
+    <link href="css/soda_common.css" rel="stylesheet">
+    <!--轮播样式-->
+    <link href="css/style-demo.css" rel="stylesheet"/>
+    <link href="public/draw/style/spectrum.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/user.css"/>
+    <style>
+        .variationChoose {
+            margin-top: 8px;
+        }
+
+        .variationChoose li {
+            list-style: none;
+        }
+
+        .parameter .titleNameLeft {
+            float: left;
+            width: 100px;
+        }
+
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .parameter .input_a_r {
+            float: right;
+            width: 10%;
+        }
+    </style>
+</head>
+
+<body>
+<!--前台公共头部-->
+<div class="top">
+    <div class="main_nav1">
+        <div class="container">
+            <a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+            <ul class="main_nav1_left">
+                <li id="main"><a href="main.html">首页</a></li>
+                <li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+                <li id="frontierResearch"><a href="frontierResearch.html">前沿方案</a></li>
+                <li id="marketActive"><a href="marketActive.html">市场活动</a></li>
+            </ul>
+            <div class="form-group searchNews" id="search_news">
+                <span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="search_news_input">
+                </div>
+            </div>
+            <ul class="main_nav1_right">
+                <li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索"/></a></li>
+                <li><a href="#"><img src="public/image/navEmail.svg" alt="通知"/></a></li>
+                <li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户"/></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main_nav2">
+        <div class="container">
+            <ul class="main_nav2_left">
+                <li class="nav2_list1" style="width: 90px;">
+                    <a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">DNA流程方案</a></li>
+                        <li><a href="">RNA流程方案</a></li>
+                        <li><a href="">医学流程方案</a></li>
+                    </ul>
+                </li>
+                <li class="nav2_list2" style="width: 73px;">
+                    <a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">基本绘图</a></li>
+                        <li><a href="">流程绘图</a></li>
+                        <li><a href="">高级绘图</a></li>
+                        <li><a href="">表格处理</a></li>
+                        <li><a href="">计算统计</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="myProject.html">我的项目</a></li>
+                <li class=""><a href="#">我的目录</a></li>
+                <li class=""><a href="recycle.html">回收站</a></li>
+            </ul>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+                </div>
+                <button class="col-sm-2 btn btn_blue" id="search_button">搜索</button>
+            </div>
+        </div>
+    </div>
+    <div class="nav_line"></div>
+    <div class="main_nav3" style="box-shadow:-2px 3px 9px 0px #ccc;">
+        <div class="container">
+            <ul class="main_nav3_left_report">
+                <li><span id="showReport"><a>查看报告</a></span></li>
+                <li><span id="downloadReport"><a>下载报告</a></span></li>
+                <li><span><a id="taskRerun" href="#">重跑一次</a></span></li>
+                <li><span style="background: #13438b;"><a id="deepBtn" style="color: #fff;" href="#">深度挖掘</a></span>
+                </li>
+            </ul>
+            <ul class="main_nav3_right_report">
+                <li class="report_success"><span id="taskStatus" class="btn btn-primary"><a href="#">任务运行中</a></span>
+                </li>
+
+                <!--<li class="report_running"><span><a href="#">任务运行中</a></span></li>
+                <li class="report_end"><span><a href="#">任务已终止</a></span></li>
+            -->
+                <li id="refresh">
+                    <a href="#"><img src="img/refresh.svg" alt="刷新"/></a>
+                </li>
+                <li id="stop">
+                    <a href="#"><img src="img/stop.svg" alt="停止"/></a>
+                </li>
+                <li id="delete">
+                    <a href="#"><img src="img/delete.svg" alt="删除"/></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--/前台公共头部-->
+<div class="center_box" style="float:left;width:100%;margin-top: 145px;">
+    <div class="myTab">
+        <div class="tabs" style="margin-left: 20px;float: none;width: 1185px;margin: 0 auto;">
+            <ul class="nav">
+
+                <li style="width: 160px;"><a href="#EnrichAnnotation" data-toggle="tab">SNP过滤</a></li>
+                <li style="width: 60px;"><span
+                        style="display: inline-block;width: 35px;height: 35px;line-height: 35px; background: url(img/bg_01.png);font-size: 20px;">3</span>
+                </li>
+                <li style="width: 160px;"><a href="#diffGeneFilter" data-toggle="tab">局部manhattan图</a>
+                </li>
+                <li style="width: 60px;"><span
+                        style="display: inline-block;width: 35px;height: 35px;line-height: 35px; background: url(img/bg_01.png);font-size: 20px;">2</span>
+                </li>
+                <li  class="active" style="width: 160px;"><a href="#windowBox" data-toggle="tab">窗口与步长调整</a></li>
+                <li style="width: 60px;"><span
+                        style="display: inline-block;width: 35px;height: 35px;line-height: 35px; background: url(img/bg_01.png);font-size: 20px;">1</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tab-content">
+        <!--SNP过滤-->
+        <div id="EnrichAnnotation" class="tab-pane tabContent" style="padding-top: 0;width: 100%;">
+            <div class="myTab" style="margin-bottom: 20px;background: #fff;">
+                <div style="width: 1200px;margin: 0 auto;height: 100%;">
+                    <div class="tabs"
+                         style="margin-left: 10px;text-align: left;line-height: 88px;font-size: 15px;color: #656565;">
+                        <!--<ul class="nav">-->
+                        <!--<li style="width: 230px;"><a href="#previousGene" data-toggle="tab">使用上一步新差异基因注释</a></li>-->
+                        <!--<li style="width: 230px;" class="active"><a href="#originalGene" data-toggle="tab">使用原始差异基因注释</a></li>-->
+                        <!--</ul>-->
+                        SNP过滤参数设置
+                    </div>
+
+                    <div class="tabs" style="width: 200px;height: 100px;">
+                        <div class="custom-container default tabs" style="position: relative;margin-left: 30px;">
+                            <div id="carousel0" class="carousel" style="width: 172px;height: 100px;margin: 0;top: 8px;">
+                                <ul class="nav" style="top: 20px;">
+                                    <li id="eaDirection1" style="width: 172px;height: 39px;" class="active"><a
+                                            href="#EADirection" data-toggle="tab">使用说明</a></li>
+                                    <li style="width: 172px;height: 39px;"><a href="#EAGOBar"
+                                                                              data-toggle="tab">GO富集柱状图</a></li>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 1185px;">
+                <div class="tab-content input_l">
+                    <div class="tab-pane active" id="originalGene">
+                        <div class="panel  panel-default">
+                            <div class="panel-body" style="height: 439px;">
+                                <form class="parameter" id="originalGeneParameter">
+                                    <!--输出目录-->
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">输出目录:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input type="text" class="form-control" id="ogInput" name="ogInput"
+                                                   placeholder="">
+                                        </div>
+                                        <div class="input_a_r">
+                                            <a onclick="opendir_path('ogInput','oGeneInput')">
+                                                <span class="glyphicon glyphicon-folder-open"
+                                                      style="font-size:20px; top: 5px; cursor:pointer;color:#7f8080;"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="part" style="display: none;">
+                                        <input type="text" id="oGeneInput" name="oGeneInput"/>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">位置:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input id="snpInput" name="snpInput" type="text" class="form-control"
+                                                   placeholder="染色体名：开始-结尾如“Chr1:1000-2000">
+                                        </div>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">SNP质量值</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input id="snpValue" name="snpValue" type="number" class="form-control"
+                                                   placeholder="Qual">
+                                        </div>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">深度值</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input id="depthValue" name="depthValue" type="number" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">比对质量值：</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input id="ContrastValue" name="ContrastValue" type="number"
+                                                   class="form-control" placeholder="Mapping Quality,MQ:">
+                                        </div>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">变异筛选:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <ul class="variationChoose">
+                                                <li><input type="checkbox" name="variation" value="intergenic"/>intergenic
+                                                </li>
+                                                <li><input type="checkbox" name="variation" value="upstream"/>upstream
+                                                </li>
+                                                <li><input type="checkbox" name="variation" value="downstream"/>downstream
+                                                </li>
+                                                <li><input type="checkbox" name="variation"
+                                                           value="upstream;downstream"/>upstream;downstream
+                                                </li>
+                                                <li><input type="checkbox" name="variation" value="intronic"/>intronic
+                                                </li>
+                                                <li><input type="checkbox" name="variation" value="splicing"/>splicing
+                                                </li>
+                                                <li><input type="checkbox" name="variation" value="exonic"/>exonic</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">外显子筛选:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <ul class="variationChooseTwo">
+                                                <li><input type="checkbox" name="variationTwo" value="synonymous_SNV"/>synonymous_SNV
+                                                </li>
+                                                <li><input type="checkbox" name="variationTwo"
+                                                           value="nonsynonymous_SNV"/>nonsynonymous_SNV
+                                                </li>
+                                                <li><input type="checkbox" name="variationTwo" value="stopgain_SNV"/>stopgain_SNV
+                                                </li>
+                                                <li><input type="checkbox" name="variationTwo" value="stoploss_SNV"/>stoploss_SNV
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="line"></div>
+
+
+                                </form>
+                            </div>
+                            <div class="panel-footer" style="height: 51px;">
+                                <button id="eaoSubmit_paras" type="button" class="btn btn-success submit">开始运行</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content input_r">
+                    <!-- 使用说明 -->
+                    <div class="tab-pane in active" id="EADirection">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="first_title">
+                                    <h2><img src="img/report_01.svg" alt="">概述</h2>
+                                </div>
+                                <p class="indent">
+                                    根据SNP注释信息，将指定区域的SNP按照不同类型或阈值进行输出，生成两个文件，分别为所有SNP的筛选结果和外显子区域的筛选结果。(如下)
+                                </p>
+                                <div class="tCenter"  style="margin: 25px 0px">
+                                    <img src="img/bsa3.png" alt="" width="100%" />
+                                </div>
+                                <p>
+                                    1.Category：基因元件 <br/>
+                                    2.Postion relative to gene：变异所在或者最近的相应基因名称<br/>
+                                    3.Chromosome：染色体<br/>
+                                    4.Position：SNP位置<br/>
+                                    5.Ref：参考基因型<br/>
+                                    6.Alt：其他基因型<br/>
+                                    7.parent1_GenoType：参考亲本的基因型<br/>
+                                    8.Qual：SNP质量<br/>
+                                    9.Depth：碱基深度（单子代池时，为该子代池的碱基深度；双子代池时，为子代池的平均碱基深度）<br/>
+                                    10.MQ：比对质量<br/>
+                                    11.Index：单子代池时,为该子代池的SNP-index值；双子代池时，为ΔSNP-index的值<br/>
+                                    12.Gene position：基因位置<br/>
+                                    13.Description：基因功能描述
+                                </p>
+                                <div class="tCenter" style="margin: 25px 0px">
+                                    <img src="img/bsa4.png" alt="" width="100%" />
+                                </div>
+                                <p>
+                                    1.Category：突变类型 <br/>
+                                    2. Info：以冒号分割，依次为基因名；exon区域；碱基的突变；对应氨基酸残基的突变。如 AT1G01150.1(所在基因 ID): PAC:AT1G01150.1:exon2(所在 exon 区域):c.C453A(变异位点的参考序列碱基型->位点->检测的碱基型):p.T151T(变异位点的参考氨基酸型->位点->变异的氨基酸型)<br/>
+                                    3.Chromosome：染色体<br/>
+                                    4.Position：SNP位置<br/>
+                                    5.Ref：参考基因型<br/>
+                                    6.Alt：其他基因型<br/>
+                                    7.parent1_GenoType：参考亲本的基因型<br/>
+                                    8.Qual：SNP质量<br/>
+                                    9.Depth：碱基深度(单子代池时，为该子代池的碱基深度；双子代池时，为子代池的平均碱基深度)<br/>
+                                    10.MQ：比对质量<br/>
+                                    11.index：单子代池时,为该子代池的SNP-index值；双子代池时，为ΔSNP-index的值<br/>
+                                    12.Gene position：基因位置<br/>
+                                    13.Description：基因功能描述
+                                </p>
+                                <div class="first_title">
+                                    <h2><img src="img/report_01.svg" alt="">参数说明： </h2>
+                                </div>
+                                <p>输出路径：指定了表格输出的位置。</p>
+                                <p>位置：设定区域，如A06:1000-20000，A06为染色体，1000-20000指定了范围：1000到20000之间。 </p>
+                                <p>SNP质量值(Qual)：最小SNP变异的Qual值。 </p>
+                                <p>深度值：最小SNP变异深度值。 </p>
+                                <p>Index值：最小的SNP-index值(对于单子代池)或ΔSNP-index值(对于双子代池)。</p>
+                                <p>比对质量(Mapping Quality,MQ)：最小的SNP的比对质量。</p>
+                                <p>变异筛选：(可复选，如下) 指定了输出的变异类型(针对所有SNP)。 </p>
+                                <ul>
+                                    <li>1) intergenic</li>
+                                    <li>2) upstream</li>
+                                    <li>3) downstream</li>
+                                    <li>4) upstream;downstream</li>
+                                    <li>5) intronic</li>
+                                    <li>6) splicing</li>
+                                    <li>7) exonic </li>
+                                </ul>
+                                <p>外显子筛选：(可复选，如下) 指定了外显子内SNP的突变类型(针对外显子区域SNP)。 </p>
+                                <ul>
+                                    <li>1) synonymous SNV</li>
+                                    <li>2) nonsynonymous SNV</li>
+                                    <li>3) stopgain SNV</li>
+                                    <li>4) stoploss SNV</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- GO富集柱状图 -->
+                    <div class="tab-pane" id="EAGOBar">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="jcl-demo" style="width: 500px;height: 460px;">
+                                    <div class="custom-container default">
+                                        <a id="EAGOBarPrev" href="#" class="prev">&lsaquo;</a>
+
+                                        <div id="EAGOBarCarousel" class="carousel" style="width: 455px;height: 460px;">
+                                            <ul>
+                                                <li style="width: 455px;height: 460px;"><a class="fancybox-effects-a"
+                                                                                           href="img/N1_2_classfication_pie.png"
+                                                                                           title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;"
+                                                        src="img/N1_2_classfication_pie.png" alt=""/></a></li>
+                                                <li style="width: 455px;height: 460px;"><a class="fancybox-effects-a"
+                                                                                           href="img/N2_1_gc.png"
+                                                                                           title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;"
+                                                        src="img/N2_1_gc.png" alt=""/></a></li>
+                                                <li style="width: 455px;height: 460px;"><a class="fancybox-effects-a"
+                                                                                           href="img/classfication_bar.png"
+                                                                                           title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;"
+                                                        src="img/classfication_bar.png" alt=""/></a></li>
+                                            </ul>
+                                        </div>
+                                        <a id="EAGOBarNext" href="#" class="next">&rsaquo;</a>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--局部Manhattan图-->
+        <div id="diffGeneFilter" class="tab-pane  tabContent" style="padding-top: 0;width: 100%;">
+            <div class="myTab" style="margin-bottom: 20px;background: #fff;">
+                <div style="width: 1200px;margin: 0 auto;height: 100%;">
+                    <div class="tabs"
+                         style="margin-left: 10px;text-align: left;line-height: 88px;font-size: 15px;color: #656565;">
+                        局部manhattan图参数设置
+                    </div>
+                    <div class="tabs" style="margin-left: 20px;">
+                        <ul class="nav" id="appTabRight">
+                            <li><a href="#dgfShow" data-toggle="tab">manhattan图</a></li>
+                            <li class="active"><a href="#dgfDirection" data-toggle="tab">使用说明</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 1185px;">
+                <div class="tab-content input_l">
+                    <div class="tab-pane in active">
+                        <div class="panel  panel-default">
+                            <div class="panel-body" style="height: 439px;">
+                                <form class="parameter" id="dgfParameter">
+                                    <!--输出目录-->
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">输出目录:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input v-model="dgfInput" type="text" class="form-control" id="dgfInput"
+                                                   name="dgfInput" placeholder="">
+                                        </div>
+                                        <div class="input_a_r">
+                                            <a onclick="opendir_path('dgfInput','dfgInputPath')">
+                                                <span class="glyphicon glyphicon-folder-open"
+                                                      style="font-size:20px; top: 5px; cursor:pointer;color:#7f8080;"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">位置:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input type="text" class="form-control" id="positionInput"
+                                                   name="positionInput" placeholder="染色体名：开始-结尾如“Chrl:1000-2000”">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="panel-footer" style="height: 51px;">
+                                <button id="dgfSubmit_paras" type="button" class="btn btn-success submit">开始运行</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content input_r">
+                    <!-- 使用说明 -->
+                    <div class="tab-pane in active" id="dgfDirection">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="first_title">
+                                    <h2><img src="img/report_01.svg" alt="">概述</h2>
+                                </div>
+                                <p class="indent">
+                                    根据子代池SNP-index信息(一个子代池时)或ΔSNP-index信息,按照指定区域进行作图,(如下)
+                                </p>
+                                <div class="tCenter">
+                                    <img src="img/bsa1.png" alt="" width="100%" />
+                                </div>
+                                <p>图中下图中红色长方形为基因所在位置；上图中的深蓝色散点为SNP-index或ΔSNP-index值，黑线为SNP-index或ΔSNP-index的平均值，蓝色线和紫色线分别为95%和99%阈值。
+                                    参数说明：</p>
+                                <p class="indent">1.输出路径 指定了图片输出的位置</p>
+                                <p class="indent">2.位置 设定区域，如A06:1000-20000，A06为染色体，1000-20000指定了范围：1000到20000之间。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 绘图展示 -->
+                    <div class="tab-pane" id="dgfShow">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="jcl-demo" style="width: 500px;height: 460px;">
+                                    <div class="custom-container default">
+                                        <a href="#" id="dgfPrev" class="prev">&lsaquo;</a>
+
+                                        <div id="dgfCarousel" class="carousel" style="width: 455px;height: 460px;">
+                                            <ul>
+                                                <li style="width: 455px;height: 460px;" id="li1"><a
+                                                        class="fancybox-effects-a" href="" title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;" src=""
+                                                        alt=""/></a></li>
+                                                <li style="width: 455px;height: 460px;" id="li2"><a
+                                                        class="fancybox-effects-a" href="" title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;" src=""
+                                                        alt=""/></a></li>
+                                                <li style="width: 455px;height: 460px;" id="li3"><a
+                                                        class="fancybox-effects-a" href="" title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;" src=""
+                                                        alt=""/></a></li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" id="dgfNext" class="next">&rsaquo;</a>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--窗口与步长调整-->
+        <div id="windowBox" class="tab-pane active tabContent" style="padding-top: 0;width: 100%;">
+            <div class="myTab" style="margin-bottom: 20px;background: #fff;">
+                <div style="width: 1200px;margin: 0 auto;height: 100%;">
+                    <div class="tabs"
+                         style="margin-left: 10px;text-align: left;line-height: 88px;font-size: 15px;color: #656565;">
+                        SNP-index窗口与步长调整
+                    </div>
+                    <div class="tabs" style="margin-left: 20px;">
+                        <ul class="nav" id="appTabRight1">
+                            <li><a href="#windowTable" data-toggle="tab">任务状态</a></li>
+                            <li><a href="#windowShow" data-toggle="tab">manhattan图</a></li>
+                            <li class="active"><a href="#windowExplain" data-toggle="tab">使用说明</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 1185px;">
+                <div class="tab-content input_l">
+                    <div class="tab-pane in active">
+                        <div class="panel  panel-default">
+                            <div class="panel-body" style="height: 439px;">
+                                <form class="parameter" id="windowInfo">
+                                    <!--输出目录-->
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">window:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input v-model="dgfInput" type="text" class="form-control" id="windowInput"
+                                                   name="dgfInput" value="1000000">
+                                        </div>
+                                    </div>
+                                    <div class="part">
+                                        <div class="input_a_l titleNameLeft">step:</div>
+                                        <div class="input_a_m" style="width: 345px;">
+                                            <input type="text" class="form-control" id="stepInput" name="positionInput"
+                                                   value="1000">
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="panel-footer" style="height: 51px;">
+                                <button id="windowSubmit_paras" type="button" class="btn btn-success submit">开始运行
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content input_r">
+                    <!-- 使用说明 -->
+                    <div class="tab-pane in active" id="windowExplain">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="first_title">
+                                    <h2><img src="img/report_01.svg" alt="">概述</h2>
+                                </div>
+                                <p class="indent">
+                                    重新指定SNP-index的窗口大小(window)和步长(step),用于BSA定位结果的调整。
+                                </p>
+                                <p>输出结果:</p>
+                                <p class="indent">1.SNP-index的manhattan图 </p>
+                                <div class="tCenter">
+                                    <img src="img/bsa2.png" alt="" width="100%" />
+                                </div>
+                                <p class="indent">2.BSA结果报告</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 绘图展示 -->
+                    <div class="tab-pane" id="windowShow">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="jcl-demo" style="width: 500px;height: 460px;">
+                                    <div class="custom-container default">
+                                        <a href="#" id="windowPrev" class="prev">&lsaquo;</a>
+                                        <div id="windowCarousel" class="carousel" style="width: 455px;height: 460px;">
+                                            <ul>
+                                                <li style="width: 455px;height: 460px;" id="show1"><a
+                                                        class="fancybox-effects-a" href="" title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;" src=""
+                                                        alt=""/></a></li>
+                                                <li style="width: 455px;height: 460px;" id="show2"><a
+                                                        class="fancybox-effects-a" href="" title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;" src=""
+                                                        alt=""/></a></li>
+                                                <li style="width: 455px;height: 460px;" id="show3"><a
+                                                        class="fancybox-effects-a" href="" title="Lorem"><img
+                                                        style="width: 455px;height:460px;padding-right: 23px;" src=""
+                                                        alt=""/></a></li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" id="windowNext" class="next">&rsaquo;</a>
+
+                                        <div class="clear"></div>
+                                        <div>
+                                        <button>查看报告</button>
+                                        <button>下载报告</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 任务状态 -->
+                    <div class="tab-pane" id="windowTable">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table data-toggle="table" data-show-footer="false" data-sort-name="id"
+                                       id="dgfmodStatusTable">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="flow_mod" data-sortable="true">模块名称</th>
+                                        <th data-field="task_name" data-sortable="true">程序名称</th>
+                                        <th data-field="status" data-sortable="true" data-align="center"
+                                            data-formatter="taskState">状态
+                                        </th>
+                                        <th data-field="submit_time" data-sortable="true" data-align="center">任务提交时间
+                                        </th>
+                                        <th data-field="done_time" data-sortable="true" data-align="center">任务结束时间</th>
+                                        <th data-field="consume_time" data-sortable="true" data-align="center">时长</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 添加选择目录的模态框 -->
+    <div class="modal fade" id="selectUrl" tabindex="-1" aria-labelledby="选择路径" aria-hidden="true">
+
+        <div class="modal-dialog" style="top:50px; width:800px;">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">路径</h4>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputUrl">
+						<span class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-arrow-left" id="back" type="button"
+                                    style="top: 0px;"></button>
+							<button class="btn btn-default glyphicon glyphicon-arrow-right" id="search" type="button"
+                                    style="top: 0px;"></button>
+						</span>
+                    </div>
+                </div>
+                <!-- -----------------------------------------------------------data-single-select="true"------------------------ -->
+                <div class="modal-body" style="text-align:center; ">
+                    <table data-toggle="table" data-url="json/jobUrl.json" data-minimum-count-columns="2"
+                           data-id-field="id" data-show-footer="false"
+                           data-height="300" data-sort-name="id" data-click-to-select="true" id="jobUrlTable"
+                           style="bottom:20px;">
+
+                        <thead>
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="icon" data-formatter="addIcon"></th>
+                            <th data-field="name" data-align="left" data-sortable="true">name</th>
+                            <th data-field="type" data-align="center" data-sortable="true">attribute</th>
+                            <th data-field="inodeNum" data-align="center" data-visible="false" data-sortable="true">
+                                inodeNum
+                            </th>
+                            <th data-field="size" data-align="center" data-sortable="true">size</th>
+                            <th data-field="owner" data-align="center" data-sortable="true">owner</th>
+                            <th data-field="group" data-align="center">group</th>
+                            <th data-field="mtime" data-align="center" data-sortable="true">time</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- ----------------------------------------------------------------------------------- -->
+                <div class="modal-footer">
+                    <button type="button" id="selected" class="btn btn-primary">
+                        选择
+                    </button>
+                    <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="footer_style">
+        <footer class="footerstyle">
+            <p>版权所有 © 2016 京ICP备15033925号</p>
+
+            <p>北京拓美科基因科技有限公司</p>
+        </footer>
+    </div>
+    <script src="public/js/jquery-1.11.2.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <script src="public/js/bootstrap-table.js"></script>
+    <script src="public/js/bootstrap-select.js"></script>
+    <script src="public/js/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
+    <script src="public/js/jquery.blockUI.js" type="text/javascript"></script>
+    <!--轮播图片插件-->
+    <script src="js/jquery.mousewheel-3.1.12.js"></script>
+    <script src="js/jquery.jcarousellite.js"></script>
+    <!--FancyBox弹出窗口插件-->
+    <script src="js/jquery.mousewheel.pack.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+
+    <script src="public/draw/script/spectrum.js"></script>
+    <script src="public/draw/script/jquery.spectrum-zh-cn.js"></script>
+    <script src="public/js/long_common.js"></script>
+    <script src="js/go.js"></script>
+    <!--<script src="js/common.js"></script>-->
+    <script>
+        $(".variationChoose :checkbox").prop("checked", "true");
+        $(".variationChooseTwo :checkbox").prop("checked", "true");
+        //		$("[name=variationTwo]").checked();
+        $(".spectrum").spectrum({});
+        $(document).ready(function () {
+            $(".fancybox-effects-a").fancybox({
+                width: 500,
+                height: 500,
+                helpers: {
+                    title: {
+                        type: 'outside'
+                    },
+                    overlay: {
+                        speedOut: 0
+                    }
+                }
+            });
+
+
+        });
+
+        //------按钮们--------
+        //刷新
+        $("#refresh").click(function () {
+            window.location.reload();
+        });
+        //终止
+        $("#stop").click(function () {
+            var r = confirm("您确定要终止该任务吗？");
+            if (r == true) {
+                var id = $("#taskId").val();
+                $.ajax({
+                    url: stop_url,
+                    type: 'post',
+                    data: {id: id},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data['status'] == 'ERROR') {    //请求成功但没有执行成功
+                            alert(data['data']);
+                        } else {
+                            alert("任务终止成功！");
+                            $(this).find("img").attr("src", "img/start.svg")
+                        }
+                        ;
+                    },
+                    error: function (XMLHttpRequest) {
+                        alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                    }
+                });
+            }
+            ;
+        });
+        //删除
+        $("#delete").click(function () {
+            var r = confirm("您确定要删除该任务吗？");
+            if (r == true) {
+
+                var id = $("#taskId").val();
+                $.ajax({
+                    url: delete_url,
+                    type: 'post',
+                    data: {id: id},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data['status'] == 'ERROR') {    //请求成功但没有执行成功
+                            alert(data['data']);
+                        } else {
+                            alert("删除成功！");
+                        }
+                        ;
+                    },
+                    error: function (XMLHttpRequest) {
+                        alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                    }
+                });
+            }
+            ;
+        });
+        /*-----------------差异倍数页面js代码------------------*/
+        $(function () {
+            var compareData = null;
+            var geneSet;
+            $('a[href="#dgfGeneList"]').on('show.bs.tab', function (e) {
+                $("#compareGroups").empty()
+                updateTable("compareGroups", "dgfGeneList", compareData);
+            })
+
+            /*轮播图片初始化*/
+            $("#dgfCarousel").jCarouselLite({
+                btnNext: ".default #dgfNext",
+                btnPrev: ".default #dgfPrev",
+                visible: 1,
+                speed: 800
+            });
+            $("#windowCarousel").jCarouselLite({
+                btnNext: ".default #windowNext",
+                btnPrev: ".default #windowPrev",
+                visible: 1,
+                speed: 800
+            });
+            function statusUpdate() {
+                $.ajax({
+                    url: 'json/taskDetail.2.json',
+                    type: 'get',
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dgfmodStatusTable').bootstrapTable('load', data["modStatus"]);
+                    },
+                    error: function (XMLHttpRequest) {
+                        alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                    }
+                })
+
+            }
+
+            var setInt;
+            $('a[href="#dgfStatus"]').on('show.bs.tab', function (e) {
+                statusUpdate();
+                //setInt=window.setInterval(statusUpdate,5000)
+            })
+
+            $('a[href="#dgfStatus"]').on('hide.bs.tab', function (e) {
+                window.clearInterval(setInt)
+            })
+            //样本分组初始化设置
+            var sampleValues = sessionStorage.getItem("samples");
+            if (sampleValues) {
+                if (sampleValues.length > 0) {
+                    var samplesArray = sampleValues.split(",");
+                    for (var i = 0; i < samplesArray.length; i++) {
+                        var name = samplesArray[i];
+                        add = '<li class="list-group-item ui-widget-content ui-corner-tr">' + name + '</li>'
+                        $(add).appendTo('#sampleNames')
+
+                    }
+                    ;
+                    dragInit();
+                }
+            }
+
+            var groupsValues = sessionStorage.getItem("groupSamples");
+            var groupsObg = $.parseJSON(groupsValues);
+            if (groupsObg) {
+                for (key in groupsObg) {
+                    var value = groupsObg[key];
+                    var html = '<div name="sampleGroup" class="ui-widget-content ui-state-default sampleGroup" style=border-radius:3px;><span class="ui-widget-header" style=font-size:18px;height:28px;border:none;background:none;display:inline-block;>' + key + '</span><button style=opacity:.2; class="ui-widget-header glyphicon glyphicon-remove pull-right closeBorder" ></button><ul class="sampleNames ui-helper-reset"/></ul></div>';
+                    var divHtml = $(html);
+                    allgroups.push(key);
+                    for (var i = 0; i < value.length; i++) {
+                        var sample = value[i];
+                        var liHtml = $('<li class="list-group-item ui-widget-content ui-corner-tr ui-draggable" style="display: block;border:none;background:none; width: 90px;">'
+                                + sample + '</li>');
+                        liHtml.appendTo(divHtml.find("ul"))
+
+                    }
+                    divHtml.appendTo('#groupList');
+                    dragInit();
+                }
+            }
+
+            var compareValues = sessionStorage.getItem("compareGroups");
+            var compareObg = $.parseJSON(compareValues);
+            if (compareObg) {
+                for (key in compareObg) {
+                    var value = compareObg[key];
+                    var html = '<div name="goupCompare" class="ui-widget-content ui-state-default goupCompare" style=border-radius:3px;><span class="ui-widget-header" style=font-size:18px;height:28px;border:none;background:none;display:inline-block;>' + key + '</span><button style=opacity:.2; class="ui-widget-header glyphicon glyphicon-remove pull-right closeBorder" ></button><ul class="goupCompare ui-helper-reset"/></ul></div>';
+                    var divHtml = $(html);
+                    allCompares.push(key);
+                    for (var i = 0; i < value.length; i++) {
+                        var sample = value[i];
+                        var liHtml = $('<li class="list-group-item ui-widget-content ui-corner-tr ui-draggable" style="display: block;border:none;background:none; width: 90px;">'
+                                + sample + '</li>');
+                        liHtml.appendTo(divHtml.find("ul"))
+
+                    }
+                    divHtml.appendTo('#compareList');
+                    dragInit();
+                }
+            }
+
+
+            var vennValues = sessionStorage.getItem("vennCompares");
+            var vennObg = $.parseJSON(vennValues);
+            if (vennObg) {
+                for (key in vennObg) {
+                    var value = vennObg[key];
+                    var html = '<div name="venn" class="ui-widget-content ui-state-default venn" style=margin-left:10px;border-radius:3px;><span class="ui-widget-header" style=font-size:18px;height:28px;border:none;background:none;display:inline-block;>' + key + '</span><button style=opacity:.2; class="ui-widget-header glyphicon glyphicon-remove pull-right closeBorder" ></button><ul class="goupCompare ui-helper-reset"/></ul></div>';
+                    var divHtml = $(html);
+                    allVenns.push(key);
+                    for (var i = 0; i < value.length; i++) {
+                        var sample = value[i];
+                        var liHtml = $('<li class="list-group-item ui-widget-content ui-corner-tr ui-draggable" style="display: block;border:none;background:none; width: 90px;">'
+                                + sample + '</li>');
+                        liHtml.appendTo(divHtml.find("ul"))
+
+                    }
+                    divHtml.appendTo('#vennList');
+                    dragInit();
+                }
+            }
+
+            $("#groupName").keydown(function (k) {
+                if (k.keyCode == 13) {
+                    addGroup();
+                }
+            });
+            $("#addGroup").click(function () {
+                addGroup();
+            });
+            $("#compareName").keydown(function (k) {
+                if (k.keyCode == 13) {
+                    addCompare();
+                }
+            });
+            $("#addCompare").click(function () {
+                addCompare();
+            });
+            $("#addVenn").click(function () {
+                addVenn();
+            });
+            var dirPathValue = window.sessionStorage.getItem("dir_path");
+            if (dirPathValue) {
+                if (dirPathValue.length > 0) {
+                    $("#dfgInputPath").val(dirPathValue);
+                    window.sessionStorage.setItem("dfgInputPath", $("#dfgInputPath").val());
+                }
+            }
+            var dirId = window.sessionStorage.getItem("id");
+            //提交参数
+            $("#dgfSubmit_paras").click(function () {
+                var formData = allParams($("#dgfParameter"));//取form表单参数
+                var positionInput = $("#positionInput").val();
+                if (formData.dgfInput == "") {
+                    alert("请选择输出目录！");
+                } else {
+                    if (positionInput == "" || positionInput == null) {
+                        alert("输入框不能为空")
+                    }
+                    var groupCompareVenn = {};	//发向服务器的json数据
+                    //检查数据
+                    //全部的参数
+                    var samplesStr = ""
+                    for (var j = 0; j < samples.length; j++) {
+                        if (samplesStr == "") {
+                            samplesStr += samples[j].innerText;
+                        }
+                        else {
+                            samplesStr += "," + samples[j].innerText;
+                        }
+                    }
+                    ;
+
+                    var resultPara = {
+                        "id": dirId,
+                        "paras": formData,
+                        "samples": samplesStr,
+                        "groupCompareVenn": groupCompareVenn
+                    };
+
+                    resultPara = JSON.stringify(resultPara);
+                    $.ajax({
+                        url: 'json/taskDetail.2.json',
+                        type: 'get',
+                        data: {parameter: resultPara},
+                        dataType: "json",
+                        success: function (data) {
+                            var showData = data["show"];
+                            compareData = data["arr"];
+                            $("#dgfCarousel").empty();
+                            $("#dgfCarousel").append("<ul></ul>");
+                            for (var i = 0; i < showData.length; i++) {
+                                $("#dgfCarousel").find("ul").append("<li style='width: 455px;height: 460px;' ><a class='fancybox-effects-a' href='" + showData[i] + "' title='Lorem'><img style='width: 455px;height:460px;padding-right: 23px;' src='" + showData[i] + "' alt='' /></a></li>")
+                            }
+                            $("#dgfCarousel").jCarouselLite({
+                                btnNext: ".default #dgfNext",
+                                btnPrev: ".default #dgfPrev",
+                                visible: 1,
+                                speed: 800
+                            });
+                            for (var i = 0; i < compareData.length; i++) {
+                                var option = "<option value=" + compareData[i]["compareName"] + ">" + compareData[i]["compareName"] + "</option>"
+                                $("#compareGroups").append(option);
+                            }
+                            $('#compareGroups').selectpicker('refresh');
+                            $('#compareGroups').on('changed.bs.select', function (e) {
+                                updateTable("compareGroups", "dgfGeneList", compareData);
+                            });
+                            window.sessionStorage.setItem("pGeneInput", $("#dgfInput").val());
+
+                        },
+                        error: function (XMLHttpRequest) {
+                            alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                        }
+                    });
+                }
+            });
+        });
+
+        /*-----------------差异基因富集注释js代码------------------*/
+        $(function () {
+            //右侧选项卡滚动初始化
+            $("#carousel0").jCarouselLite({
+                btnNext: ".default .next1",
+                btnPrev: ".default .prev1",
+                visible: 3,
+                speed: 800
+            });
+            //GO富集柱状图滚动图片初始化
+            $("#EAGOBarCarousel").jCarouselLite({
+                btnNext: ".default #EAGOBarNext",
+                btnPrev: ".default #EAGOBarPrev",
+                visible: 1,
+                speed: 800
+            });
+            //GO富集DAG图滚动图片初始化
+            $("#EAGODagCarousel").jCarouselLite({
+                btnNext: ".default #EAGODagNext",
+                btnPrev: ".default #EAGODagPrev",
+                visible: 1,
+                speed: 800
+            });
+            //KEGG散点图滚动图片初始化
+            $("#EAKEGGScatterCarousel").jCarouselLite({
+                btnNext: ".default #EAKEGGScatterNext",
+                btnPrev: ".default #EAKEGGScatterPrev",
+                visible: 1,
+                speed: 800
+            });
+
+
+            var opts = ""
+
+
+            //添加dropdown的代码
+            $("#ogKeggAbb").append(opts);
+            $("#pgKeggAbb").append(opts);
+            function statusUpdate() {
+                $.ajax({
+                    url: 'json/taskDetail.2.json',
+                    type: 'get',
+                    dataType: "json",
+                    success: function (data) {
+                        $('#EAStatus table').bootstrapTable('load', data["modStatus"]);
+                    },
+                    error: function (XMLHttpRequest) {
+                        alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                    }
+                })
+
+            }
+
+            /*打开任务状态不断更新数据*/
+            var eaSet;
+            $('a[href="#EAStatus"]').on('show.bs.tab', function (e) {
+                statusUpdate();
+//		eaSet=window.setInterval(statusUpdate,5000)
+            })
+            /*关闭任务状态不更新数据*/
+            $('a[href="#EAStatus"]').on('hide.bs.tab', function (e) {
+                window.clearInterval(eaSet)
+            })
+
+            /*使用原始基因*/
+            var compareData1 = null;
+            var compareData2 = null;
+            $('a[href="#EAKEGGList"]').on('show.bs.tab', function (e) {
+                updateTable("EAKEGGListCompareGroups", "EAKEGGList", compareData1);
+            })
+            $('a[href="#EAGOList"]').on('show.bs.tab', function (e) {
+                updateTable("EAGOListCompareGroups", "EAGOList", compareData2);
+            })
+            var dirPathValue = sessionStorage.getItem("dir_path");
+            if (dirPathValue) {
+                if (dirPathValue.length > 0) {
+                    $("#oGeneInput").val(dirPathValue)
+                }
+            }
+            //提交参数
+            var bool=true;
+            $("#eaoSubmit_paras").click(function () {
+
+                var formData = allParams($("#originalGeneParameter"));//取form表单参数
+                var checkBoxs =[];
+                var variationCheck=$("[name=variation]");
+                for(var i in variationCheck){
+                    if(variationCheck[i].checked){
+                        checkBoxs.push(variationCheck[i].value)
+                    }
+                }
+                var checkBoxsTwo = [];
+                var variationCheckTwo=$("[name=variationTwo]");
+                for(var i in variationCheckTwo){
+                    if(variationCheckTwo[i].checked){
+                        checkBoxsTwo.push(variationCheckTwo[i].value)
+                    }
+                }
+                var snpInput = $("#snpInput").val();
+                var snpValue = $("#snpValue").val();
+                var depthValue = $("#depthValue").val();
+                var ContrastValue = $("#ContrastValue").val();
+                if (formData.ogInput == "") {
+                    alert("请选择输出目录！");
+                        bool=false;
+                } else {
+                    if (snpInput == "" || snpInput == null || snpValue == "" || snpValue == 0 || depthValue == "" || depthValue == 0 || ContrastValue == "" || ContrastValue == 0) {
+                        alert("输入框不能为空,数值不能为0");
+                        bool=false;
+                    }
+                    if (checkBoxs.length == 0) {
+                        alert("变异筛选至少有一个数据选中");
+                        bool=false;
+                    }
+                    if (checkBoxsTwo.length == 0) {
+                        alert("外显子筛选至少有一个数据选中");
+                        bool=false;
+                    }
+                    formData['checkBox']=checkBoxs;
+                    formData['checkBoxTwo']=checkBoxsTwo;
+                    var resultPara = {"paras": formData};
+                    resultPara = JSON.stringify(resultPara);
+                    if(bool==true){
+                        $.ajax({
+                            url: 'json/deepExcavation1.json',
+                            type: 'get',
+                            data: {parameter: resultPara},
+                            dataType: "json",
+                            success: function (data) {
+
+                                //go富集柱状图
+                                var GoBar = data["GoBar"];
+                                $("#EAGOBarCarousel").empty();
+                                $("#EAGOBarCarousel").append("<ul></ul>");
+                                for (var i = 0; i < GoBar.length; i++) {
+                                    $("#EAGOBarCarousel").find("ul").append("<li style='width: 455px;height: 460px;' ><a class='fancybox-effects-a' href='" + GoBar[i] + "' title='Lorem'><img style='width: 455px;height:460px;padding-right: 23px;' src='" + GoBar[i] + "' alt='' /></a></li>")
+                                }
+                                $("#EAGOBarCarousel").jCarouselLite({
+                                    btnNext: ".default #EAGOBarNext",
+                                    btnPrev: ".default #EAGOBarPrev",
+                                    visible: 1,
+                                    speed: 800
+                                });
+
+                                compareData1 = data["KEGGList"];
+                                $("#EAKEGGListCompareGroups").empty();
+                                for (var i = 0; i < compareData1.length; i++) {
+                                    var option = "<option value=" + compareData1[i]["compareName"] + ">" + compareData1[i]["compareName"] + "</option>"
+                                    $("#EAKEGGListCompareGroups").append(option);
+                                }
+                                $('#EAKEGGListCompareGroups').selectpicker('refresh');
+                                $('#EAKEGGListCompareGroups').on('changed.bs.select', function (e) {
+                                    updateTable("EAKEGGListCompareGroups", "EAKEGGList", compareData1);
+                                });
+
+                                compareData2 = data["GoList"];
+                                $("#EAGOListCompareGroups").empty();
+                                for (var i = 0; i < compareData2.length; i++) {
+                                    var option = "<option value=" + compareData2[i]["compareName"] + ">" + compareData2[i]["compareName"] + "</option>"
+                                    $("#EAGOListCompareGroups").append(option);
+                                }
+                                $('#EAGOListCompareGroups').selectpicker('refresh');
+                                $('#EAGOListCompareGroups').on('changed.bs.select', function (e) {
+                                    updateTable("EAGOListCompareGroups", "EAGOList", compareData2);
+                                });
+                            },
+                            error: function (XMLHttpRequest) {
+                                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                            }
+                        });
+                    }
+                }
+            });
+
+            /*使用上一步基因*/
+            //提交参数
+            $("#windowSubmit_paras").click(function () {
+                var pgInputValue = sessionStorage.getItem("pGeneInput");
+                $("#pGeneInput").val(pgInputValue)
+                window.sessionStorage.setItem("pgInput", $("#pgInput").val());
+                var formData = allParams($("#windowInfo"));//取form表单参数
+                if (formData.pgInput == "") {
+                    alert("请选择输出目录！");
+                } else {
+                    if ($("#pgpValue").val() < 0 || $("#ogpValue").val() > 1) {
+                        alert("p值大小必须大于等于0小于等于1！")
+                    }
+                    if ($("#pgEValue").val() < 0) {
+                        alert("差异倍数必须大于等于0！")
+                    }
+
+                    var resultPara = {"paras": formData};
+                    resultPara = JSON.stringify(resultPara);
+                    console.log(resultPara)
+                    $.ajax({
+                        url: 'json/deepExcavation2.json',
+                        type: 'get',
+                        data: {parameter: resultPara},
+                        dataType: "json",
+                        success: function (data) {
+
+                            //go富集柱状图
+                            var GoBar = data["GoBar"];
+                            $("#EAGOBarCarousel").empty();
+                            $("#EAGOBarCarousel").append("<ul></ul>");
+                            for (var i = 0; i < GoBar.length; i++) {
+                                $("#EAGOBarCarousel").find("ul").append("<li style='width: 455px;height: 460px;' ><a class='fancybox-effects-a' href='" + GoBar[i] + "' title='Lorem'><img style='width: 455px;height:460px;padding-right: 23px;' src='" + GoBar[i] + "' alt='' /></a></li>")
+                            }
+                            $("#EAGOBarCarousel").jCarouselLite({
+                                btnNext: ".default #EAGOBarNext",
+                                btnPrev: ".default #EAGOBarPrev",
+                                visible: 1,
+                                speed: 800
+                            });
+                            compareData1 = data["KEGGList"];
+                            $("#EAKEGGListCompareGroups").empty();
+                            for (var i = 0; i < compareData1.length; i++) {
+                                var option = "<option value=" + compareData1[i]["compareName"] + ">" + compareData1[i]["compareName"] + "</option>"
+                                $("#EAKEGGListCompareGroups").append(option);
+                            }
+                            $('#EAKEGGListCompareGroups').selectpicker('refresh');
+                            $('#EAKEGGListCompareGroups').on('changed.bs.select', function (e) {
+                                updateTable("EAKEGGListCompareGroups", "EAKEGGList", compareData1);
+                            });
+
+                            compareData2 = data["GoList"];
+                            $("#EAGOListCompareGroups").empty();
+                            for (var i = 0; i < compareData2.length; i++) {
+                                var option = "<option value=" + compareData2[i]["compareName"] + ">" + compareData2[i]["compareName"] + "</option>"
+                                $("#EAGOListCompareGroups").append(option);
+                            }
+                            $('#EAGOListCompareGroups').selectpicker('refresh');
+                            $('#EAGOListCompareGroups').on('changed.bs.select', function (e) {
+                                updateTable("EAGOListCompareGroups", "EAGOList", compareData2);
+                            });
+                        },
+                        error: function (XMLHttpRequest) {
+                            alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                        }
+                    });
+                }
+            });
+
+
+        })
+        /*-------------公共函数-------------------*/
+        function updateCheckTable(selectId, tableId, compareData) {
+            if (!compareData) return;
+            var p = $("#" + selectId).selectpicker("val");
+            for (var j = 0; j < compareData.length; j++) {
+                if (p == compareData[j]["compareName"]) {
+                    var content = compareData[j]['content'];
+                    var head = content[0];
+                    var options = {
+                        clickToSelect: true,
+                        showFooter: false,
+                        classes: 'table',
+                        columns: [{field: "state", checkbox: true, checkboxEnabled: true}]
+                    }
+                    for (var m = 0; m < head.length; m++) {
+                        var obj = {order: "asc"};
+                        obj["title"] = head[m];
+                        obj["field"] = head[m];
+                        options.columns.push(obj);
+                    }
+                    //	$("#"+tabPanelId+" table").bootstrapTable(options);
+                    var tableData = [];
+                    for (var i = 1; i < content.length; i++) {
+                        var row = content[i];
+                        var rowObj = {};
+                        for (var k = 0; k < row.length; k++) {
+                            rowObj[head[k]] = row[k];
+                        }
+                        tableData.push(rowObj);
+                    }
+                    $("#" + tableId).bootstrapTable('destroy');
+
+                    $("#" + tableId).bootstrapTable(options);
+                    console.log(options)
+                    //alert();
+                    $("#" + tableId).bootstrapTable('load', tableData);
+                    console.log(tableData)
+                }
+            }
+        }
+
+
+        //参数组装
+        function allParams(dom) {
+            var app = dom.serializeArray();
+            var json1 = {};
+            for (var i = 0; i < app.length; i++) {
+                var name = app[i].name;
+                var value = app[i].value;
+                json1[name] = value;
+            }
+            return json1;
+        }
+        ;
+
+        //-----------------------------------点击打开目录--------------------------------------------
+        var samplesDataUrl = "json/jobUrl.json"; //像后台发送目录的地址
+        //打开任务目录
+        function opendir_path(id, outInputId) {
+            var inputValue = $("#" + id).val();  //当前input的值
+            $("#inputUrl").val(inputValue);
+            $('#selectUrl').modal('show');
+            $("#selected").attr("onClick", "geturl('#" + id + "','dir','#" + outInputId + "')")
+        }
+        ;
+
+
+        //选择目录时添加文件或者目录的图标
+        function addIcon(State, row) {
+            var typeChr = row.type.charAt(0);
+
+            if (typeChr == 'd') {
+                return '<span class="glyphicon glyphicon-folder-open"></span>';
+            }
+            else {
+                return '<span class="glyphicon glyphicon-file"></span> ';
+            }
+        }
+        ;
+
+        //当模态框加载完成后给input中添加当前用户的根目录
+        $(function () {
+            dblCilck('jobUrlTable', 'inputUrl', samplesDataUrl);
+            $('#selectUrl').on('shown.bs.modal', function () {    //模态框完全显示之后把根目录放入
+//	      	$("#inputUrl").val("/home/agloom");
+                if ($("#inputUrl").val() == '') {
+                    $("#inputUrl").val('/');
+                }
+                checkUrl($("#inputUrl").val(), samplesDataUrl, 'inputUrl', 'jobUrlTable');
+            });
+        });
+
+
+        //回车查目录是否存在
+        $(function () {
+            $('#inputUrl').bind('keypress', function (event) {
+                if (event.keyCode == "13") {
+                    newUrl = $("#inputUrl").val();
+                    checkUrl(newUrl, samplesDataUrl, "inputUrl", "jobUrlTable"); //参数依次为需要检查的URL， 后台的地址， 需要更新的输入框id， 需要刷新的bootstrap table
+                }
+            });
+//点击右边箭头，检查	
+            $("#search").click(function () {
+                newUrl = $("#inputUrl").val();
+                checkUrl(newUrl, samplesDataUrl, "inputUrl", "jobUrlTable");
+            });
+//后退按钮
+            $("#back").click(function () {
+                Url = $("#inputUrl").val();
+
+                lastLen = Url.split('/').pop().length
+                newUrl = Url.substring(0, Url.length - lastLen - 1);
+                checkUrl(newUrl, samplesDataUrl, "inputUrl", "jobUrlTable");
+            });
+
+        });
+
+        //点击选择关闭模态框，将当前模态框input中的路径取出放入表单中,type 的类型 暂时有两种，dir和 file
+        function geturl(formInputId, type, outInputId) {
+            var selected_num = checkedNum("jobUrlTable");
+            if (type == "dir") {
+                //只能选择文件夹，单选
+                var newUrl = ""
+
+                if (selected_num == 1) {
+                    //此时选中了一项，判断是否是目录
+
+                    var singleName = ""   //选择一个文件夹或者文件的名字，单选
+                    $.map($('#jobUrlTable').bootstrapTable('getSelections'), function (row) {
+                        var d_f_type = "";
+                        d_f_type = row.type.charAt(0);
+                        if (d_f_type == "d") {
+                            singleName = row.name;
+                            newUrl = $("#inputUrl").val() + "/" + singleName;    //点击选择时取input中当前的路径，在加上此时选择的
+                            if ($(outInputId).val() == newUrl) {
+                                alert("不能和输入目录相同！");
+                                return;
+                            }
+                            newUrl = newUrl.replace('//', '/');
+                            $("#selected").removeAttr("onClick");   //选择按钮
+                            $("#selectUrl").modal('hide');          //隐藏目录选择的模态框
+                            $(formInputId).val(newUrl);
+                            if (formInputId == "#data_dir") {
+                                var sequencingType = $("#seq_type").val();
+                                $.ajax({
+                                    url: samplesDataUrl,
+                                    type: 'get',
+                                    data: {url: newUrl},
+                                    dataType: "json",
+                                    success: function (data, textStatus) {
+                                        if (data['status'] == 'ERROR') {    //请求成功但没有执行成功
+                                            alert(data['data']);
+                                        } else {
+                                            var data1 = data['data'];
+
+                                            objData = dataTableGet(data1, sequencingType);   //向后台传输数据，返回值组成Json
+
+                                            $('#sampleTable').bootstrapTable('load', objData);  //填入table中
+                                        }
+                                    },
+                                    error: function (XMLHttpRequest) {
+                                        alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                                    }
+                                });
+
+                            }
+                            ;
+                        } else {
+                            alert("对不起，您选择的必须是目录文件！");
+
+                        }
+                        ;
+
+                    });
+
+
+                } else if (selected_num == 0) {
+                    //没有选中任何项，将此时的url传到前面
+
+                    newUrl = $("#inputUrl").val();    //点击选择时取input中当前的路径，在加上此时选择的
+                    newUrl = newUrl.replace('//', '/');
+                    $("#selected").removeAttr("onClick");
+                    $("#selectUrl").modal('hide');
+                    $(formInputId).val(newUrl);
+
+                    var sequencingType = $("#seq_type").val();
+                    $.ajax({
+                        url: samplesDataUrl,
+                        type: 'get',
+                        data: {url: newUrl},
+                        dataType: "json",
+                        success: function (data, textStatus) {
+                            if (data['status'] == 'ERROR') {    //请求成功但没有执行成功
+                                alert(data['data']);
+                            } else {
+                                var data1 = data['data'];
+                                objData = dataTableGet(data1, sequencingType);   //向后台传输数据，返回值组成Json
+                                console.log(objData)
+                                $('#sampleTable').bootstrapTable('load', objData);  //填入table中
+                            }
+                        },
+                        error: function (XMLHttpRequest) {
+                            alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
+                        }
+                    });
+                }
+                else {
+                    //选择了多项，直接报错
+                    alert("对不起，只能选择一个目录文件！");
+                }
+                ;
+
+            }
+            else if (type == "file") {
+                //只能选择文件，多选
+                var newUrl = ""
+                var files = [];
+                var have_dir = 0
+                $.map($('#jobUrlTable').bootstrapTable('getSelections'), function (row) {
+                    var d_f_type = "";
+                    d_f_type = row.type.charAt(0);
+                    if (d_f_type == "d") {
+                        have_dir = 1;
+                    } else {
+                        files.push(row.name);
+                    }
+
+                });
+                if (have_dir == 1) {
+                    alert("对不起，不能选择文件夹，只能选择文件！");
+                } else {
+                    if (files.length == 0) {
+                        alert("请选择文件！")
+                    } else {
+                        //获得当前的目录，取消绑定，关闭模态框，在外面填写
+                        newUrl = $("#inputUrl").val();
+                        newUrl = newUrl.replace('//', '/');
+                        $("#selected").removeAttr("onClick");
+                        $("#selectUrl").modal('hide');
+                        $(formInputId).val(newUrl);
+                        //清空样本
+                        $(formInputId).nextAll().remove();
+                        for (var i = 0; i < files.length; i++) {
+                            $(formInputId).after('<span class="label label-default span_sample">' + files[i] + '<a href="javascript:void(0);" onclick="remover_this_sample(this)" class="glyphicon glyphicon-remove"></a></span>');
+                        }
+                        ;
+                    }
+                    ;
+                }
+                ;
+
+            }
+            else {
+                return false;
+            }
+
+        }
+        ;
+
+    </script>
+
+</div>
+</body>
+
+</html>

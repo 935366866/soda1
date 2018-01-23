@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>soda首页</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="public/css/reset.css" rel="stylesheet" type="text/css"  media="all" />
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/long_common.css" rel="stylesheet"  media="all">
+	<link href="css/indexStyle1.css" rel="stylesheet" type="text/css"  media="all" />
+	<style type="text/css">
+		.line{
+			width: 100%;
+			border-top: 1px dashed #13438b;
+		}
+	</style>
+</head>
+
+<body style="background-color:#f8f8f8;min-width: 1300px;overflow: hidden;font-family: '微软雅黑'">
+		<!--前台公共头部-->
+	<div class="top">
+	<div class="main_nav1">
+		<div class="container">
+                          <span id="navLogo">
+			<a href="#" class="logo"><img src="/Public/image/navLogo.svg"/></a>
+                          </span>
+			<ul class="main_nav1_left">
+				<li id='main' ><a href="/Home/News/showMainPage">首页</a></li>
+                                <li id='sodaIndex' ><a href="/Home/Mainnobase/">数据分析</a></li>
+                           <!--     <li id="frontierResearch" ><a href="/Home/News/listNewsbytype?sndType=新品快讯" >新品快讯</a></li>
+                                <li id="marketActive" ><a href="/Home/News/listNewsbytype?sndType=市场活动">市场活动</a></li>-->
+			</ul>
+				<div class="form-group searchNews" id="search_news">
+					<span class="col-sm-2 control-label"><img src="/Public/image/navSearch.svg"/></span>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="search_news_input">
+					</div>
+				</div>
+			<ul class="main_nav1_right" style="margin-top:1px">
+            <!--	<li id="searchIcon"><a href="#"><img src="/Public/image/navSearch.svg" alt="搜索" /></a></li> -->
+				<li style="line-height: 50px;"><span class="btn btn-blue-log login-btn" id="login_button">登录</span></li>
+							</ul>
+		</div>
+	</div>
+
+	<div class="main_nav2">
+		<div class="container">
+			<ul class="main_nav2_left">
+					<li>
+						<a id = "flow" href="/Home/Mainnobase/index?sndType_f=flow">分析流程<img src="/Public/image/navDown.svg" alt=""></a>					
+					</li>
+					<li>
+						<a onclick="black()" id="小工具"href="/Home/Mainnobase/index?sndType_f=app">小工具<img src="/Public/image/navDown.svg" alt=""></a>	
+					</li>
+
+                                <li><a id = "resource"  href="/Home/Task/resourceTask">资源监控</a></li>
+                                <li><a id = "mydir" >我的目录<img src="/Public/image/navDown.svg" alt=""></a> </li>
+			     	<li><a id = 'myproject' href="/Home/Project">我的项目</a></li>
+                         
+				<!--<li><a target='__blank' id = "mydir"    href="sftp://:@10.128.5.234/project/home/">我的目录</a></li>
+				-->
+                               
+				<li><a id = "recycle"   href="/Home/Task/showDelTask" >回收站</a></li>
+			</ul>
+
+				<div class="barBox">
+						<ul class="liucheng">
+							<li class="blue">
+								<h4><a id = ""href="/Home/Mainnobase/index?sndType=DNA">DNA分析流程</a></h4>
+								<div class="line"></div>
+								<ul class="liuchengLeft">
+									<li><a href="/Home/Mainnobase/building">BSA—混池性状定位</a></li>
+									<li><a href="/Home/Mainnobase/building">变异检测</a></li>
+                                                    <!--  <li><a href="/Home/Task/getVariation">变异检测</a></li>	-->
+								</ul>
+								<ul class="liuchengLeft">
+									<li><a href="/Home/Mainnobase/building">扩增子</a></li>
+									<li><a href="/Home/Mainnobase/building">全基因组关联GWAS</a></li>
+								</ul>
+								<ul class="liuchengRight">
+									<li><a href="/Home/Mainnobase/building">扩增子</a></li>
+									<li><a href="/Home/Mainnobase/building">全基因组关联GWAS</a></li>
+								</ul>
+							</li>
+							<li class="skyblue">
+								<h4><a id = "" href="/Home/Mainnobase/index?sndType=RNA">RNA分析流程</a></h4>
+								<ul class="liuchengLeft">
+									<li><a href="/Home/Task/getTask">有参mRNA-seq/DGE</a></li>
+                                    <li><a href="/Home/Mainnobase/building">LncRNA-seq</a></li>
+                                    <li><a href="/Home/Mainnobase/building">sRNA-seq</a></li>
+                                                      
+								</ul>
+								<ul class="liuchengRight">
+									<li><a href="/Home/Mainnobase/building">无参mRNA-seq</a></li>
+									<li><a href="/Home/Mainnobase/building">CircRNA-seq</a></li>
+									<li><a href="/Home/Mainnobase/building">ChIP-seq</a></li>
+								</ul>
+							</li>
+							<!--<li class="org">
+								<h4><a  id = ""href="/Home/Mainnobase/index?sndType=medical">医学分析流程</a></h4>
+								<ul class="liuchengLeft">
+									<li><a href="/Home/Mainnobase/building">人全基因组重测序</a></li>
+								</ul>
+								<ul class="liuchengRight">
+									<li><a href="/Home/Mainnobase/building">人外显子组测序</a></li>
+								</ul>
+							</li>-->
+						</ul>
+
+						<ul class="gongju">
+							<li>
+								<h4><a  href="/Home/Mainnobase/index?sndType=基本绘图">基本绘图</a></h4>
+								<ul class="gongjuLeft">
+									<li><a href="/Home/Mainnobase/listMainn/path/pieDraw">饼图</a></li>
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/heatmapDraw">热图</a></li>									
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/chinaPieMapDraw">中国-饼图</a></li>                                                            
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/worldPieMapDraw">世界-饼图</a></li>                               
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/chinaHeatMapDraw">中国-热图-省</a></li>                                              
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/worldHeatMapDraw">世界-热图-国</a></li>                      
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/chinaHeatScatterMapDraw">中国-热图-点图</a></li>                               
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/worldHeatScatterMapDraw">世界-热图-点图</a></li>	
+								</ul>
+								<ul class="gongjuRight">
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/lineDraw">折线图</a></li>
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/boxplotDraw">箱线图</a></li>
+									<li><a href="/Home/Mainnobase/listMainn/path/barDraw">柱状图</a></li>
+									<li><a href="/Home/Mainnobase/listMainn/path/scatterDraw">散点图</a></li>
+									<li><a href="/Home/Mainnobase/listMainn/path/jvennDraw">维恩图</a></li>
+									<li><a href="/Home/Mainnobase/listMainn/path/bubbleDraw">气泡图</a></li>
+									<li><a href="/Home/Mainnobase/listMainn/path/frequencyHistogramDraw">直方图</a></li>
+                                                      <li><a href="/Home/Mainnobase/listMainn/path/radarDraw">雷达图</a></li>
+								</ul>
+							</li>
+							<li>
+								<h4><a href="/Home/Mainnobase/index?sndType=表格工具">表格处理</a></h4>
+								<ul class="gongjuLeft">
+                                                            <li><a href="/Home/Mainnobase/listMainn/path/table">表格合并</a></li>
+								</ul>
+								<ul class="gongjuRight">
+								</ul>
+							</li>
+							<li>
+								<h4 ><a href="/Home/Mainnobase/index?sndType=计算统计" >计算统计</a></h4>
+								<ul class="gongjuLeft">
+                                                           <li><a href="/Home/Mainnobase/listMainn/path/countDiffGene">差异基因筛选</a></li>
+								</ul>
+								<ul class="gongjuRight">
+                                                             <li><a href="/Home/Mainnobase/listMainn/path/countKegg">KEGG富集分析</a></li>
+								</ul>
+							</li>
+						</ul>
+						 <ul class="mulu" style = "padding-left:0px;">
+                                        <li><a href="/Home/Dir/#elf_l1_Lw">查看文件</a></li>
+                                        <li class="hoverA"><a  target='__blank' id = "mydir" href="sftp://:@10.128.5.234/project/home/">数据传输</a>
+                                      <li><a href="/Public/instructions/Firefox.zip">火狐下载</a></li>        
+                        </ul>
+						
+                               <div class="tishi" style="display:none;background-color:#FFFFFF;position:absolute;top:95px;border:1px solid #666;border-radius:5px;left:500px;width:500px;z-index:99;font-size:16px;">安装火狐>浏览器及其插件fireftp,方可成功打开【数据传输】页面</div>
+
+				</div>
+				<div id="searchFlowapp" style="display:none" class="form-group">
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+					</div>
+					<button    class="col-sm-2 btn btn_blue" id="search_button">搜索</button>				
+				</div>
+			</div>
+		</div>
+	
+</div>
+	</div>
+</div>
+
+	<!--/前台公共头部-->
+	
+	
+	<!--页脚-->
+	<div id="footer_style">
+		<footer class="footerstyle">
+			<p>版权所有 © 2016 京ICP备15033925号</p>
+			<p>北京拓美科基因科技有限公司</p>
+		</footer>
+	</div>
+	<script src="public/js/jquery-1.11.2.min.js"></script>
+	<script src="public/js/bootstrap.min.js"></script>
+	<script src="public/js/long_common.js"></script>
+	<script src="js/sodaIndex.js" type="text/javascript" ></script>
+	<script>
+		$(function(){
+			$("#sodaIndex").addClass("active");
+//			$('.flowApp').hover(function(){
+//				$(this).children('hr').css({"position":"relative","top":"-80px","transition": "all 2s","background-color":"#fff"});
+//				$(this).children('.titleP1').css({"position":"relative","top":"-60px","right":"125px","transition": "all 2s","color":"#fff"});
+//				$(this).children('.titleP3').css({"position":"relative","top":"-80px","transition": "all 2s","color":"#fff"});
+//			},function(){
+//				$(this).children('hr').css({"position":"relative","top":"0px","transition": "all 2s","background-color":"red"});
+//				$(this).children('.titleP1').css({"position":"relative","top":"0px","right":"0px","transition": "all 2s","color":"#13438b"});
+//				$(this).children('.titleP3').css({"position":"relative","top":"0px","transition": "all 2s","color":"#666"});
+//			});
+
+//			$(".list li").hover(function(){
+//				var num=$(this).index();
+//				console.log(num);
+//			})
+			$(".hoverA").hover(function(){
+				$(".tishi").css("display","block");
+			},function(){
+				$(".tishi").css("display","none");
+			});
+
+
+			$(".main_nav2_left>li").hover(function(){
+				var num=$(this).index();
+					if(num==0){
+					$(".liucheng").fadeIn(100);
+					}if(num==1){
+					$(".gongju").fadeIn(100);
+					}if(num==3){
+					$(".mulu").fadeIn(100);
+				}
+			},function(){
+				$(".liucheng").fadeOut(100);
+				$(".gongju").fadeOut(100);
+				$(".mulu").fadeOut(100);
+			})
+		})
+	</script>
+</body>
+</html>

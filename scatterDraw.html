@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>新建APP任务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8">
+    <link href="public/css/reset.css" rel="stylesheet" />
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap-table.css" rel="stylesheet">
+    <link href="public/css/jquery.fileupload.css" rel="stylesheet"> 
+    <link href="public/css/bootstrap-select.css" rel="stylesheet">
+    <link href="public/css/long_common.css" rel="stylesheet" />
+    <link href="public/draw/style/app.css" rel="stylesheet" >
+    <link href="css/soda_common.css" rel="stylesheet">
+    <link href="public/draw/style/spectrum.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/user.css"/>
+</head>
+
+<body style="background-color:#fff;">
+	<div class="top" style="float:left;width:100%;">
+		<div class="main_nav1">
+			<div class="container">
+			<a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+				<ul class="main_nav1_left">
+					<li id="mainIndex"><a href="main.html">首页</a></li>
+					<li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+					<li id="frontierResearch"><a href="frontierResearch.html" >前沿方案</a></li>
+					<li id="marketActive"><a href="marketActive.html">市场活动</a></li>	
+				</ul>
+				<div class="form-group searchNews" id="search_news">
+					<span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="search_news_input">
+					</div>
+				</div>
+				<ul class="main_nav1_right">
+					<li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索" /></a></li>
+					<li><a href="#"><img src="public/image/navEmail.svg" alt="通知" /></a></li>
+					<li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户" /></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="main_nav2">
+			<div class="container">
+				<ul class="main_nav2_left">
+					<li class="nav2_list1" style="width: 90px;">
+						<a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+						<ul class="">
+							<li><a href="">DNA流程方案</a></li>
+							<li><a href="">RNA流程方案</a></li>
+							<li><a href="">医学流程方案</a></li>
+						</ul>				
+					</li>
+					<li class="nav2_list2" style="width: 73px;">
+						<a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+						<ul class="">
+							<li><a href="">基本绘图</a></li>
+							<li><a href="">流程绘图</a></li>
+							<li><a href="">高级绘图</a></li>
+							<li><a href="">表格处理</a></li>
+							<li><a href="">计算统计</a></li>
+						</ul>
+					</li>
+					<li class=""><a href="myProject.html">我的项目</a></li>
+					<li class=""><a href="#">我的目录</a></li>
+					<li class=""><a href="recycle.html">回收站</a></li>
+				</ul>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+					</div>
+					<button class="col-sm-2 btn btn_blue" id="search_button">搜索</button>				
+				</div>
+			</div>
+		</div>	
+	</div>
+
+    <div class="center_box" style="float:left;width:100%;">
+		<div class="app_title">
+			<p>散点图绘制工具</p>
+		</div>
+        <div class="change_box" id='taskPanel'> </div>       
+        <div class="myTab">
+        	<div style="width: 1200px;margin: 0 auto;height: 100%;">
+				<div class="tabs" style="margin-left: 10px;">
+					<ul class="nav" id="appTabLeft">
+						<li><a href="#file" data-toggle="tab">上传文件内容</a></li>
+						<li class="active" ><a href="#set" data-toggle="tab">参数设置</a></li>	
+					</ul>
+				</div>	
+				<div class="tabs" style="margin-left: 20px;">
+					<ul class="nav" id="appTabRight">
+						<li  ><a href="#direction" data-toggle="tab">使用说明</a></li>	
+						<li class="active"><a href="#show" data-toggle="tab">绘图展示</a></li>
+					</ul>
+				</div>	
+			</div>	
+		</div>
+        <div id="myTabContent" class="change_box">
+			<div class="tab-content input_l">
+				<div class="tab-pane in active" id="set">		
+					<div class="panel  panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">文件参数</h3>
+							<a id="use_default">使用示例文件</a>
+						</div>				
+						<div class="panel-body" style="height: 439px;">
+							<form id="parameter">
+								<!--输入文件-->
+								<div class="part">
+									<div class="input_a_l titleNameLeft">输入文件:</div>
+									<div class="input_a_m inputLeft">
+										<input v-model="input" type="text" class="form-control" id="input" name="input" placeholder="">
+									</div>
+									<div class="input_a_r">
+										<a onclick="openUrl('#input','file')">
+											<span class="glyphicon glyphicon-folder-open" style="font-size:20px; top: 5px; cursor:pointer;"></span>
+										</a>
+										<span class="fileinput-button btn " style="padding: 0 10px;" >
+											<img src="public/draw/imgs/app_02.png" alt=""  style="width: 29px;">
+											<input id="upload_input" name="upload_input" onclick="uploadFile('json/upload.json','upload_input','#input')" type="file">
+										</span>
+									</div>
+								</div>
+								<div class="part"> 
+									<div class="input_a_l titleNameLeft">绘图列数:</div>	
+									<div class="inputLeft">
+										<div class="input_a_l" style="width: 70px;">x轴数据：</div>
+										<div class="input_a_m" style="width: 93px;">
+											<select v-model="xColumnField" id="xColumnField"  name="xColumnField" class="selectpicker  select_width" autocomplete="off">
+												<option v-for="item in xColumnData" :value="item">{{item}}</option>
+											</select>
+										</div>	
+									</div>	
+									<div class="right">
+										<div class="input_a_l">y轴数据:</div>
+										<div class="input_b_2" style="width: 158px;">
+											<select v-model="yColumnField" id="yColumnField"  name="yColumnField" class="selectpicker  select_width" autocomplete="off"  >
+												<option v-for="item in yColumnData" :value="item">{{item}}</option>
+												
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">颜色分组:</div>	
+									<div class="inputLeft">
+										<div class="input_a_m inputA" style="width: 162px;">
+											<select v-model="groupColumnField" id="groupColumnField"  name="groupColumnField" class="selectpicker  select_width" autocomplete="off" >
+												<option v-for="item in groupColumnData" :value="item">{{item}}</option>
+											</select>
+										</div>	
+									</div>
+									<div class="right">
+										<div class="input_a_l" style="width: 80px;">散点大小:</div>
+										<div class="input_f_2" style="width: 158px;">
+											<input v-model="pointsize" type="text" class="form-control" id="pointsize" name="pointsize" placeholder="">
+										</div>
+									</div>
+								</div>
+								<div class="line"></div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">标题名称:</div>
+									<div class="input_b_2 inputLeft">
+										<input v-model="title" type="text" class="form-control" id="title" name="title" placeholder=""/>
+									</div>
+									<div class="right">
+										<div class="input_b_t1">字体:</div>
+										<div class="input_b_3">
+											<select v-model="title_font" id="title_font" name="title_font" class="selectpicker select_width" autocomplete="off" >
+												<option value="normal">常规</option>
+												<option value="bold" selected="selected">加粗</option>
+												<option value="italic">斜体</option>
+											</select>
+										</div>	
+										<div class="input_b_t1">大小:</div>	
+										<div class="input_b_3">
+											<select v-model="title_size"  id="title_size" name="title_size" class="selectpicker select_width" autocomplete="off" >
+												<option value="12">12</option>
+												<option value="18" selected="selected">18</option>
+												<option value="30">30</option>
+											</select>
+										</div>	
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l">标题位置:</div>
+									<div class="inputLeft">
+										<div class="input_b_t1 titleA">水平:</div>	
+										<div class="input_b_3 inputA">
+											<select v-model="titleX" id="titleX"  name="titleX" class="selectpicker select_width" autocomplete="off" >
+												<option value="center">Center</option>
+												<option value="left">Left</option>
+												<option value="right">Right</option>
+											</select>
+										</div>
+									</div>
+									<div class="right">
+										<div class="input_b_t1">垂直:</div>
+										<div class="input_b_3" style="width: 108px;">
+											<select v-model="titleY" id="titleY" name="titleY" class="selectpicker select_width" autocomplete="off" >
+												<option value="top">Top</option>
+												<option value="center">Center</option>
+												<option value="bottom">Bottom</option>
+											</select>
+										</div>	
+									</div>
+								</div>			
+								<div class="line"></div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">X轴名称:</div>
+									<div class="input_b_2 inputLeft">
+										<input v-model="xlab"  type="text" class="form-control" id="xlab" name="xlab" placeholder="">
+									</div>
+									<div class="right">
+										<div class="input_b_t1">字体:</div>
+										<div class="input_b_3">
+											<select v-model="xlab_font" id="xlab_font" name="xlab_font" class="selectpicker select_width" autocomplete="off" >
+												<option value="normal">常规</option>
+												<option value="bold">加粗</option>
+												<option value="italic">斜体</option>
+											</select>
+										</div>	
+										<div class="input_b_t1">大小:</div>	
+										<div class="input_b_3">
+											<select v-model="xlab_size"  id="xlab_size" name="xlab_size" class="selectpicker select_width" autocomplete="off" >
+												<option value="12">12</option>
+												<option value="18">18</option>
+												<option value="30">30</option>
+											</select>
+										</div>	
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">Y轴名称:</div>
+									<div class="input_b_2 inputLeft">
+										<input v-model="ylab" type="text" class="form-control" id="ylab" name="ylab" placeholder="">
+									</div>
+									<div class="right">
+										<div class="input_b_t1">字体:</div>
+										<div class="input_b_3">
+											<select v-model="ylab_font" id="ylab_font" name="ylab_font" class="selectpicker select_width" autocomplete="off" >
+												<option value="normal">常规</option>
+												<option value="bold">加粗</option>
+												<option value="italic">斜体</option>
+											</select>
+										</div>	
+										<div class="input_b_t1">大小:</div>	
+										<div class="input_b_3">
+											<select v-model="ylab_size"  id="ylab_size" name="ylab_size" class="selectpicker select_width" autocomplete="off" >
+												<option value="12">12</option>
+												<option value="18">18</option>
+												<option value="30">30</option>
+											</select>
+										</div>	
+									</div>
+								</div>
+								<div class="line"></div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">颜色方案:</div>
+									<div class="input_b_3 inputLeft">
+										<select id="colorProject"  name="colorProject" class="selectpicker select_width" autocomplete="off" >
+											<option value="project1">NPG</option>
+											<option value="project2">AAAS</option>
+											<option value="project3">IGV</option>
+										</select>
+									</div>									
+								</div>
+								<div v-for="(item,index) in groupColorName" class="part">
+									<div class="input_e_1">						
+											{{item}}:
+									</div>
+									<div class="input_e_2 colorInput">
+										自定义颜色:
+									</div>
+									<div class="input_c_4">
+										<input v-bind:value="color[index]" type="text" class="form-control spectrum">
+									</div>	
+									<div class="input_c_4">
+										<select class="selectpicker select_width">
+											<option value="Top">Top</option>
+											<option value="Bottom">Bottom</option>
+											<option value="Left">Left</option>
+											<option value="Right">Right</option>
+										</select>
+									</div>
+								</div>
+								<div class="line"></div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">图例直径:</div>
+									<div class="input_b_2 inputLeft">
+										<input v-model="legendDiameter" type="text" class="form-control" id="legendDiameter" name="legendDiameter" placeholder="">
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">图例位置:</div>
+									<div class="inputLeft">
+										<div class="input_b_t1 titleA">水平:</div>	
+										<div class="input_b_3 inputA">
+											<select v-model="legendX" id="legendX"  name="legendX" class="selectpicker select_width" autocomplete="off" >
+												<option value="left">Left</option>
+												<option value="center">Center</option>
+												<option value="right">Right</option>
+											</select>
+										</div>	
+									</div>	
+									<div class="right">
+										<div class="input_b_t1">垂直:</div>
+										<div class="input_b_3" style="width: 108px;">
+											<select v-model="legendY" id="legendY" name="legendY" class="selectpicker select_width" autocomplete="off" >
+												<option value="top">Top</option>
+												<option value="center">Center</option>
+												<option value="bottom">Bottom</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">图例布局:</div>
+									<div class="input_b_3 inputLeft">
+										<select v-model="legendLayout" id="legendLayout"  name="legendLayout" class="selectpicker select_width" autocomplete="off" >
+											<option value="horizontal">Horizontal</option>
+											<option value="vertical">Vertical</option>
+										</select>
+									</div>	
+								</div>	
+								<div class="line"></div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">X轴网格线:</div>
+									<div id="radioArea" class="input_f_2">
+										<div class="radio">
+											  <label for="XgridShow">
+											    <input v-model="Xgrid"   type="radio" name="XgridShow" id="XgridShow" value="show" >显示
+											  </label>
+										</div>
+										<div class="radio" style="margin-left: 10px;">
+											  <label for="XgridHide">
+											    <input v-model="Xgrid" type="radio" name="XgridHide" id="XgridHide" value="hide">隐藏
+											  </label>
+										</div>
+									</div>
+								</div>
+								<div class="part">
+									<div class="input_a_l titleNameLeft">Y轴网格线:</div>
+									<div id="radioArea" class="input_f_2">
+										<div class="radio">
+											  <label for="YgridShow">
+											    <input v-model="Ygrid"   type="radio" name="YgridShow" id="YgridShow" value="show" >显示
+											  </label>
+										</div>
+										<div class="radio" style="margin-left: 10px;">
+											  <label for="YgridHide">
+											    <input v-model="Ygrid" type="radio" name="YgridHide" id="YgridHide" value="hide">隐藏
+											  </label>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="panel-footer" style="height: 51px;">
+							<button id="submit_paras" type="button" class="btn btn-success">开始绘图</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="file">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">文件标题</h3>
+						</div>
+						<div class="panel-body" style="padding: 0;">
+							<table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th v-for="item in fileData.content[0]">{{item}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item,index) in fileData.content" v-if="index!=0">
+                                        <td v-for="item1 in item">{{item1}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+			<!-- 绘图展示 -->
+			<div class="tab-content input_r">
+				<div class="tab-pane in active" id="show">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">绘图展示</h3>
+							<div class="download_button">
+								<button  id="btnPng" class="btn btn-success">PNG</button>
+								<button id="btnPdf" onclick="convertCanvasToImage()" class="btn btn-primary">PDF</button>
+							</div>
+						</div>
+						<div class="panel-body">
+								<div id="main" style="width: 520px;height: 420px;margin-top: 20px;"></div>
+						</div>
+					</div>
+				</div>
+	
+			<!-- 使用说明 -->
+				<div class="tab-pane" id="direction">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								使用说明
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="one">
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">概述</h2>
+								</div>
+								<p class="indent">
+									散点图，scatter diagram，由两组数据构成多个坐标点，查看两组数据之间的分布关系。可以根据群体的信息将位点用不同的颜色进行标注，以便于对比不同位点的聚集情况。例如典型的主成分聚类图。
+								</p>
+
+								<div class="tCenter">
+									<img src="img/scatterImage.jpg" alt="" />
+									<p class="font2">散点图示例</p>
+								</div>
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">参数设置</h2>
+								</div>
+								<p class="indent">
+									先将空白处，填写相应的内容，主要包括输入文件、绘图列数、颜色分组的选择，其他可以先采用默认值进行图的绘制，生成图片后，根据效果进行具体的调整。
+								</p>
+
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">输入文件上传方式</h2>
+								</div>
+								<p class="indent">
+									可以通过 <img src="img/user1.png" alt="" style="width: 22px"/>按钮，选择服务器上相应的目标文件，
+									也可以通过 <img src="img/user2.png" alt="" style="width: 22px"/>按钮选择本地电脑上的目标文件进行上传：
+								</p>
+
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">输入文件格式</h2>
+								</div>
+								<p class="indent">
+									文件是以制表符进行分隔的文本文件，含有表头信息，至少含有四列的信息：
+									<br/>第一列：分组依据，可以是不同的亚群、不同的地域、不同的年份等信息。用来选定为“颜色分组”；
+									<br/>第二列：样本名称，给每个位点一个名称；
+									<br/>第三列：第一组数据，必须为数值，默认为位点的横坐标信息；
+									<br/>第四列：第二组数据，必须为数值，默认为位点的纵坐标信息；
+									<br/>其他列：以后列为其他组，可以有多组信息。用来描述每个位点的多个特征值；
+									示例如下：
+								<table border="1" align="center">
+									<tr>
+										<td>group</td>
+										<td>sample</td>
+										<td>pc1</td>
+										<td>pc2</td>
+										<td>pc3</td>
+									</tr>
+									<tr>
+										<td>AB</td>
+										<td>AB01</td>
+										<td>39.6409</td>
+										<td>22.0254</td>
+										<td>7.71947</td>
+									</tr>
+									<tr>
+										<td>AB</td>
+										<td>AB02</td>
+										<td>63.5905</td>
+										<td>15.9253</td>
+										<td>0.0644593</td>
+									</tr>
+									<tr>
+										<td>AB</td>
+										<td>AB03</td>
+										<td>77.5295</td>
+										<td>13.099</td>
+										<td>5.1442</td>
+									</tr>
+									<tr>
+										<td>AB</td>
+										<td>AB04</td>
+										<td>65.042</td>
+										<td>10.727</td>
+										<td>1.00155</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC01</td>
+										<td>60.2524</td>
+										<td>13.8044</td>
+										<td>6.87759</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC02</td>
+										<td>65.7869</td>
+										<td>21.7427</td>
+										<td>1.17104</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC03</td>
+										<td>77.1303</td>
+										<td>26.7628</td>
+										<td>3.58785</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC04</td>
+										<td>117.123</td>
+										<td>27.7187</td>
+										<td>5.25269</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC05</td>
+										<td>95.4892</td>
+										<td>25.1006</td>
+										<td>2.01375</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC06</td>
+										<td>97.2619</td>
+										<td>24.5504</td>
+										<td>1.1646</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC07</td>
+										<td>90.422</td>
+										<td>24.9454</td>
+										<td>6.45117</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC08</td>
+										<td>114.896</td>
+										<td>26.8105</td>
+										<td>10.0347</td>
+									</tr>
+									<tr>
+										<td>BC</td>
+										<td>BC09</td>
+										<td>87.4308</td>
+										<td>18.5123</td>
+										<td>0.0225581</td>
+									</tr>
+								</table>
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">绘图列数</h2>
+								</div>
+								<p class="indent">
+									文件上传后会自动根据表头信息，生成绘图列数列表，通常默认第三列是X轴的信息，第四列是Y轴的信息，第一列是分组信息，如果含有四列以上的信息时，可以通过按钮选择需要展示的数据列，例如，X轴是第三列，Y轴是第四列。
+								</p>
+							</div>
+							<div class="two">
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">参数设置</h2>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">绘图列数选择</h2>
+								</div>
+								<p class="indent">
+									文件上传后会自动根据表头信息，生成绘图列数列表，通常默认第三列是X轴的信息，第四列是Y轴的信息，第一列是分组信息，如果含有四列以上的信息时，可以通过按钮选择需要展示的数据列，例如，X轴是第三列，Y轴是第四列。
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">散点大小</h2>
+								</div>
+								<p class="indent">
+									可以通过数值的设定改变散点的大小，提高展示的效果。可以是整数，也可以是小数，默认值是5。
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">标题</h2>
+								</div>
+								<p class="indent">
+								<ul class="titleInfo">
+									<li>1.标题的名称可以进行自定义，空白也可以，中英文都可以，建议长度不要超过10个字符，以免影响展示效果。默认是散点图。</li>
+									<li>2.图片中文字默认是高影响因子期刊规定的Arial字体。字体可以选择加粗、斜体、常规三种效果，文字大小也可以根据需求进行调整，默认字体是加粗18号。</li>
+									<li>3.标题的位置是由水平和垂直两个按钮组合决定的，每个按钮有三种类型，总计有9种位置的调整，默认水平居中，垂直在顶端。</li>
+								</ul>
+								</p>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">颜色方案</h2>
+								</div>
+								<p class="indent">
+								<ul class="colorInfo">
+									<li>1.有三种搭配好的颜色方案，分别是根据Nature系列期刊（NPG）、Science（AAAS）、IGV软件（IGV）配置的，每种方案包含十种颜色单元。</li>
+									<li>
+										2.色度条值的范围：最小值，色度条的最小值，可以是任意数值，建议与所选组数据的最小值比较接近；最大值，色度条的最大值，可以是大于最小值的任意数值，建议与所选组数据的最大值比较接近。
+									</li>
+									<li>
+										3.色度条颜色设定：色度条是一个三色渐变的色度条，三个颜色可以分别通过鼠标进行选择。点击颜色框按钮，会产生下拉颜色框，可以通过右边色度条选择颜色，左边的大方框选择颜色的饱和度，选择按钮或者直接选定，取消按钮可以取消选择的自定义颜色
+									</li>
+								</ul>
+								</p>
+								<div class="tCenter">
+									<img src="img/user3.png" alt=""/>
+
+									<p class="tCenter font2">颜色选择框</p>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">图例</h2>
+								</div>
+								<p class="indent">
+								<ul class="tuLi">
+									<li>1.图例直径，输入具体的数值即可设置图例点的大小，默认是14。</li>
+									<li>2.图例位置，由水平和垂直两个按钮组合决定的，每个按钮有三种类型，总计有9种位置的调整，默认水平居右，垂直居中。</li>
+									<li>3.图例布局，可以进行垂直和水平的设置，默认是水平。</li>
+								</ul>
+								</p>
+								<p class="indent font1">
+									以上所有参数选择好后，点击“开始绘图”按钮，绘制展示部分按照调整后的参数展示重新绘制的图片。
+								</p>
+								<br/>
+								<div class="first_title">
+									<h2 ><img src="img/report_01.svg" alt="">上传文件内容</h2>
+								</div>
+								<p class="indent">
+									可通过查看此部分，实时查看上传文件的内容。通过点击图片的相应类别，显示具体的数值所在位置，与图片进行交互。
+								</p>
+								<br/>
+								<div class="first_title">
+									<h2><img src="img/report_01.svg" alt="">绘图展示</h2>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">区域调整</h2>
+								</div>
+								<p class="indent">
+									选择图右上方的功能栏的第一个按钮，然后用鼠标在图片展示区域选定需要展示的位点，图片的横纵坐标的范围会变成选定的区域。通过第二个按钮的选择可以还原显示全部的位点。
+								</p>
+								<div class="tCenter">
+									<img src="img/scatterImage1.jpg" alt=""/>
+								</div>
+								<div class="tCenter">
+									<p class="font2" style="display: inline;margin-right: 100px">全部位点</p>
+									<p class="font2" style="display: inline;margin-left: 100px"> 选定部分位点</p>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">查看具体数值</h2>
+								</div>
+								<br/>
+								<p class="indent">
+									鼠标放在图片显示的区域，会在两个坐标轴上显示位点的横纵坐标信息，如果有与鼠标所在位置横坐标相同的散点，相应的位点会放大，并在位点上方显示散点的纵坐标值。该散点的颜色分组信息、散点名称、散点的横纵坐标也会在悬浮的灰色框中显示。
+								</p>
+								<div class="tCenter">
+									<img src="img/scatterImage2.jpg" alt=""/>
+									<p class="tCenter font2">散点FP06，所在分组是FP，横坐标是149.23，纵坐标是80.9245</p>
+								</div>
+								<p class="indent">
+									鼠标放在图例的颜色分组信息上，会显示相应组的所有位点信息。
+								</p>
+								<div class="tCenter">
+									<img src="img/scatterImage3.jpg" alt=""/>
+									<p class="tCenter font2">鼠标放在AB组的位置，属于AB组的四个散点放大并显示纵坐标信息</p>
+								</div>
+								<div class="first_title">
+									<h2 style="text-indent: 2em;">图片下载</h2>
+								</div>
+								<p class="indent">
+								<ul class="downLoad_img">
+									<li>1.图片提供两种格式的下载，分别是png和pdf格式。</li>
+									<li>2.点击需要的图片类型按钮，生成预览页面，点击放大、缩小按钮，查看图片的整体及细节效果，点击下载按钮，进行图片的下载。</li>
+								</ul>
+								</p>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+    	</div>
+        
+	<!-- 标签切换 -->
+	
+	
+	<!-- 添加选择目录的模态框 -->
+	<div class="modal fade" id="selectUrl" tabindex="-1" aria-labelledby="选择路径" aria-hidden="true">
+
+		<div class="modal-dialog" style="top:50px; width:800px;">
+			<div class="modal-content ">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title">路径</h4>
+					<div class="input-group">
+						<input type="text" class="form-control" id="inputUrl">
+						<span class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-arrow-left" id="back" type="button" style="top: 0px;"></button>
+							<button class="btn btn-default glyphicon glyphicon-arrow-right" id="search" type="button" style="top: 0px;"></button>
+						</span>
+					</div>
+				</div>
+				<!-- -----------------------------------------------------------data-single-select="true"------------------------ -->
+				<div class="modal-body" style="text-align:center; ">
+					<table data-toggle="table" data-url="json/jobUrl.json" data-minimum-count-columns="2" data-id-field="id" data-show-footer="false"
+						data-height="300" data-sort-name="id" data-click-to-select="true"  id="urlTable"
+						style="bottom:20px;">
+
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+								<th data-field="icon" data-formatter="addIcon"></th>
+								<th data-field="name" data-align="left" data-sortable="true">name</th>
+								<th data-field="type" data-align="center" data-sortable="true">attribute</th>
+								<th data-field="inodeNum" data-align="center" data-visible="false" data-sortable="true">inodeNum</th>
+								<th data-field="size" data-align="center" data-sortable="true">size</th>
+								<th data-field="owner" data-align="center" data-sortable="true">owner</th>
+								<th data-field="group" data-align="center">group</th>
+								<th data-field="mtime" data-align="center" data-sortable="true">time</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<!-- ----------------------------------------------------------------------------------- -->
+				<div class="modal-footer">
+					<button type="button" id="selected" class="btn btn-primary">
+					选择
+					</button>
+					<button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">
+					关闭
+					</button>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+    <!--页脚-->
+    <div id="footer_style">
+        <footer class="footerstyle">
+            <p>版权所有 © 2016 京ICP备15033925号</p>
+            <p>北京拓美科基因科技有限公司</p>
+        </footer>
+    </div>
+    <script src="public/js/jquery-1.11.2.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <!--添加本页面的js-->
+    <script>
+		module = "__MODULE__";
+		tool_id = "{$tool_id}";
+	</script>
+    <script src="public/js/bootstrap-table.js"></script>
+    <script src="public/js/jquery.ui.widget.js"></script>
+    <script src="public/js/jquery.fileupload.js"></script>
+    <script src="public/js/jquery.iframe-transport.js"></script>
+    <script src="public/js/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="public/js/bootstrap-select.js"></script>
+    <script src="public/js/defaults-zh_CN.js"></script>
+    <script src="public/js/vue.js"></script>
+    <script src="public/draw/script/html2canvas.min.js"></script>
+    <script src="public/draw/script/jspdf.min.js"></script>
+    <script src="public/js/echarts.js"></script>
+    <script src="public/js/long_common.js"></script>
+    <script src="public/draw/script/spectrum.js"></script>
+    <script src="public/draw/script/jquery.spectrum-zh-cn.js"></script>
+    <script src="js/common.js"></script>
+    <script src="public/draw/script/scatterDraw.js"></script>  
+    <script>
+    	$(function(){
+    		$("#xColumnField").selectpicker({noneSelectedText:'请选择'});
+    		$("#yColumnField").selectpicker({noneSelectedText:'请选择'});
+    		$("#groupColumnField").selectpicker({noneSelectedText:'请选择'});
+    	})
+    </script>
+</body>
+
+</html>

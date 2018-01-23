@@ -1,0 +1,44 @@
+.first_title img{
+    margin-right: 10px;
+    width: 22px;
+}
+.first_title h2{
+    text-align: left;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #13438B !important;
+    font-family: "Microsoft YaHei UI";
+}
+table tr{
+    text-align: center;
+}
+.titleInfo li{
+    text-indent: 2em;
+}
+.colorInfo li{
+    text-indent: 2em;
+}
+.tuLi li{
+    text-indent: 2em;
+}
+.downLoad_img li{
+    text-indent: 2em;
+}
+.tCenter{
+    text-align: center;
+}
+.font1{
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}
+.font2{
+    font-size: 12px;
+}
+.two{
+    display: none;
+}

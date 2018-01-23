@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>个人中心</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="public/css/reset.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap-table.css" rel="stylesheet">
+    <link href="public/css/long_common.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/user_style_member.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="shortcut icon" href="img/www.ico.la_092f18b3160c26083d947b31212af137_32X32.ico" type="image/x-icon">
+</head>
+<body style="min-width: 1400px">
+<!--前台公共头部-->
+<div class="top">
+    <div class="main_nav1">
+        <div class="container">
+            <a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+            <ul class="main_nav1_left">
+                <li id="main"><a href="main.html">首页</a></li>
+                <li id="sodaIndex"><a href="sodaIndex.html">用户管理</a></li>
+                <li id="frontierResearch"><a href="frontierResearch.html">流程工具管理</a></li>
+                <li id="marketActive"><a href="marketActive.html">分析模块管理</a></li>
+                <li id="1"><a href="marketActive.html">硬盘挂载</a></li>
+            </ul>
+            <div class="form-group searchNews" id="search_news">
+                <span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="search_news_input">
+                </div>
+            </div>
+            <ul class="main_nav1_right">
+                <li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索"/></a></li>
+                <li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户"/></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--/前台公共头部-->
+
+
+<div class="change_box" style="width: 85%;">
+    <div class="user">
+        <div class="left">
+            <div class="photo">
+                <img src="img/headportrait.svg" alt="">
+            </div>
+            <div class="nikename">
+                <h3>Jerry</h3>
+            </div>
+            <div class="logout">
+                <a href="/ddgene/Home/Login/logout">注销</a>
+            </div>
+            <div class="nav" id="persongNav">
+                <ul>
+                    <li class="active" id="user"><a href="#">个人信息</a></li>
+                    <li id="ziyuan"><a href="#">资源监控</a></li>
+                    <li id="shengji"><a href="#">升级</a></li>
+                    <li id="chongqi"><a href="#">重启</a></li>
+                    <li id="guanji"><a href="#">关机</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <div id="my_info" class="box box1">
+                <div class="toggle">
+                    <div class="title">
+                        <img src="img/user.svg" alt="">
+
+                        <h2>个人信息</h2>
+                    </div>
+                </div>
+                <div class=" togglebox" id="infobox2" style="height:390px;">
+                    <div class="personal">
+                        <div class="sub-toggle"
+                             style="background: #fff;margin-top: 15px;height: 50px;padding-left: 10px;">
+                            <div class="title">
+                                <img src="img/nickName.svg" alt="">
+
+                                <h3>昵称：Jerry</h3>
+                            </div>
+                        </div>
+                        <div class="user-form">
+                            <form action="">
+                                <div class="label">
+                                    <div class="user-form-title">
+                                        <h3>修改昵称：</h3>
+                                    </div>
+                                    <div class="user-form-input">
+                                        <input type="text" name="nikename" id="nikename" class="input_1"
+                                               placeholder="输入新昵称">
+                                    </div>
+                                    <button type="button" class="btn btn-blue" id="s_nikename">确定</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="personal" style="margin-top: 10px;">
+                        <div class="sub-toggle"
+                             style="background: #fff;margin-top: 10px;height: 50px;padding-left: 10px;">
+                            <div class="title">
+                                <img src="img/password.svg" alt="">
+
+                                <h3>密码：xxxxxx</h3>
+                            </div>
+                        </div>
+                        <div class="user-form">
+                            <form action="">
+                                <div class="label">
+                                    <div class="user-form-title">
+                                        <h3>原始密码：</h3>
+                                    </div>
+                                    <div class="user-form-input">
+                                        <input type="password" name="password" id="password" class="input_1"
+                                               placeholder="请输入原始密码">
+                                    </div>
+                                </div>
+                                <div class="label">
+                                    <div class="user-form-title">
+                                        <h3>输入新密码：</h3>
+                                    </div>
+                                    <div class="user-form-input">
+                                        <input type="password" name="newpassword" id="newpassword"
+                                               class="input_1" placeholder="请输入新密码">
+                                    </div>
+                                </div>
+                                <div class="label">
+                                    <div class="user-form-title">
+                                        <h3>确认新密码：</h3>
+                                    </div>
+                                    <div class="user-form-input">
+                                        <input type="password" name="repassword" id="repassword" class="input_1"
+                                               placeholder="请输入确认密码">
+
+                                    </div>
+                                    <button type="button" class="btn btn-blue" id="s_password">保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box box2">
+                <div class="toggle">
+                    <div class="title">
+                        <img src="img/ziyuan.svg" alt="">
+
+                        <h2>资源监控</h2>
+                    </div>
+                    <button class="btn btn-danger" style="float: right;margin: 33px 50px 0px">终止我的所有程序</button>
+                </div>
+                <div class="runbox">
+                <div id="cpu" style="height: 300px;width: 400px;float: left;" ></div>
+                <div id="Memory" style="height: 300px;width: 400px;float: left" ></div>
+                <div id="storage" style="height: 300px;width: 400px;float: left;" ></div>
+                <div id="info" style="height: 300px ;width: 400px;float: left"></div>
+                </div>
+            </div>
+            <!--升级-->
+            <div class="box box3">
+                <div class="toggle">
+                    <div class="title">
+                        <img src="img/shengji.svg" alt="">
+
+                        <h2>您当前有1项升级内容</h2>
+                    </div>
+                    <button class="btn btn-info" style="float: right;margin: 33px 50px 0px">立即更新</button>
+                </div>
+                <div class=" textbox">
+                    <p>提示：<br/>
+                        系统升级时,会自动注销所有登录用户(包括管理员)并终止一切运行 <br/>
+                        中的任务程序,请您务必在升级前确认所有用户没有任务正在运行, <br/>
+                        以防止任务数据丢失。
+                    </p>
+
+                    <p>
+                        系统升级完成后,会自动重新启动,待启动完成后,方可登录使用。
+                    </p>
+                </div>
+            </div>
+            <!--重启-->
+            <div class="box box4">
+                <div class="toggle">
+                    <div class="title">
+                        <img src="img/chongqi.svg" alt="">
+
+                        <h2>重启</h2>
+                    </div>
+                    <button class="btn btn-blue1" style="float: right;margin: 33px 50px 0px">立即重启</button>
+                </div>
+                <div class=" textbox">
+                    <p>提示：<br/>
+                        系统重启时,会自动注销所有登录用户(包括管理员)并终止一切运行 <br/>
+                        中的任务程序,请您务必在重启前确认所有用户没有任务正在运行, <br/>
+                        以防止任务数据丢失。
+                    </p>
+
+                    <p>
+                        系统重新启动完成后,方可登录使用。
+                    </p>
+                </div>
+            </div>
+            <!--关机-->
+            <div  class="box box5">
+                <div class="toggle">
+                    <div class="title">
+                        <img src="img/guanji.svg" alt="">
+
+                        <h2>关机</h2>
+                    </div>
+                    <button class="btn btn-grey" style="float: right;margin: 33px 50px 0px">立即关机</button>
+                </div>
+                <div class=" textbox">
+                    <p>提示：<br/>
+                        系统关机时,会自动注销所有登录用户(包括管理员)并终止一切运行 <br/>
+                        中的任务程序,请您务必在关机前确定所有用户没有任务正在运行, <br/>
+                        以防止任务数据丢失。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--页脚-->
+<!--<div id="footer_style">-->
+    <!--<footer class="footerstyle">-->
+        <!--<p>版权所有 © 2016 京ICP备15033925号</p>-->
+
+        <!--<p>北京拓美科基因科技有限公司</p>-->
+    <!--</footer>-->
+<!--</div>-->
+<script src="public/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="public/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/bootstrap-table.js" type="text/javascript"></script>
+<script src="public/js/long_common.js" type="text/javascript"></script>
+<script src="js/user_script_member.js" type="text/javascript"></script>
+<script src="public/js/echarts.js"></script>
+<script src="js/resourceMonitor.js"></script>
+<!--<script type="text/javascript">
+var module="/ddgene/Home";
+</script>
+<script type="text/javascript" src="/ddgene/Public/js/heart.js"></script>-->
+</body>
+</html>

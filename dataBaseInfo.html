@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8">
+    <meta charset="UTF-8">
+    <title>数据详情</title>
+    <link href="public/css/reset.css" rel="stylesheet"/>
+    <link href="public/css/long_common.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/dataBase.css"/>
+</head>
+<body>
+<div class="top">
+    <div class="main_nav1">
+        <div class="container">
+            <a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+            <ul class="main_nav1_left">
+                <li id="main"><a href="main.html">首页</a></li>
+                <li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+                <li id="frontierResearch"><a href="frontierResearch.html">前沿方案</a></li>
+                <li id="marketActive"><a href="marketActive.html">市场活动</a></li>
+            </ul>
+            <div class="form-group searchNews" id="search_news">
+                <span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="search_news_input">
+                </div>
+            </div>
+            <ul class="main_nav1_right">
+                <li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索"/></a></li>
+                <li><a href="#"><img src="public/image/navEmail.svg" alt="通知"/></a></li>
+                <li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户"/></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main_nav2">
+        <div class="container">
+            <ul class="main_nav2_left">
+                <li class="nav2_list1" style="width: 90px;">
+                    <a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">DNA流程方案</a></li>
+                        <li><a href="">RNA流程方案</a></li>
+                        <li><a href="">医学流程方案</a></li>
+                    </ul>
+                </li>
+                <li class="nav2_list2" style="width: 73px;">
+                    <a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">基本绘图</a></li>
+                        <li><a href="">流程绘图</a></li>
+                        <li><a href="">高级绘图</a></li>
+                        <li><a href="">表格处理</a></li>
+                        <li><a href="">计算统计</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="myProject.html">我的项目</a></li>
+                <li class=""><a href="#">我的目录</a></li>
+                <li class=""><a href="recycle.html">回收站</a></li>
+            </ul>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+                </div>
+                <button class="col-sm-2 btn btn_blue" id="search_button">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="containerBox">
+    <div class="headBox">
+        <div class="head1">
+            <img src="img/dataBase1.svg" alt="" width="120" height="120"/>
+        </div>
+        <div class="head2">
+            <p>Homo sapiens</p>
+
+            <p>英文名:human</p>
+
+            <p>中文名:人</p>
+        </div>
+        <div class="head3">
+            <p>分类号:9606</p>
+
+            <p>核型:2n=46</p>
+
+            <p>组装版本</p>
+        </div>
+        <div>
+            <select id="se" class="form-control" style="width: 550px;margin-top: 65px">
+                <option value="1">GRCh38.p10</option>
+                <option value="2" selected="selected">GRCh37 Full Feb 2014 archive with BLAST,VEP and BioMart</option>
+                <option value="3">NCBI36(Ensembl release 54)</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title title">
+                    <img src="img/jt.svg" alt=""/>统计/Statistics
+                </h4>
+            </div>
+        </div>
+        <div class="boxLeft">
+            <div style="padding: 17px">
+                <p style="font-size: 21px">总结/Summary</p>
+                <div class="blueLine"></div>
+                <ul class="infoUl">
+                    <li><p>装配</p><p>BDGP6, INSDC Assembly GCA_000001215.4, Jul 2014</p></li>
+                    <li><p>碱基对</p><p>142,573,017</p></li>
+                    <li><p>路径长度</p><p>143,725,995</p></li>
+                    <li><p>标注供应商</p><p>ARRAY(0x1214c9a8)</p></li>
+                    <li><p>标注方法</p><p>Import</p></li>
+                    <li><p>开始</p><p>May 2014</p></li>
+                    <li><p>发布</p><p>Sep 2014</p></li>
+                    <li><p>最近更新</p><p>Sep 2014</p></li>
+                    <li><p>数据库版本</p><p>90.6</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="boxRight">
+            <div style="padding: 17px">
+                <p style="font-size: 21px">基因数/Gene counts</p>
+                <div class="blueLine"></div>
+                <ul class="infoUl">
+                    <li><p>编码基因</p><p>13,918</p></li>
+                    <li><p>非编码基因</p><p>3,384</p></li>
+                    <li><p class="indent">小非编码基因</p><p>1,018</p></li>
+                    <li><p class="indent">长非编码基因</p><p>2,366</p></li>
+                    <li><p>假基因</p><p>257</p></li>
+                    <li><p>基因转录</p><p>34,749</p></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        <div style="clear: both"></div>
+        <div class="panel panel-default" style="margin-top: 50px">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="title" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapse2">
+                        <img src="img/jt.svg" alt=""/> 装配/Assembly
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse ">
+                <div class="panel-body">
+                    <div class="blueLine"></div>
+                    <p>Ensembl uses the Berkeley Drosophila Genome Project (BDGP) assembly release 6 (July 2014). In
+                        contrast to release 5, regions without a chromosome assignment are stored as distinct scaffolds,
+                        rather than on a single pseudo-chromosome, and heterochromatin regions are incorporated in the
+                        chromosomal arms.</p>
+
+                    <p> The genome assembly represented here corresponds to GCA_000001215.4</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="title" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapse3">
+                        <img src="img/jt.svg" alt=""/>基因注释/Gene annotation
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse ">
+                <div class="panel-body">
+                    <div class="blueLine"></div>
+                    <p>Protein-coding and ncRNA annotations were imported from FlyBase, release 6.02 (FB2014_05, dated
+                        September 2014).</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="title" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapse4">
+                        <img src="img/jt.svg" alt=""/>变化数据/Variation Data
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse ">
+                <div class="panel-body">
+                    <div class="blueLine"></div>
+                    <p>The Ensembl Fruitfly Drosophila melanogaster variation database has been produced using data from
+                        release 1.0 of the "50 genomes" data set from the Drosophila Population Genome Project. The data
+                        set contains over 6.7 million SNPs from two populations, one comprising 37 lines from north
+                        Carolina and the other comprising 15 lines from Malawi. The SNPs were originally generated with
+                        respect to assembly version BDGP5, and these were mapped to BDGP6 using the FlyBase converter
+                        tool; only 308 SNPs were unable to be mapped.</p>
+
+                    <p>This species (and other invertebrates, including 11 other drosophilid species) are also available
+                        from our sister site, Ensembl Metazoa</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="title" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapse5">
+                        <img src="img/jt.svg" alt=""/> 工具书类/References
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse ">
+                <div class="panel-body">
+                    <div class="blueLine"></div>
+                    <p>The genome sequence of Drosophila melanogaster
+                        Adams MD, Celniker SE, Holt RA, Evans CA, Gocayne JD, Amanatides PG, Scherer SE, Li PW, Hoskins
+                        RA, Galle RF et al.
+                        Science. 2000. 287(5461):2185-95</p>
+
+                    <p>Evolution of genes and genomes on the Drosophila phylogeny
+                        Drosophila 12 Genomes Consortium, Clark AG, Eisen MB, Smith DR, Bergman CM, Oliver B, Markow TA,
+                        Kaufman TC, Kellis M, Gelbart W et al.
+                        Nature. 2007 Nov 8. 450(7167):203-18</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="title" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapse6">
+                        <img src="img/jt.svg" alt=""/> 更多信息/More information
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse6" class="panel-collapse collapse ">
+                <div class="panel-body">
+                    <div class="blueLine"></div>
+                    <p>General information about this species can be found in Wikipedia.</p>
+
+                    <p>Ensembl release 90 - August 2017 © EMBL-EBI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer_style">
+    <footer class="footerstyle">
+        <p>版权所有 © 2016 京ICP备15033925号</p>
+
+        <p>北京拓美科基因科技有限公司</p>
+    </footer>
+</div>
+<script src="public/js/jquery-1.11.2.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $('#collapse1').collapse('show');
+        $('#collapse2').collapse('show');
+        $('#collapse3').collapse('show');
+        $('#collapse4').collapse('show');
+        $('#collapse5').collapse('show');
+        $('#collapse6').collapse('show');
+
+    });
+</script>
+</body>
+</html>

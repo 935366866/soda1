@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>欢迎来到DodoGene</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="public/css/reset.css" rel="stylesheet" type="text/css"  media="all" />
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/bootstrap-table.css" rel="stylesheet" >
+	<link href="public/css/bootstrap-editable.css" rel="stylesheet" >
+	<link rel="stylesheet" href="css/newdodogene.css">
+	<link rel="shortcut icon" href="img/www.ico.la_092f18b3160c26083d947b31212af137_32X32.ico" />
+
+</head>
+<body style="min-width: 1170px;">
+	<!--前台公共头部-->
+	<header class="top">
+		<div class="content">
+			<a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+			<ul class="main_box">
+				<li id="main" ><a href="newdodogeneindex.html">首页</a></li>
+				<li id="sodaIndex" class="active"><a href="newdodogenetable.html">流程工具</a></li>
+				<li id="frontierResearch"><a href="http://www.8omics.com/col.jsp?id=106" >开放职位</a></li>
+			</ul>
+			<span class="phone">18510861086( <span>手机/微信</span> )</span>		
+		</div>
+	</header>
+	<section class="infoBox">
+		
+			<div id="toolbar">
+				<div class="btn btn-default active-black" onClick="clickBtn()" id="editProject" style="width: 84px">ALL</div>
+				<div class="btn btn-default" onClick="clickBtn()"  id="editProject1" style="width: 84px">DNA流程</div>
+				<div class="btn btn-default" onClick="clickBtn()"  id="editProject2" style="width: 84px">RNA流程</div>
+				<div class="btn btn-default" onClick="clickBtn()"  id="editProject3" style="width: 84px">小工具</div>
+			</div>
+
+			<table data-toggle="table"
+			data-toolbar="#toolbar"
+			data-search="true"
+			data-height="480"
+			data-side-pagination="server"
+			data-show-refresh="true"
+			data-show-columns="true"
+			data-detail-view="true"
+			data-detail-formatter="detailFormatter"		
+			data-after-detail-formatter="edit"			
+			data-click-to-select="true"											
+			data-id-field="id"
+			data-sort-order="desc"
+			data-striped=false
+			 id="maintable">
+			<thead>
+				<tr>
+					<th data-width="344" data-field="project_name" data-align="center" data-sortable="true" data-formatter="fun">名称</th>
+					<th data-field="categories" data-align="center" data-sortable="true">类别</th>
+					<th data-field="edition" data-align="center" data-sortable="true" >版本</th>
+					<th data-field="videoExplain" data-align="center" data-formatter="video">视频说明</th>
+					<th data-field="fileExplain" data-align="center" data-formatter="file" >文档说明</th>
+					<th data-field="id" data-visible="false">简介</th>
+					<th data-field="price" data-align="center">售价</th>
+				</tr>
+			</thead>
+		</table>	
+</section>
+<footer class="footerstyle" style="margin-top:120px;">
+			<p>版权所有 © 2016 京ICP备15033925号</p>
+			<p>北京拓美科基因科技有限公司</p>
+		</footer>
+<script src="public/js/jquery-1.11.2.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/bootstrap-table.js"></script>
+<script src="public/js/bootstrap-editable.js"></script>
+<script>
+function video(index,row){
+	return '<img src="img/tableBtn.png" width="20" height="20"/>';
+};
+function file(index,row){
+	return '<img src="img/tableBtn1.png" width="20" height="20"/>';
+}
+function fun(index,row){
+	return "<span class='projectName' tips="+row.tips+">"+row.project_name+"</span><span class='tableTip'></span>"
+}
+
+		$('#maintable').bootstrapTable({
+		 	url:'json/newdodogene.json',
+		 	 method: 'get',    
+		 	 columns:[
+		 	 	{
+		 	 		project_name:'名称',
+		 	 		categories:'类别',
+		 	 		edition:'版本',
+		 	 		videoExplain:'视频说明',
+		 	 		fileExplain:'文件说明',
+					price:"售价"
+		 	 	}	
+		 	 ]
+		 });
+
+function clickBtn(){
+	const getId=event.target.id;
+	console.log(getId);
+		$("#toolbar div").map(function(){
+			$(this).removeClass('active-black');
+		});
+		$(`#${getId}`).addClass('active-black');
+
+		 if (getId==editProject1) {
+		 const data1={
+		 	url:'json/newdodogene2.json',
+		 	 method: 'get',    
+		 	 columns:[
+		 	 	{
+		 	 		project_name:'名称',
+		 	 		categories:'类别',
+		 	 		edition:'版本',
+		 	 		videoExplain:'视频说明',
+		 	 		fileExplain:'文件说明'
+
+		 	 	}	
+		 	 ]
+		}
+		 	$('#maintable').bootstrapTable('refresh',data1);
+
+		 }
+	
+}
+$(function () {
+
+	$("#maintable").on("mouseover",".projectName",function(){
+		var tips=$(this).attr("tips")
+		$(this).siblings(".tableTip").text(tips)
+	})
+	$("#maintable").on("mouseleave",".projectName",function(){
+		$(this).siblings(".tableTip").text("")
+	})
+});
+</script>
+</body>
+</html>

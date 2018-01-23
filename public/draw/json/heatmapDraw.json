@@ -1,0 +1,15 @@
+{
+    "input": "/whx/abc/1.txt",
+    "title": "热图",
+    "title_size": "18",
+    "title_font": "bold",
+    "titleX":"center",
+    "titleY":"top",
+    "legendWidth":20,  
+    "legendHeight":140,
+    "legendX":"center",
+    "legendY":"bottom",
+    "legendLayout":"horizontal",
+    "minValue":0,
+    "maxValue":1 
+}

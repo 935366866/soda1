@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>表格合并</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8">
+    <link href="public/css/reset.css" rel="stylesheet"/>
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/draw/style/prettify.css" rel="stylesheet"/>
+    <link href="public/draw/style/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="public/css/bootstrap-table.css" rel="stylesheet">
+    <link href="public/css/jquery.fileupload.css" rel="stylesheet">
+    <link href="public/css/bootstrap-select.css" rel="stylesheet">
+    <link href="public/css/long_common.css" rel="stylesheet"/>
+    <link href="public/draw/style/app.css" rel="stylesheet">
+    <link href="css/soda_common.css" rel="stylesheet">
+    <link href="public/draw/style/spectrum.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/user.css"/>
+    <style>
+        #parameter .input_a_m {
+            width: 58%;
+        }
+
+        .infoOne td {
+            width: 110px;
+            height: 30px;
+        }
+
+        .infoTwo td {
+            width: 110px;
+        }
+
+        .infoTwo input[type=text] {
+            width: 110px;
+        }
+
+        .dingyi {
+            display: none;
+            height: 28px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        .fileName {
+            width: 130px;
+            display: inline-block;
+            margin-left: 10px
+        }
+
+        .showTableTitle {
+            text-align: center;
+        }
+
+        .showTable {
+            border: 1px;
+            text-align: center;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            border-top-color: #333333;
+            background-color: transparent;
+            margin-bottom: 25px;
+        }
+        .ulBox{
+            margin: 15px;
+        }
+        .showTable tr td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .explain {
+            border: 1px;
+            text-align: center;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            border-top-color: #333333;
+            background-color: transparent;
+            margin-bottom: 25px;
+            margin: 0 auto;
+        }
+        .explain tr:first-child{
+            font-weight: bold;
+        }
+        .Italic tr td:nth-child(4){
+            font-style: italic;
+        }
+        .Italic tr td:nth-child(5){
+            font-style: italic;
+        }
+        .explain tr td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .indent {
+            text-indent: 2em;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+
+<body style="background-color:#fff;">
+<div class="top" style="float:left;width:100%;">
+    <div class="main_nav1">
+        <div class="container">
+            <a href="#" class="logo"><img src="public/image/navLogo.svg"/></a>
+            <ul class="main_nav1_left">
+                <li id="mainIndex"><a href="main.html">首页</a></li>
+                <li id="sodaIndex"><a href="sodaIndex.html">云中漫步</a></li>
+                <li id="frontierResearch"><a href="frontierResearch.html">前沿方案</a></li>
+                <li id="marketActive"><a href="marketActive.html">市场活动</a></li>
+            </ul>
+            <div class="form-group searchNews" id="search_news">
+                <span class="col-sm-2 control-label"><img src="public/image/navSearch.svg"/></span>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="search_news_input">
+                </div>
+            </div>
+            <ul class="main_nav1_right">
+                <li><a href="#"><img src="img/help.svg" alt=""/></a></li>
+                <li id="searchIcon"><a href="#"><img src="public/image/navSearch.svg" alt="搜索"/></a></li>
+                <li><a href="#"><img src="public/image/navEmail.svg" alt="通知"/><span class="badge">1</span></a></li>
+                <li><a href="personalCenter.html"><img src="public/image/navUser.svg" alt="用户"/></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main_nav2">
+        <div class="container">
+            <ul class="main_nav2_left">
+                <li class="nav2_list1" style="width: 90px;">
+                    <a href="#" class="active">流程方案<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">DNA流程方案</a></li>
+                        <li><a href="">RNA流程方案</a></li>
+                        <li><a href="">医学流程方案</a></li>
+                    </ul>
+                </li>
+                <li class="nav2_list2" style="width: 73px;">
+                    <a href="#">小工具<img src="public/image/navDown.svg" alt=""></a>
+                    <ul class="">
+                        <li><a href="">基本绘图</a></li>
+                        <li><a href="">流程绘图</a></li>
+                        <li><a href="">高级绘图</a></li>
+                        <li><a href="">表格处理</a></li>
+                        <li><a href="">计算统计</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="myProject.html">我的项目</a></li>
+                <li class=""><a href="#">我的目录</a></li>
+                <li class=""><a href="recycle.html">回收站</a></li>
+            </ul>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="搜索想要使用的流程或小工具" id="search_flowapp">
+                </div>
+                <button class="col-sm-2 btn btn_blue" id="search_button">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="center_box" style="float:left;width:100%;">
+    <div class="app_title">
+        <p>表格合并</p>
+    </div>
+    <div class="change_box" id='taskPanel'></div>
+    <div class="myTab">
+        <div style="width: 1200px;margin: 0 auto;height: 100%;">
+            <div class="tabs" style="margin-left: 10px;">
+                <ul class="nav" id="appTabLeft">
+                    <li class="active"><a href="#set" data-toggle="tab">参数设置</a></li>
+                </ul>
+            </div>
+            <div class="tabs" style="margin-left: 20px;">
+                <ul class="nav" id="appTabRight">
+                    <li><a href="#direction" data-toggle="tab">使用说明</a></li>
+                    <li class="active"><a href="#show" data-toggle="tab">内容预览</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="myTabContent" class="change_box">
+        <div class="tab-content input_l">
+            <div class="tab-pane in active" id="set">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <!--<a id="use_default">使用示例文件</a>-->
+                    </div>
+                    <div class="panel-body" style="height: 439px;">
+                        <div id="parameter" class="venn">
+                            <!--输入文件-->
+
+                            <div id="samples">
+                                <div class="part" v-for="(item,index) in sampleList">
+                                    <div class="input_a_l titleNameLeft">输入文件{{index+1}}</div>
+                                    <div class="input_a_m inputLeft">
+                                        <input type="text" v-bind:id="'input'+index" v-model="sampleList[index].file"
+                                               class="form-control" v-bind:name="'inputFile'+index"
+                                               style="width: 130px;display: inline-block">
+                                        <input type="text" class="form-control fileName" placeholder="文件别名"
+                                               v-bind:value="item.fileName" v-model="sampleList[index].fileText"/>
+                                    </div>
+                                    <div class="input_a_r">
+                                        <a v-on:click="openUrlVue(index)">
+                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                        </a>
+											<span class="fileinput-button btn " style="padding: 0 10px;">
+												<img src="public/draw/imgs/app_02.png" alt="" style="width: 29px;">
+												<input name="upload_input" v-bind:id="'upload_input'+index"
+                                                       v-on:click="upload(index)" type="file">
+											</span>
+                                        <button type="button" class="close"
+                                                v-on:click="delSample(index)">&times;</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button v-on:click.stop="addSample" id="addNew" class="btn btn-primary"
+                                        style="margin-top: 10px;">新增输入文件
+                                </button>
+                            </div>
+                            <div class="part" style="background-color: #f5f5f5;padding: 10px;width: 500px">
+                                <div class="input_a_l titleNameLeft">输出文件路径</div>
+                                <div class="input_a_m inputLeft">
+                                    <input type="text" class="form-control" style="width: 130px;display: inline-block"
+                                           id="outInput">
+                                    <input type="text" class="form-control"
+                                           style="width: 130px;display: inline-block;margin-left: 10px"
+                                           placeholder="文件名"/>
+                                </div>
+                                <div class="input_a_r">
+                                    <a onclick="openUrl('#input','file')">
+                                        <span class="glyphicon glyphicon-folder-open"
+                                              style="font-size: 20px;top: 5px;cursor: pointer;"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="wrap" style="margin-top: 10px;float: left;">
+                                <div class="part" style="padding-top: 10px;font-size: 16px;font-weight: bolder">合并参数
+                                </div>
+                                <div class="line"></div>
+                                <div class="part" style="padding-top: 10px;float: left">合并依据:</div>
+                                <div class="part">
+                                    <table class="infoOne">
+                                        <thead>
+                                        <tr>
+                                            <td>文件名</td>
+                                            <td>文件大小</td>
+                                            <td>行数</td>
+                                            <td>列数</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="nameList in sampleList">
+                                            <td>{{nameList.fileName}}</td>
+                                            <td>{{nameList.fileSize}}</td>
+                                            <td>{{nameList.fileRow}}</td>
+                                            <td>{{nameList.fileCol}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="part" style="display: inline-block;">
+                                    <div class="left">
+                                        合并方式：
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="radioS" value="inner" checked="checked">交集
+                                        </label>
+                                    </div>
+                                    <div class="radio" style="margin-left: 10px;">
+                                        <label>
+                                            <input type="radio" name="radioS" value="outer">并集
+                                        </label>
+                                    </div>
+                                    <div class="radio" style="margin-left: 10px;">
+                                        <label>
+                                            <input type="radio" name="radioS" value="left">基于第一个文件
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="part">
+                                    <div class="left">
+                                        缺少值设置：
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="radioZ" onclick="dingyi()" value="--"
+                                                   checked="checked">--
+                                        </label>
+                                    </div>
+                                    <div class="radio" style="margin-left: 10px;">
+                                        <label>
+                                            <input type="radio" name="radioZ" onclick="dingyi()" value="NA">NA
+                                        </label>
+                                    </div>
+                                    <div class="radio" style="margin-left: 10px;">
+                                        <label>
+                                            <input type="radio" name="radioZ" onclick="dingyi()" id="dingyi" value="">自定义
+                                        </label>
+
+                                        <input type="text" class="dingyi"/>
+
+                                    </div>
+                                </div>
+
+                                <div class="part">
+                                    <table class="infoTwo">
+                                        <thead>
+                                        <tr>
+                                            <td>文件</td>
+                                            <td>表头</td>
+                                            <td>合并主要依据列</td>
+                                            <td style="padding-left: 20px">被合并列</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="nameList1 in sampleList">
+                                            <td>{{nameList1.fileText}}</td>
+                                            <td>
+                                                <input type="radio" v-bind:name="'radio'+nameList1.radio" value="0"
+                                                       checked="checked">有
+                                                <input type="radio" v-bind:name="'radio'+nameList1.radio" value="None">无
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control"
+                                                       v-bind:name="'basis'+nameList1.radio"/>
+                                            </td>
+                                            <td style="padding-left: 20px">
+                                                <input type="text" class="form-control"
+                                                       v-bind:name="'beMerged'+nameList1.radio"/>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="height: 51px;">
+                        <button id="submit_paras" type="button" class="btn btn-success">开始合并</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 绘图展示 -->
+        <div class="tab-content input_r">
+            <div class="tab-pane in active" id="show">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">每个文件截取前20行内容</h3>
+                    </div>
+                    <div class="panel-body">
+                        <!--<div class="showTableTitle" >{{tableList.fileText}}</div>-->
+                        <table class="showTable" v-for="tableList in sampleList" v-bind:id="'table'+tableList.radio">
+                            <thead>
+                            <tr>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- 使用说明 -->
+            <div class="tab-pane" id="direction">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            使用说明
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="first_title">
+                            <h2><img src="img/report_01.svg" alt="">概述</h2>
+                        </div>
+                        <p class="indent">将不同表格按照一列或某几列进行合并。以下举例说明:
+                        </p>
+                        <p class="indent">
+                            表格1:
+                        </p>
+
+                        <div>
+                            <table class="explain">
+                                <tr>
+                                    <td>姓名</td>
+                                    <td>年龄</td>
+                                    <td>性别</td>
+                                </tr>
+                                <tr>
+                                    <td>小郭</td>
+                                    <td>小林</td>
+                                    <td>小刚</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>24</td>
+                                    <td>22</td>
+                                </tr>
+                                <tr>
+                                    <td>男</td>
+                                    <td>女</td>
+                                    <td>男</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p class="indent">表格2:</p>
+                            <table class="explain">
+                                <tr>
+                                    <td>姓名</td>
+                                    <td>成绩</td>
+                                    <td>学校</td>
+                                </tr>
+                                <tr>
+                                    <td>小郭</td>
+                                    <td>小东</td>
+                                    <td>小刚</td>
+                                </tr>
+                                <tr>
+                                    <td>100</td>
+                                    <td>99</td>
+                                    <td>89</td>
+                                </tr>
+                                <tr>
+                                    <td>山东大学</td>
+                                    <td>清华大学</td>
+                                    <td>北京大学</td>
+                                </tr>
+                            </table>
+
+                        <p class="indent">将表格1和表格2按表格1的第一列（姓名）和表格2的第一列（姓名）进行合并，结果如下：</p>
+
+
+                            <table class="explain Italic">
+                                <tr>
+                                    <td>姓名</td>
+                                    <td>年龄</td>
+                                    <td>性别</td>
+                                    <td>成绩</td>
+                                    <td>学校</td>
+                                </tr>
+                                <tr>
+                                    <td>小郭</td>
+                                    <td>23</td>
+                                    <td>男</td>
+                                    <td>100</td>
+                                    <td>山东大学</td>
+                                </tr>
+                                <tr>
+                                    <td>小林</td>
+                                    <td>24</td>
+                                    <td>女</td>
+                                    <td>NA</td>
+                                    <td>NA</td>
+                                </tr>
+                                <tr>
+                                    <td>小刚</td>
+                                    <td>22</td>
+                                    <td>男</td>
+                                    <td>89</td>
+                                    <td>北京大学</td>
+                                </tr>
+                            </table>
+
+                        <p class="indent">由此，我们得到新的表格，其中包含表格1（非斜体）和表格2（斜体）的内容。</p>
+
+                        <div class="first_title">
+                            <h2><img src="img/report_01.svg" alt="">参数设置</h2>
+                        </div>
+
+                        <div class="first_title">
+                            <h2 style="text-indent: 2em;">输入输出</h2>
+                        </div>
+                        <img src="img/explain.png" alt=""/>
+
+                        <div class="ulBox">
+                            <ul class="tuli">
+                                <li>1.输入文件可为csv,xlsx,xls,xlsm格式（csv格式更为快速，建议使用）</li>
+                                <li>2.点击文件夹按钮选择文件或点击箭头上传文件</li>
+                                <li>3.点击”新增输入文件”以新增文件</li>
+                                <li>4.输出文件路径可点击文件夹确定目录，并自行输入文件名</li>
+                            </ul>
+                        </div>
+                        <div class="first_title">
+                            <h2 style="text-indent: 2em;">合并参数</h2>
+                        </div>
+                        <img src="img/explain1.png" alt=""/>
+
+                        <div class="ulBox">
+                            <ul class="tuLi">
+                                <li>1.选择合并方式</li>
+                                <li>2.设置缺省值，默认为“–”，也可自行定义</li>
+                                <li>3.确定输入文件有无表头</li>
+                                <li>4.确定“主要依据列”，格式举例说明：“1,2”表示依据第一列和第二列，“1,2-4”表示依据第一列和第二到四列。所有文件主要依据列的列数必须一致。</li>
+                                <li>5.确定被“合并列”，格式与“主要依据列”相同，“主要依据列”必须包含在“合并列”中。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 标签切换 -->
+    <!-- 添加选择目录的模态框 -->
+    <div class="modal fade" id="selectUrl" tabindex="-1" aria-labelledby="选择路径" aria-hidden="true">
+
+        <div class="modal-dialog" style="top:50px; width:800px;">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">路径</h4>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputUrl">
+						<span class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-arrow-left" id="back" type="button"
+                                    style="top: 0px;"></button>
+							<button class="btn btn-default glyphicon glyphicon-arrow-right" id="search" type="button"
+                                    style="top: 0px;"></button>
+						</span>
+                    </div>
+                </div>
+                <!-- -----------------------------------------------------------data-single-select="true"------------------------ -->
+                <div class="modal-body" style="text-align:center; ">
+                    <table data-toggle="table" data-url="json/jobUrl.json" data-minimum-count-columns="2"
+                           data-id-field="id" data-show-footer="false"
+                           data-height="300" data-sort-name="id" data-click-to-select="true" id="urlTable"
+                           style="bottom:20px;">
+
+                        <thead>
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="icon" data-formatter="addIcon"></th>
+                            <th data-field="name" data-align="left" data-sortable="true">name</th>
+                            <th data-field="type" data-align="center" data-sortable="true">attribute</th>
+                            <th data-field="inodeNum" data-align="center" data-visible="false" data-sortable="true">
+                                inodeNum
+                            </th>
+                            <th data-field="size" data-align="center" data-sortable="true">size</th>
+                            <th data-field="owner" data-align="center" data-sortable="true">owner</th>
+                            <th data-field="group" data-align="center">group</th>
+                            <th data-field="mtime" data-align="center" data-sortable="true">time</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- ----------------------------------------------------------------------------------- -->
+                <div class="modal-footer">
+                    <button type="button" id="selected" class="btn btn-primary">
+                        选择
+                    </button>
+                    <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--页脚-->
+    <div id="footer_style">
+        <footer class="footerstyle">
+            <p>版权所有 © 2016 京ICP备15033925号</p>
+
+            <p>北京拓美科基因科技有限公司</p>
+        </footer>
+    </div>
+    <script src="public/js/jquery-1.11.2.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <!--添加本页面的js-->
+    <script>
+        module = "__MODULE__";
+        tool_id = "{$tool_id}";
+    </script>
+    <script src="public/js/bootstrap-table.js"></script>
+    <script src="public/js/jquery.ui.widget.js"></script>
+    <script src="public/js/jquery.fileupload.js"></script>
+    <script src="public/js/jquery.iframe-transport.js"></script>
+    <script src="public/js/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="public/js/bootstrap-select.js"></script>
+    <script src="public/js/defaults-zh_CN.js"></script>
+    <script src="public/js/vue.js"></script>
+    <script src="public/draw/script/html2canvas.min.js"></script>
+    <script src="public/draw/script/jspdf.min.js"></script>
+    <!--<script src="public/js/echarts.js"></script>-->
+    <script src="public/js/long_common.js"></script>
+    <script src="public/draw/script/spectrum.js"></script>
+    <script src="public/draw/script/jquery.spectrum-zh-cn.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/table1.js"></script>
+    <script>
+        //		$.ajax({
+        //			url:'json/tableInfo.json',
+        //			type:'get',
+        //			dataType:'json',
+        //			success:function(data){
+        //				console.log(data);
+        //				for(var i=0;i<data.length;i++){
+        //					var str= "<td>"+data[i].name+"</td>" ;
+        //					$('thead tr').append(str);
+        //				}
+        //			}
+        //		});
+        $(".explain tr:odd").css("background-color", "#f7f7f9")
+        var num = 2;
+        var radioNum = 4;
+        //		$('#addNew').click(function(){
+        //			num+=1;
+        //			radioNum+=1;
+        //			$('.infoTwo tbody').append("<tr>" +
+        //					"<td>文件"+num+"</td>" +
+        //					"<td> <input type='radio' name='radio4' value='0' checked='checked'>是" +
+        //					"<input type='radio' name='radio4' value='0'>否</td>" +
+        //					"<td><input type='text'  class='form-control'/></td>" +
+        //					"<td style='padding-left: 20px'><input type='text'  class='form-control'/></td>" +
+        //					"</tr>");
+        //		});
+    </script>
+</body>
+</html>

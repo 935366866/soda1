@@ -1,0 +1,121 @@
+body{
+    font-family: "Microsoft YaHei";
+}
+.showText{
+    float: right;
+    margin-top: 240px;
+    margin-right: 200px;
+}
+.showInfo{
+    clear: both;
+    margin-top: 555px;
+}
+.col-box{
+    height: 150px;
+    width: 550px;
+    overflow: hidden;
+    border-radius: 8px;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.infoB1 .col-box{
+    background-color: #ebaa24;
+}
+.infoB2 .col-box{
+    background-color: #249ac0;
+}
+.infoB3 .col-box{
+    background-color: #46ab83;
+}
+.infoB4 .col-box{
+    background-color: #3b8bcb;
+}
+.line{
+    height: 60px;
+    width: 5px;
+    background-color: #FFFFFF;
+    margin: 0 10px;
+}
+.infoTwo{
+    margin-top: 20px;
+}
+.infoBox{
+    background: url("../img/ptIndex1.jpg") no-repeat;
+    height: 900px;
+    width: 100%;
+    background-size:cover;
+}
+.infoB1 .col-box .icon{
+    background: url("../img/ptIndex2.svg") no-repeat;
+    height: 60px;
+    width: 110px;
+    margin: 0 20px;
+    background-size: contain;
+}
+.infoB2 .col-box .icon{
+    background: url("../img/ptIndex7.svg") no-repeat;
+    height: 60px;
+    width: 110px;
+    margin: 0 20px;
+    background-size: contain;
+}
+.infoB3 .col-box .icon{
+    background: url("../img/ptIndex3.svg") no-repeat;
+    height: 60px;
+    width: 110px;
+    margin: 0 20px;
+    background-size: contain;
+}
+.infoB4 .col-box .icon{
+    background: url("../img/ptIndex4.svg") no-repeat;
+    height: 60px;
+    width: 110px;
+    margin: 0 20px;
+    background-size: 100% 100%;
+}
+
+.text p{
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+    margin: 0;
+    font-family: "Microsoft YaHei";
+}
+.titleText{
+    font-size: 60px;
+    font-weight: bold;
+    color: #0684c1;
+    text-align: right;
+    text-shadow: #666464 2px 2px 2px;
+}
+.hideBox{
+    display: none;
+}
+.hideBox .hideText{
+    width: 350px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 0;
+    line-height: 20px;
+    font-family: "Microsoft YaHei";
+}
+.glicon{
+    display: inline-block;
+    background: url("../img/ptIndex5.svg");
+    width: 20px;
+    height: 20px;
+    background-size: 100% 100%;
+}
+.rwIcon{
+    display: block;
+    float: right;
+    background: url("../img/ptIndex6.svg");
+    width: 100px;
+    height: 100px;
+    background-size: 100% 100%;
+}

@@ -1,0 +1,18 @@
+{
+    "input": "/whx/abc/1.txt",
+    "title": "世界-饼图",
+    "title_size": "18",
+    "title_font": "bold",
+    "titleX":"center",
+    "titleY":"top",
+    "longitude":2,
+    "latitude":3,
+    "placeName":1,
+    "legendWidth":25,  
+    "legendHeight":15,
+    "legendX":"left",
+    "legendY":"top",
+    "legendLayout":"vertical",
+    "zoom":0.8
+
+}

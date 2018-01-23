@@ -1,0 +1,19 @@
+{
+    "input": "/whx/abc/1.txt",
+    "title": "箱线图",
+    "title_size": "18",
+    "title_font": "bold",
+    "titleX":"center",
+    "titleY":"top",
+    "xlab": "xxx",
+    "xlab_size": "12",
+    "xlab_font": "normal",
+    "ylab": "yyy",
+    "ylab_size": "12",
+    "ylab_font": "normal",
+    "xColumnField":"#geneID",
+    "Xgrid": "show",
+    "Ygrid": "show",
+    "lineWidth":2,
+    "pointsize":8       
+}
